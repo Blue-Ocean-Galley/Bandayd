@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import GlobalStyles, { Button } from './styles/globalStyles';
+import GlobalStyles, { Button, Card, Tile } from './styles/globalStyles';
 import darkTheme from './styles/theme';
 
 class App extends React.Component {
@@ -23,6 +23,14 @@ class App extends React.Component {
             { isEslintWorking ? 'Hello world!' : '' }
           </div>
           <Button>?</Button>
+          <Tile>
+            <Card>
+              <div> A card </div>
+            </Card>
+            <Card>
+              <div> A card </div>
+            </Card>
+          </Tile>
         </main>
       </ThemeProvider>
     );
