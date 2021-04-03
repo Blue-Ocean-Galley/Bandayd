@@ -8,6 +8,7 @@ const darkTheme = {
   primary_200: '#bec2c3', // light grey
   primary_100: '#d4d6d7', // light grey
   primary_text: '#F3F6F7', // white
+  dark_text: '#111618',
   secondary: '#bf360c', // orange
   secondary_light: '#f9683a', // light orange
   secondary_dark: '#870000', // dark orange
