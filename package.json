@@ -38,7 +38,6 @@
     "@babel/core": "^7.13.1",
     "@babel/preset-env": "^7.13.5",
     "@babel/preset-react": "^7.12.13",
-    "@testing-library/jest-dom": "github:testing-library/jest-dom",
     "@testing-library/react": "^11.2.5",
     "babel-jest": "^26.6.3",
     "eslint": "^7.23.0",
