@@ -1,27 +1,24 @@
 import React from 'react';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      isEslintWorking: true,
     };
   }
-  componentDidMount() {
-
-  }
-
 
   render() {
+    const { isEslintWorking } = this.state;
     return (
-      <div className="container" id="app-outer-div">
-        <h2 id="title" className="header-text">Bandayd</h2>
-          <div>
-
-          </div>
-      </div>
-    )
+      <main className="container" id="app-outer-div">
+        <h1 id="title" className="header-text">Bandayd</h1>
+        <div>
+          { isEslintWorking ? 'Hello world!' : '' }
+        </div>
+      </main>
+    );
   }
 }
 
