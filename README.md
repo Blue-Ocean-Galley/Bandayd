@@ -1,23 +1,22 @@
 # Bandayd
 ## Description
-Bandayd is a social media website aimed at the music scene
-Its primary purpose is to better facilitate interaction between bands, their fans, and potential new fans.
+Bandayd is a social media website aimed at the music scene. Its primary purpose is to better facilitate interaction between bands, their fans, and potential new fans.
 
 ## Installation
 After cloning and navigating to relevant directory:
 
 ```bash
-#installs all needed packages
+# Installs all needed packages
 npm install
 ```
 
 ## Usage
 
 ```bash
-#compiles and bundles files
+# Compiles and bundles files
 npm run build
 
-#runs proxy server to render files
+# Runs proxy server to render files
 npm start
 ```
 
