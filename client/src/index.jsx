@@ -1,4 +1,7 @@
 import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import GlobalStyles from './styles/globalStyles';
+import darkTheme from './styles/theme';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,12 +15,15 @@ class App extends React.Component {
   render() {
     const { isEslintWorking } = this.state;
     return (
-      <main className="container" id="app-outer-div">
-        <h1 id="title" className="header-text">Bandayd</h1>
-        <div>
-          { isEslintWorking ? 'Hello world!' : '' }
-        </div>
-      </main>
+      <ThemeProvider theme={darkTheme}>
+        <GlobalStyles />
+        <main className="container" id="app-outer-div">
+          <h1 id="title" className="header-text">Bandayd</h1>
+          <div>
+            { isEslintWorking ? 'Hello world!' : '' }
+          </div>
+        </main>
+      </ThemeProvider>
     );
   }
 }
