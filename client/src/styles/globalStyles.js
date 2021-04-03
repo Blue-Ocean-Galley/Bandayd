@@ -36,7 +36,13 @@ const CircleButtonPreset = styled(ButtonPreset)`
 `;
 
 const TilePreset = styled.div`
-  background-color: ${({ theme }) => theme.primary_400};
+  background-color: ${({ theme }) => theme.primary_600};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & > * {
+    width: 90%;
+  }
 `;
 
 const ListTilePreset = styled(TilePreset)`
@@ -65,7 +71,9 @@ const TextAreaPreset = styled.textarea`
 `;
 
 const CardPreset = styled.div`
+  background-color: ${({ theme }) => theme.primary_400};
   padding: 1.5rem;
+  margin: 1rem;
   border-radius: 0.5rem;
   display: flex;
   flex-direction: row;
