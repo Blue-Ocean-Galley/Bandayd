@@ -1,5 +1,6 @@
 node_modules
 *.conf
 webpack*
+jest*
 babel*
 main.js

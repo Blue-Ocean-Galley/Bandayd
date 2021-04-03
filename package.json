@@ -16,7 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/Blue-Ocean-Galley/Bandayd.git"
   },
-  "author": "Aubery Bachant, Kaleb Lyda, Squall Leonhart, Sung Kim, Zach Kodjo, Bill Mehlenbacher",
+  "author": "Aubery Bachant, Squall Leonhart, Kaleb Lyda, Sung Kim, Zach Kodjo, Bill Mehlenbacher",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Blue-Ocean-Galley/Bandayd/issues"
