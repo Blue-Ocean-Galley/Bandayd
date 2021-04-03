@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 62.5%;
   }
   body {
-    background: ${({ theme }) => theme.primary};
+    background: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.primary_text};
     font-family: Tahoma, Helvetica, Arial, Roboto, sans-serif;
     font-size: 160%;
