@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import GlobalStyles from './styles/globalStyles';
+import GlobalStyles, { Button } from './styles/globalStyles';
 import darkTheme from './styles/theme';
 
 class App extends React.Component {
@@ -22,6 +22,7 @@ class App extends React.Component {
           <div>
             { isEslintWorking ? 'Hello world!' : '' }
           </div>
+          <Button>?</Button>
         </main>
       </ThemeProvider>
     );
