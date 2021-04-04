@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <HeroImage>
       <ImageOverlay>
-        <h3>Band-Ayd</h3>
+        <h1>Band-Ayd</h1>
         <p>
           Nisi maiores nemo et quae repellat quibusdam quia.
           Deserunt dolor id amet soluta maiores tenetur accusantium fugiat.
@@ -37,7 +37,7 @@ const ImageOverlay = styled(Card)`
   background: none;
   width: 40%;
   text-align: center;
-  & > h3 {
+  & > h1 {
     font-size: 6rem;
     text-transform: uppercase;
   }
