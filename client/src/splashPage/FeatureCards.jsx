@@ -6,24 +6,24 @@ export default function FeatureCards() {
   return (
     <FeatureTile>
       <FeatureCard>
-        <h4>Feature Name</h4>
-        <h4> ☆ </h4>
+        <h2>Feature Name</h2>
+        <h2> ☆ </h2>
         <p>
           Alias tenetur veniam unde voluptatem officia qui eos non.
           Illo provident incidunt quis quo. Saepe dolores alias blanditiis
         </p>
       </FeatureCard>
       <FeatureCard>
-        <h4>Feature Name</h4>
-        <h4> ☆ </h4>
+        <h2>Feature Name</h2>
+        <h2> ☆ </h2>
         <p>
           Alias tenetur veniam unde voluptatem officia qui eos non.
           Illo provident incidunt quis quo. Saepe dolores alias blanditiis
         </p>
       </FeatureCard>
       <FeatureCard>
-        <h4>Feature Name</h4>
-        <h4> ☆ </h4>
+        <h2>Feature Name</h2>
+        <h2> ☆ </h2>
         <p>
           Alias tenetur veniam unde voluptatem officia qui eos non.
           Illo provident incidunt quis quo. Saepe dolores alias blanditiis
@@ -39,10 +39,7 @@ const FeatureCard = styled(Card)`
   width: 20rem;
   height: 32rem;
 
-  & > h4 {
-    margin: 1rem;
-    font-size: 3rem;
-  }
+
 `;
 
 const FeatureTile = styled(Tile)`
