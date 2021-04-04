@@ -8,8 +8,8 @@ export default function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <GlobalStyles />
-      <main className="container" id="app-outer-div">
-        <h1 id="title" className="header-text">Bandayd</h1>
+      <main>
+        <h1>Bandayd</h1>
         <SplashPageContainer />
       </main>
     </ThemeProvider>
