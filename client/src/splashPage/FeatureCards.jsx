@@ -38,8 +38,6 @@ const FeatureCard = styled(Card)`
   text-align: center;
   width: 20rem;
   height: 32rem;
-
-
 `;
 
 const FeatureTile = styled(Tile)`
