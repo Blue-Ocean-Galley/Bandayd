@@ -86,6 +86,16 @@ const CardPreset = styled.div`
   justify-content: space-between;
 `;
 
+const ListItemPreset = styled.div`
+  background: ${({ theme }) => theme.primary_200};
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
 export default GlobalStyle;
 export const Button = ButtonPreset;
 export const CircleButton = CircleButtonPreset;
@@ -94,3 +104,4 @@ export const ListTile = ListTilePreset;
 export const Input = InputPreset;
 export const TextArea = TextAreaPreset;
 export const Card = CardPreset;
+export const ListItem = ListItemPreset;
