@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './styles/globalStyles';
@@ -16,14 +15,14 @@ export default function App() {
     <Router>
       <ThemeProvider theme={darkTheme}>
         <GlobalStyles />
-      <Switch>
-        <Route exact path="/">
-          <main>
-            <Navigation />
-            <SplashPageContainer />
-          </main>
-        </Route>
-      </Switch>
+        <Switch>
+          <Route exact path="/">
+            <main>
+              <Navigation />
+              <SplashPageContainer />
+            </main>
+          </Route>
+        </Switch>
       </ThemeProvider>
     </Router>
   );

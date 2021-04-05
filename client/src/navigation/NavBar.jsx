@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 // create the new JSX element
-const Navigation = (props) => (
+const Navigation = () => (
   // create an unordered list
   <>
     <NavBar>
@@ -23,11 +22,7 @@ const Navigation = (props) => (
   </>
   // Add link tags for each item
 );
-
-
 // style list with styled components
-
-// Export
 export const NavBar = styled.nav`
   height: 7rem;
   display: flex;
@@ -72,6 +67,6 @@ export const StyledNavLink = styled(Link)`
     color: ${({ theme }) => theme.background};
     background-color: ${({ theme }) => theme.primary_text};
   }
-`
+`;
 
 export default Navigation;
