@@ -16,16 +16,15 @@ export default function App() {
     <Router>
       <ThemeProvider theme={darkTheme}>
         <GlobalStyles />
-      </ThemeProvider>
       <Switch>
         <Route exact path="/">
           <main>
-            
             <Navigation />
             <SplashPageContainer />
           </main>
         </Route>
       </Switch>
+      </ThemeProvider>
     </Router>
   );
 }
