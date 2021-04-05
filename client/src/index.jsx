@@ -1,40 +1,29 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import GlobalStyles, { Button, Card, Tile } from './styles/globalStyles';
+import GlobalStyles from './styles/globalStyles';
 import darkTheme from './styles/theme';
+import SplashPageContainer from './splashPage/SplashPageContainer';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isEslintWorking: true,
-    };
-  }
-
-  render() {
-    const { isEslintWorking } = this.state;
-    return (
+export default function App() {
+  return (
+    <Router>
       <ThemeProvider theme={darkTheme}>
         <GlobalStyles />
-        <main className="container" id="app-outer-div">
-          <h1 id="title" className="header-text">Bandayd</h1>
-          <div>
-            { isEslintWorking ? 'Hello world!' : '' }
-          </div>
-          <Button>?</Button>
-          <Tile>
-            <Card>
-              <div> A card </div>
-            </Card>
-            <Card>
-              <div> A card </div>
-            </Card>
-          </Tile>
-        </main>
       </ThemeProvider>
-    );
-  }
+      <Switch>
+        <Route exact path="/">
+          <main>
+            <h1>Bandayd</h1>
+            <SplashPageContainer />
+          </main>
+        </Route>
+      </Switch>
+    </Router>
+  );
 }
-
-export default App;
