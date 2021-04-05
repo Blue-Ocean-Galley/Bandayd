@@ -18,14 +18,22 @@ export default function EditBlogPageContainer() {
   // populate edit tile with that post's text
   // display save/cancel buttons
 
-  // if save button is clicked, put request with updated text
   // if cancel is clicked, end edit mode, clear tile, hide buttons
-  const [isEditing, setIsEditing] = useState(false);
   const [text, setText] = useState('');
+  const [isEditing, setIsEditing] = useState(false);
+  useEffect(() => {
+    console.log('change edit, text=', text);
+  }, [isEditing]);
   const [currentPost, setCurrentPost] = useState({});
   useEffect(() => {
     setText(currentPost.text);
   }, [isEditing]);
+
+  const handleSave = () => {
+    // put request with updated
+    setIsEditing(false);
+    console.log('handle save', text);
+  };
 
   return (
     <Container>
@@ -66,11 +74,10 @@ export default function EditBlogPageContainer() {
             <Card>
               <TextArea onChange={(e) => setText(e.target.value)} value={text} />
               <div>
-                <Button onClick={() => {
-                  setIsEditing(false);
-                  console.log(text);
-                }}
-                >
+                <Button onClick={() => setIsEditing(false)}>
+                  Cancel
+                </Button>
+                <Button onClick={() => handleSave()}>
                   Save
                 </Button>
               </div>
