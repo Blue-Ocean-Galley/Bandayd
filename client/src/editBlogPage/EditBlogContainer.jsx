@@ -36,8 +36,14 @@ export default function EditBlogPageContainer() {
       <Tile>
         <Card>
           Blog Post
-          <Button onClick={() => setIsEditing(false)}> Cancel </Button>
-          <Button onClick={() => setIsEditing(false)}> Save </Button>
+          {isEditing
+            ? (
+              <div>
+                <Button onClick={() => setIsEditing(false)}> Cancel </Button>
+                <Button onClick={() => setIsEditing(false)}> Save </Button>
+              </div>
+            )
+            : <p> Choose a post to edit </p> }
         </Card>
       </Tile>
     </>
