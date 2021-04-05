@@ -10,11 +10,11 @@ describe('My Test Suite', () => {
 });
 
 beforeEach(() => {
+  // eslint-disable-next-line react/jsx-filename-extension
   render(<App />);
 });
 
 describe('Navigation bar', () => {
-
   it('Renders the correct content', () => {
     const homeLink = screen.getByText(/^Home/i);
     expect(homeLink).toBeDefined();
