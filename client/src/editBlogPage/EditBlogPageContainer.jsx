@@ -22,13 +22,6 @@ export default function EditBlogPageContainer() {
   // if cancel is clicked, end edit mode, clear tile, hide buttons
   const [isEditing, setIsEditing] = useState(false);
   const [text, setText] = useState('');
-  // useEffect(() => {
-  //   if (isEditing) {
-  //     setText('text');
-  //   } else {
-  //     console.log('saved: ', text);
-  //   }
-  // });
   const [currentPost, setCurrentPost] = useState({});
   useEffect(() => {
     setText(currentPost.text);
@@ -38,6 +31,7 @@ export default function EditBlogPageContainer() {
     <Container>
       <PastBlogPosts>
         <h3> Past Blog Posts </h3>
+        <Button onClick={() => setIsEditing(true)}> Create New </Button>
         <ListItem onClick={() => {
           setIsEditing(true);
           setCurrentPost({ text: 'list item 1' });
@@ -65,7 +59,6 @@ export default function EditBlogPageContainer() {
             Title and snippet
           </p>
         </ListItem>
-        <Button onClick={() => setIsEditing(true)}> Create New </Button>
       </PastBlogPosts>
       <EditArea>
         {isEditing
@@ -95,6 +88,9 @@ export default function EditBlogPageContainer() {
 
 const PastBlogPosts = styled(ListTile)`
   width: 32%;
+  > ${ListItem} {
+    cursor: pointer;
+  }
 `;
 
 const EditArea = styled(Tile)`
