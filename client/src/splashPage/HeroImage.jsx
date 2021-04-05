@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { Button, Card, Tile } from '../styles/globalStyles';
 
-export default function Hero() {
+export default function Hero(props) {
   return (
     <HeroImage>
       <ImageOverlay>
@@ -13,7 +14,9 @@ export default function Hero() {
           Totam voluptatem ea quo. Et qui ullam blanditiis nam occaecati.
           Eius atque quae quibusdam optio et alias.
         </p>
-        <Button> Sign Up </Button>
+        <Link to={props.toPath}>
+          <Button> Sign Up </Button>
+        </Link>
       </ImageOverlay>
     </HeroImage>
   );
