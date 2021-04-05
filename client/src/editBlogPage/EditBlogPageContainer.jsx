@@ -22,7 +22,6 @@ export default function EditBlogPageContainer() {
   const [text, setText] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   useEffect(() => {
-    console.log('change edit, text=', text);
   }, [isEditing]);
   const [currentPost, setCurrentPost] = useState({});
   useEffect(() => {
@@ -32,7 +31,6 @@ export default function EditBlogPageContainer() {
   const handleSave = () => {
     // put request with updated
     setIsEditing(false);
-    console.log('handle save', text);
   };
 
   return (
