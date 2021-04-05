@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Card, Tile } from '../styles/globalStyles';
 
@@ -6,11 +7,13 @@ export default function FeatureCards() {
   return (
     <FeatureTile>
       <FeatureCard>
-        <h2>Feature Name</h2>
+        <Link to="/editblog">
+          <h2>Band blogs</h2>
+        </Link>
         <h2> ☆ </h2>
         <p>
-          Alias tenetur veniam unde voluptatem officia qui eos non.
-          Illo provident incidunt quis quo. Saepe dolores alias blanditiis
+          Post updates for your fans with a simple, easy to use
+          text editing interface.
         </p>
       </FeatureCard>
       <FeatureCard>
