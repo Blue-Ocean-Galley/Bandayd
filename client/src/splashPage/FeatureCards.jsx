@@ -41,6 +41,7 @@ const FeatureCard = styled(Card)`
   text-align: center;
   width: 20rem;
   height: 32rem;
+  overflow: auto;
   > * {
     text-decoration: none;
     color: ${({ theme }) => theme.primary_text};
@@ -50,4 +51,5 @@ const FeatureCard = styled(Card)`
 const FeatureTile = styled(Tile)`
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap: wrap;
 `;
