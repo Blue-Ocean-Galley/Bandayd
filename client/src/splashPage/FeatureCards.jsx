@@ -41,6 +41,10 @@ const FeatureCard = styled(Card)`
   text-align: center;
   width: 20rem;
   height: 32rem;
+  > * {
+    text-decoration: none;
+    color: ${({ theme }) => theme.primary_text};
+  }
 `;
 
 const FeatureTile = styled(Tile)`
