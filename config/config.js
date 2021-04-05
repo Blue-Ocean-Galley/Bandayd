@@ -1,4 +1,4 @@
-const logger = ('../../config/winston');
+const logger = ('./winston');
 
 module.exports = {
   development: {
