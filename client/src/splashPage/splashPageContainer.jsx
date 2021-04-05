@@ -5,7 +5,7 @@ import FeatureCards from './FeatureCards';
 export default function SplashPageContainer({ toPath }) {
   return (
     <>
-      <Hero toPath={toPath}/>
+      <Hero toPath={toPath} />
       <FeatureCards />
     </>
   );

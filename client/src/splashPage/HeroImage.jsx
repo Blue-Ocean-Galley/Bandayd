@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button, Card, Tile } from '../styles/globalStyles';
 import { Link } from 'react-router-dom';
+import { Button, Card, Tile } from '../styles/globalStyles';
 
 export default function Hero(props) {
   return (
