@@ -31,7 +31,7 @@ export default function App() {
         <Switch>
           <Route exact path="/">
             <main>
-              <SplashPageContainer toPath={ "/login" } />
+              <SplashPageContainer toPath='/login' />
             </main>
           </Route>
           <Route path="/bands">
@@ -47,7 +47,7 @@ export default function App() {
       </ThemeProvider>
     </Router>
   );
-};
+}
 
 // style list with styled components
 export const NavBar = styled.nav`

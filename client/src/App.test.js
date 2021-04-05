@@ -1,5 +1,6 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
 
 describe('My Test Suite', () => {
@@ -8,15 +9,32 @@ describe('My Test Suite', () => {
   });
 });
 
+beforeEach(() => {
+  render(<App />);
+});
+
 describe('Navigation bar', () => {
-  test('It renders the correct content', () => {
-    const { getByText } = render(<App />); // Render the component and destructure the method "getByText"
-    getByText('Bands'); // Because we destructured we automatically run the method against the component.
-    getByText('Home'); // This statement doubles as an assertion
-    getByText('Shows');
-    getByText('Sign Up | Login');
+
+  it('Renders the correct content', () => {
+    const homeLink = screen.getByText(/^Home/i);
+    expect(homeLink).toBeDefined();
   });
 
+  it('Renders the Bands page', () => {
+    fireEvent.click(screen.getByText('Bands'));
+    const bandPage = screen.getByText(/^Bands coming/i);
+    expect(bandPage).toHaveTextContent('Bands coming soon!');
+  });
 
+  it('Renders the Shows page', () => {
+    fireEvent.click(screen.getByText('Shows'));
+    const showPage = screen.getByText(/^New shows/i);
+    expect(showPage).toHaveTextContent('New shows coming soon!');
+  });
 
+  it('Renders the signup page', () => {
+    fireEvent.click(screen.getByText('Sign Up | Login'));
+    const signupPage = screen.getByText(/^Signup coming/i);
+    expect(signupPage).toHaveTextContent('Signup coming soon!');
+  });
 });
