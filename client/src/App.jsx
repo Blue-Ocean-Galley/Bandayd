@@ -31,7 +31,7 @@ export default function App() {
         <Switch>
           <Route exact path="/">
             <main>
-              <SplashPageContainer />
+              <SplashPageContainer toPath={ "/login" } />
             </main>
           </Route>
           <Route path="/bands">
