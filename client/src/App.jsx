@@ -39,7 +39,10 @@ export default function App() {
             <main>
               <EditBlogPageContainer />
             </main>
+<<<<<<< HEAD
           </Route>
+=======
+>>>>>>> b7f70887baede1d6d9eb852391b14bbb7cefa2ad
           <Route path="/bands">
             <div>Bands coming soon!</div>
           </Route>
