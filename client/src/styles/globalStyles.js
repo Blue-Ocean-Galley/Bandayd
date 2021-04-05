@@ -7,12 +7,18 @@ const GlobalStyle = createGlobalStyle`
   }
   html {
     font-size: 62.5%;
+    height: 100%;
   }
   body {
     background: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.primary_text};
     font-family: Tahoma, Helvetica, Arial, Roboto, sans-serif;
     font-size: 160%;
+    height: 100%;
+
+    &.div {
+      height: 100%;
+    }
   }
 `;
 
