@@ -8,7 +8,8 @@ import {
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './styles/globalStyles';
 import darkTheme from './styles/theme';
-import SplashPageContainer from './splashPage/SplashPageContainer';
+import Navigation from './navigation/NavBar';
+import SplashPageContainer from './splashPage/splashPageContainer';
 
 export default function App() {
   return (
@@ -19,7 +20,8 @@ export default function App() {
       <Switch>
         <Route exact path="/">
           <main>
-            <h1>Bandayd</h1>
+            
+            <Navigation />
             <SplashPageContainer />
           </main>
         </Route>
