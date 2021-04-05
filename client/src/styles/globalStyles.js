@@ -44,7 +44,6 @@ const CircleButtonPreset = styled(ButtonPreset)`
 const TilePreset = styled.div`
   background-color: ${({ theme }) => theme.primary_600};
   display: flex;
-  flex-direction: column;
   align-items: center;
   & > * {
     width: 90%;
@@ -70,6 +69,7 @@ const InputPreset = styled.input`
 
 const TextAreaPreset = styled.textarea`
   resize: vertical;
+  width: 90%;
   padding: 1.5rem;
   border-radius: 1.5rem;
   border: 0;
