@@ -32,9 +32,15 @@ class BandPage extends React.Component {
         { id: 3, location: 'Dallas', Date: '04-23-2021' },
         { id: 4, location: 'Las Vegas', Date: '02-27-2021' },
         { id: 5, location: 'Paris', Date: '08-14-2021' }
+      ],
+      tempBlogPosts: [
+        { id: 1, title: 'Blog1', body: 'kjfabdkabsdkabsdkjbaskdjbaskdjbaksjdbakjsdbakjsdbkajsd' },
+        { id: 2, title: 'Blog2', body: 'alsdkakjsdnkajsndlandlknasdlknaslkdnaslkdnalskdnalksdn' },
+        { id: 3, title: 'Blog3', body: 'ajdnskajndsljkansdjlansdklnasdlknasldknalskdnalsndlkns' },
+        { id: 4, title: 'Blog4', body: 'ajksdakjsdkjasbdjasbdkjasbdkjbasdkjbasjkdbakjsbdkajsbd' },
+        { id: 5, title: 'Blog5', body: 'akjfdnflidhgoiassjbfjasfioafnosfihaoighadgniaosfjoiajs' }
       ]
     };
-
   }
 
   componentDidMount() {
@@ -54,7 +60,7 @@ class BandPage extends React.Component {
           <BandPageSongList songs={this.state.tempSongs}/>
           <BandBio bandBio={this.state.tempBio}/>
           <UpcomingShowsList shows={this.state.tempShows}/>
-          <BandBlogPostList />
+          <BandBlogPostList blogPosts={this.state.tempBlogPosts}/>
         </div>
 
       </Router>

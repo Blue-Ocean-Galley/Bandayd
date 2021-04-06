@@ -19,14 +19,24 @@ class BandBlogPostList extends React.Component {
   componentDidMount() {
   }
 
-  handleChange(event) {
+  addBlog() {
 
   }
 
   render() {
     return (
       <Router>
-        <BandBlogPostItem />
+        <div id="blog-list-container">
+          <h3>Past Blog Posts</h3>
+          <button type="button" onClick={this.addBlog.bind(this)}>Create New</button>
+          {this.props.blogPosts.map((blogPost) => {
+            <BandBlogPostItem
+              title={blogPost.title}
+              body={blogPost.body}
+              key={blogPost.id}
+            />
+          })}
+        </div>
       </Router>
     )
   }

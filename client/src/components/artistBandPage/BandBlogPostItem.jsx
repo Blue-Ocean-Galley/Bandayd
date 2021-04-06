@@ -25,7 +25,10 @@ class BandBlogPostItem extends React.Component {
   render() {
     return (
       <Router>
-
+        <div>
+          <span id="blog-list-title">{this.props.title}</span>
+          <span id="blog-list-body">{this.props.body}</span>
+        </div>
       </Router>
     )
   }
