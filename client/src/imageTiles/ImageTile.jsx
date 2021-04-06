@@ -1,19 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ImageTile = () => (
+const ImageTile = ({ imgUrl }) => (
   <>
-    <ImgPlaceholder />
+    <ImgWrapper imgUrl={imgUrl} />
   </>
 );
 
-const ImgPlaceholder = styled.div`
+const ImgWrapper = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   flex-grow: 1;
   margin: 1px;
   max-width: 48rem;
   height: 30rem;
-  background: yellow;
+  background-image: url("${props => props.imgUrl}");
 
   &:hover {
     box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 12px 20px rgba(0,0,0,0.23);

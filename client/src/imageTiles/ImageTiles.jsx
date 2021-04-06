@@ -5,14 +5,14 @@ import { Tile } from '../styles/globalStyles';
 
 const ImageTiles = () => (
   <ImageBlock>
-    <ImageTile />
-    <ImageTile />
-    <ImageTile />
-    <ImageTile />
-    <ImageTile />
-    <ImageTile />
-    <ImageTile />
-    <ImageTile />
+    <ImageTile imgUrl="http://placeimg.com/640/480/any" />
+    <ImageTile imgUrl="http://placeimg.com/640/480/animals" />
+    <ImageTile imgUrl="http://placeimg.com/640/480/nature" />
+    <ImageTile imgUrl="http://placeimg.com/640/480/people" />
+    <ImageTile imgUrl="http://placeimg.com/640/480/tech" />
+    <ImageTile imgUrl="http://placeimg.com/640/480/architecture" />
+    <ImageTile imgUrl="http://placeimg.com/640/480/any" />
+    <ImageTile imgUrl="http://placeimg.com/640/480/any" />
   </ImageBlock>
 );
 
