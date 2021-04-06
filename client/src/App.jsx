@@ -8,7 +8,8 @@ import {
 import styled, { ThemeProvider } from 'styled-components';
 import GlobalStyles from './styles/globalStyles';
 import darkTheme from './styles/theme';
-import SplashPageContainer from './splashPage/splashPageContainer';
+import SplashPageContainer from './splashPage/SplashPageContainer';
+import EditBlogPageContainer from './editBlogPage/EditBlogPageContainer';
 
 export default function App() {
   return (
@@ -31,7 +32,12 @@ export default function App() {
         <Switch>
           <Route exact path="/">
             <main>
-              <SplashPageContainer toPath='/login' />
+              <SplashPageContainer toPath="/login" />
+            </main>
+          </Route>
+          <Route exact path="/editblog">
+            <main>
+              <EditBlogPageContainer />
             </main>
           </Route>
           <Route path="/bands">
