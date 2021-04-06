@@ -19,6 +19,14 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
     email: DataTypes.STRING,
+    genreId: {
+      type: DataTypes.STRING,
+      references: {
+        model: { tableName: 'Genres' },
+        key: 'id',
+        allowNull: false,
+      }
+    },
   }, {
     sequelize,
     modelName: 'Band',
