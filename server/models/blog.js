@@ -1,6 +1,5 @@
-'use strict';
-
 const { Model } = require('sequelize');
+const Band = require('./band');
 
 module.exports = (sequelize, DataTypes) => {
   class Blog extends Model {
@@ -9,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+    static associate(models) { // eslint-disable-line no-eval
       // define association here
       Blog.belongsTo(Band);
       Band.hasMany(Blog);

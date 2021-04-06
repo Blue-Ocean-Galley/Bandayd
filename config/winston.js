@@ -15,7 +15,7 @@ const {
 const logPath = (filename) => path.resolve(__dirname, '..', 'logs', filename);
 const logger = createLogger({
   level: 'info',
-  defaultMeta: { service: 'winston-logging-example' },
+  defaultMeta: { service: 'bandayd' },
   transports: [
     new transports.Console({
       format: combine(

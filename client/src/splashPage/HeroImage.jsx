@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button, Card, Tile } from '../styles/globalStyles';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { Card, Tile } from '../styles/globalStyles'; // Button removed for Login modal
+import Login from '../modals/login';
 
-export default function Hero() {
+export default function Hero({ toPath }) {
   return (
     <HeroImage>
       <ImageOverlay>
@@ -13,11 +16,17 @@ export default function Hero() {
           Totam voluptatem ea quo. Et qui ullam blanditiis nam occaecati.
           Eius atque quae quibusdam optio et alias.
         </p>
-        <Button> Sign Up </Button>
+        <Login />
+        {/* <Link to={toPath}>
+          <Button> Sign Up </Button>
+        </Link> */}
       </ImageOverlay>
     </HeroImage>
   );
 }
+Hero.propTypes = {
+  toPath: PropTypes.string.isRequired,
+};
 
 const HeroImage = styled(Tile)`
   min-height: 50rem;
