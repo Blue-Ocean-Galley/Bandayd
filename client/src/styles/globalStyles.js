@@ -86,6 +86,13 @@ const CardPreset = styled.div`
   justify-content: space-between;
 `;
 
+const FormPreset = styled.form`
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const ListItemPreset = styled.div`
   background: ${({ theme }) => theme.primary_200};
   padding: 0.5rem;
@@ -104,4 +111,5 @@ export const ListTile = ListTilePreset;
 export const Input = InputPreset;
 export const TextArea = TextAreaPreset;
 export const Card = CardPreset;
+export const Form = FormPreset;
 export const ListItem = ListItemPreset;

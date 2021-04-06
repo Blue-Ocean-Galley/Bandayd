@@ -36,7 +36,7 @@ export default function Login() {
 
   return (
     <>
-      <Button onClick={() => toggleModal(!showModal)}>Open Modal</Button>
+      <Button onClick={() => toggleModal(!showModal)}>Login</Button>
       <Modal
         isOpen={showModal}
         style={customStyles}
