@@ -8,7 +8,7 @@ import {
 import styled, { ThemeProvider } from 'styled-components';
 import GlobalStyles from './styles/globalStyles';
 import darkTheme from './styles/theme';
-import SplashPageContainer from './splashPage/SplashPageContainer';
+import SplashPageContainer from './splashPage/splashPageContainer';
 import EditBlogPageContainer from './editBlogPage/EditBlogPageContainer';
 
 export default function App() {
