@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './styles/globalStyles';
 import darkTheme from './styles/theme';
-import SplashPageContainer from './splashPage/splashPageContainer';
+import SplashPageContainer from './splashPage/SplashPageContainer';
 
 import Login from './modals/login';
 
