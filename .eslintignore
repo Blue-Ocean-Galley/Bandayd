@@ -6,4 +6,4 @@ babel*
 main.js
 server/migrations
 server/seeders
-server/models/index.js
+server/models/*

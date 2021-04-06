@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Button, Card, Tile } from '../styles/globalStyles';
 
-export default function Hero() {
+export default function Hero({ toPath }) {
   return (
     <HeroImage>
       <ImageOverlay>
@@ -13,11 +15,16 @@ export default function Hero() {
           Totam voluptatem ea quo. Et qui ullam blanditiis nam occaecati.
           Eius atque quae quibusdam optio et alias.
         </p>
-        <Button> Sign Up </Button>
+        <Link to={toPath}>
+          <Button> Sign Up </Button>
+        </Link>
       </ImageOverlay>
     </HeroImage>
   );
 }
+Hero.propTypes = {
+  toPath: PropTypes.string.isRequired,
+};
 
 const HeroImage = styled(Tile)`
   min-height: 50rem;
