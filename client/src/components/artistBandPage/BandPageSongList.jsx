@@ -19,14 +19,34 @@ class BandSongList extends React.Component {
   componentDidMount() {
   }
 
-  handleChange(event) {
+  handleClickSongs(event) {
+
+  }
+
+  handleClickVideos(event) {
 
   }
 
   render() {
     return (
       <Router>
-        <BandSongListItem />
+        <div id="outer-song-list-container">
+          <div>
+            <span>Songs</span>
+            <span>Videos</span>
+          </div>
+          <div id="song-list-container">
+            <h3>Featured Songs</h3>
+            <button type="button" onClick={this.addSong.bind(this)}>+</button>
+            {this.props.songs.map((song) => {
+              <BandSongListItem
+                artist={song.artist}
+                song={song.song}
+                key={song.id}
+              />
+            })}
+          </div>
+        </div>
       </Router>
     )
   }

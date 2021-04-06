@@ -22,10 +22,18 @@ class BandSongListItem extends React.Component {
 
   }
 
+  playSong() {
+
+  }
+
   render() {
     return (
       <Router>
-
+        <div>
+          <button type="button" onClick={this.playSong.bind(this)}>Play</button>
+          <span id="song-list-song-name">{this.props.song.name}</span>
+          <span id="song-list-song-name">{this.props.song.artist}</span>
+        </div>
       </Router>
     )
   }
