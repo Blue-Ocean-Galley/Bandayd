@@ -7,6 +7,7 @@ export default function SplashPageContainer({ toPath }) {
     <>
       <Hero toPath={toPath} />
       <FeatureCards />
+      <ImageTiles />
     </>
   );
 }
