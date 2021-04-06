@@ -1,5 +1,3 @@
-const logger = ('./winston');
-
 module.exports = {
   development: {
     username: 'student',
