@@ -7,12 +7,18 @@ const GlobalStyle = createGlobalStyle`
   }
   html {
     font-size: 62.5%;
+    height: 100%;
   }
   body {
     background: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.primary_text};
     font-family: Tahoma, Helvetica, Arial, Roboto, sans-serif;
     font-size: 160%;
+    height: 100%;
+
+    &.div {
+      height: 100%;
+    }
   }
 `;
 
@@ -80,6 +86,13 @@ const CardPreset = styled.div`
   justify-content: space-between;
 `;
 
+const FormPreset = styled.form`
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export default GlobalStyle;
 export const Button = ButtonPreset;
 export const CircleButton = CircleButtonPreset;
@@ -88,3 +101,4 @@ export const ListTile = ListTilePreset;
 export const Input = InputPreset;
 export const TextArea = TextAreaPreset;
 export const Card = CardPreset;
+export const Form = FormPreset;
