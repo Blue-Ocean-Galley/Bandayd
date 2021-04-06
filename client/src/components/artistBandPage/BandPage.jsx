@@ -24,7 +24,8 @@ class BandPage extends React.Component {
         { id: 3, song: 'St. Stephen', artist: 'Greatful Dead' },
         { id: 4, song: 'Golden Road', artist: 'Greatful Dead' },
         { id: 5, song: 'Friend of the Devil', artist: 'Greatful Dead' }
-      ]
+      ],
+      tempBio: 'Hello and welcome to our band page. We are a group of dedicated musicians who pride themselves on putting out some ripping tunes. Enjoy :)'
     };
 
   }
@@ -44,7 +45,7 @@ class BandPage extends React.Component {
           <BandNav />
           <BandPageHeader />
           <BandPageSongList songs={this.state.tempSongs}/>
-          <BandBio />
+          <BandBio bandBio={this.state.tempBio}/>
           <UpcomingShows />
           <BandBlogPostList />
         </div>

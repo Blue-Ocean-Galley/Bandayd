@@ -18,14 +18,18 @@ class BandBio extends React.Component {
   componentDidMount() {
   }
 
-  handleChange(event) {
+  handleEditBio() {
 
   }
 
   render() {
     return (
       <Router>
-
+        <div>
+          <h3>About the Band</h3>
+          <button type="button" id="editBio" onClick={this.handleEditBio.bind(this)}>+</button>
+          <p>{this.props.bandBio}</p>
+        </div>
       </Router>
     )
   }
