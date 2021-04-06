@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 
-class UpcomingShows extends React.Component {
+class UpcomingShowsListItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,10 +25,13 @@ class UpcomingShows extends React.Component {
   render() {
     return (
       <Router>
-
+        <div>
+          <span id="show-list-date">{this.props.date}</span>
+          <span id="show-list-location">{this.props.location}</span>
+        </div>
       </Router>
     )
   }
 }
 
-export default UpcomingShows;
+export default UpcomingShowsListItem;

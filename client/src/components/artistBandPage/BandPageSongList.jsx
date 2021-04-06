@@ -19,6 +19,10 @@ class BandSongList extends React.Component {
   componentDidMount() {
   }
 
+  addSong() {
+
+  }
+
   handleClickSongs(event) {
 
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import BandBio from './BandBio.jsx'
 import BandNav from './BandNav.jsx'
 import BandPageHeader from './BandPageHeader.jsx'
-import UpcomingShows from './UpcomingShows.jsx'
+import UpcomingShowsList from './UpcomingShowsList.jsx'
 import BandPageSongList from './BandPageSongList.jsx'
 import BandBlogPostList from './BandBlogPostList.jsx'
 
@@ -25,7 +25,14 @@ class BandPage extends React.Component {
         { id: 4, song: 'Golden Road', artist: 'Greatful Dead' },
         { id: 5, song: 'Friend of the Devil', artist: 'Greatful Dead' }
       ],
-      tempBio: 'Hello and welcome to our band page. We are a group of dedicated musicians who pride themselves on putting out some ripping tunes. Enjoy :)'
+      tempBio: 'Hello and welcome to our band page. We are a group of dedicated musicians who pride themselves on putting out some ripping tunes. Enjoy :)',
+      tempShows: [
+        { id: 1, location: 'Denver', Date: '08-01-2021' },
+        { id: 2, location: 'New York City', Date: '12-24-2021' },
+        { id: 3, location: 'Dallas', Date: '04-23-2021' },
+        { id: 4, location: 'Las Vegas', Date: '02-27-2021' },
+        { id: 5, location: 'Paris', Date: '08-14-2021' }
+      ]
     };
 
   }
@@ -46,7 +53,7 @@ class BandPage extends React.Component {
           <BandPageHeader />
           <BandPageSongList songs={this.state.tempSongs}/>
           <BandBio bandBio={this.state.tempBio}/>
-          <UpcomingShows />
+          <UpcomingShowsList shows={this.state.tempShows}/>
           <BandBlogPostList />
         </div>
 

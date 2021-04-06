@@ -16,10 +16,6 @@ class BandNav extends React.Component {
     };
   }
 
-  componentDidMount() {
-
-  }
-
   handleFanFavsClick(event) {
     event.preventDefault();
   }
