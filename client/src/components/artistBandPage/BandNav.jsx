@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 
-class UpcomingShows extends React.Component {
+class BandNav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,4 +31,4 @@ class UpcomingShows extends React.Component {
   }
 }
 
-export default UpcomingShows;
+export default BandNav;

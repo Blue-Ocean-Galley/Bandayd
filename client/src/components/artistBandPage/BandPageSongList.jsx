@@ -1,4 +1,5 @@
 import React from 'react';
+import BandSongListItem from './BandSongListItem'
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,7 +8,7 @@ import {
 } from 'react-router-dom';
 
 
-class UpcomingShows extends React.Component {
+class BandSongList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,10 +26,11 @@ class UpcomingShows extends React.Component {
   render() {
     return (
       <Router>
-
+        <BandSongListItem />
       </Router>
     )
   }
 }
 
-export default UpcomingShows;
+export default BandSongList;
+
