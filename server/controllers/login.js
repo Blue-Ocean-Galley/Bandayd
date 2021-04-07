@@ -13,7 +13,7 @@ exports.addUser = (req, res, next) => Band.create({
     if (err.name === 'SequelizeUniqueConstraintError') {
       res.status(400).send(`Sorry the email ${req.body.email} is already being used for another band`);
     } else {
-      res.status(500).send(`The server encountered an error`)
+      res.status(500).send('The server encountered an error');
     }
     next(err);
   })
