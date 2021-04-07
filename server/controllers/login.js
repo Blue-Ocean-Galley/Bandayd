@@ -10,8 +10,10 @@ exports.addUser = (req, res, next) => Band.create({
   .catch((err) => {
     logger.error(err);
     // if a particular error type is thrown - send a message to the client
-    if (err instanceof SequelizeUniqueConstraintError) {
+    if (err.name === 'SequelizeUniqueConstraintError') {
       res.status(400).send(`Sorry the email ${req.body.email} is already being used for another band`);
+    } else {
+      res.status(500).send(`The server encountered an error`)
     }
     next(err);
   })
