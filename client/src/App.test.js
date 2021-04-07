@@ -33,7 +33,7 @@ describe('Navigation bar', () => {
   });
 
   it('Renders the signup page', () => {
-    fireEvent.click(screen.getByText('Sign Up | Login'));
+    fireEvent.click(screen.getByText(/Log In/i));
     const signupPage = screen.getByText(/^Signup coming/i);
     expect(signupPage).toHaveTextContent('Signup coming soon!');
   });
