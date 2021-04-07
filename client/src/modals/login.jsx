@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Modal from 'react-modal';
 
 import { Button, Tile, Form } from '../styles/globalStyles';
+import Signup from './signup';
 
 Modal.setAppElement(document.getElementById('app'));
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.6)';
@@ -12,12 +13,12 @@ export default function Login() {
 
   function submitLogin(e) {
     e.preventDefault();
-    const { username, password } = e.target.form;
+    const { email, password } = e.target.form;
     // const data = {
     //   username: username.value,
     //   password: password.value,
     // };
-    username.value = '';
+    email.value = '';
     password.value = '';
   }
 
@@ -41,14 +42,14 @@ export default function Login() {
         isOpen={showModal}
         style={customStyles}
         onRequestClose={() => toggleModal(!showModal)}
-        shouldCloseOnOverlayClick="true"
+        shouldCloseOnOverlayClick
       >
         <LoginTile>
           <FeatureForm>
-            <label htmlFor="username">
+            <label htmlFor="email">
               Username:
               <br />
-              <input type="text" name="username" id="username" required />
+              <input type="email" name="email" id="email" required />
             </label>
             <br />
 
@@ -60,9 +61,10 @@ export default function Login() {
 
             <Button type="submit" onClick={submitLogin}>Login</Button>
           </FeatureForm>
-          <p>Don&apos;t have an account yet?</p>
-          <p>Sign-up here</p>
-          <Button onClick={() => toggleModal(!showModal)}>Close Modal</Button>
+          <div>
+            <p>Don&apos;t have an account yet?</p>
+            <Signup />
+          </div>
         </LoginTile>
       </Modal>
     </>
