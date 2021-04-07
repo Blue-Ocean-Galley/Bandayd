@@ -28,3 +28,29 @@ exports.getSongs = (req, res, next) => {
 }
 
 // get individual song by artist
+exports.getOneSong = (req, res, next) => {
+  const { bandId, songId } = req.params;
+
+  return Band.findOne({
+    attributes: [['name', 'bandName']],
+    where: {
+      id: bandId,
+    },
+    include: {
+      model: Song,
+      attributes: ['title', 'album', 'track'],
+      required: true,
+      where: {
+        id: songId,
+      },
+    }
+  }).then((results) => {
+    res.send(results);
+    next();
+  })
+    .catch((err) => {
+      logger.error(err);
+      res.status(500).send(`There was an error fetching song ${songId}`);
+      next(err);
+    });
+};
