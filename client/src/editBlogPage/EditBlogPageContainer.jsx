@@ -1,108 +1,74 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {
-  Card,
+  VerticalCard,
   Tile,
-  ListTile,
-  Button,
-  TextArea,
-  ListItem,
 } from '../styles/globalStyles';
+import PastBlogPosts from './PastBlogPosts';
+import EditArea from './EditArea';
+import { postArray } from './FakeBlogPosts';
 
 export default function EditBlogPageContainer() {
   // pass in band name/id
   // get all blog posts for that band
-  // for each, create a  card
+  // for each, create a  Verticalcard
   // list: date/title of blog post
-  // on card click, edit mode:
+  // on Verticalcard click, edit mode:
   // populate edit tile with that post's text
   // display save/cancel buttons
 
   // if cancel is clicked, end edit mode, clear tile, hide buttons
-  const [text, setText] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   useEffect(() => {
   }, [isEditing]);
   const [currentPost, setCurrentPost] = useState({});
   useEffect(() => {
-    setText(currentPost.text);
   }, [isEditing]);
 
-  const handleSave = () => {
+  const postObj = {};
+  postArray().forEach((post) => {
+    postObj[post.title] = post;
+  });
+
+  const handleSave = (text, title) => {
     // put request with updated
     setIsEditing(false);
+    postObj[currentPost.title] = { text, title };
   };
 
+  const handleBlogPostClick = ({ postTitle, postText }) => {
+    setIsEditing(true);
+    setCurrentPost({
+      title: postTitle,
+      text: postText,
+    });
+  };
   return (
     <Container>
-      <PastBlogPosts>
-        <h3> Past Blog Posts </h3>
-        <Button onClick={() => setIsEditing(true)}> Create New </Button>
-        <ListItem onClick={() => {
-          setIsEditing(true);
-          setCurrentPost({ text: 'list item 1' });
-        }}
-        >
-          <p>
-            Title and snippet
-          </p>
-        </ListItem>
-        <ListItem onClick={() => {
-          setIsEditing(true);
-          setCurrentPost({ text: 'list item 2' });
-        }}
-        >
-          <p>
-            Title and snippet
-          </p>
-        </ListItem>
-        <ListItem onClick={() => {
-          setIsEditing(true);
-          setCurrentPost({ text: 'list item 3' });
-        }}
-        >
-          <p>
-            Title and snippet
-          </p>
-        </ListItem>
-      </PastBlogPosts>
-      <EditArea>
-        {isEditing
-          ? (
-            <Card>
-              <TextArea onChange={(e) => setText(e.target.value)} value={text} />
-              <div>
-                <Button onClick={() => setIsEditing(false)}>
-                  Cancel
-                </Button>
-                <Button onClick={() => handleSave()}>
-                  Save
-                </Button>
-              </div>
-            </Card>
-          )
-          : (
-            <Card>
-              <p> Choose a post to edit </p>
-            </Card>
-          )}
-      </EditArea>
+      <PastBlogPosts
+        onPostClick={handleBlogPostClick}
+        posts={Object.values(postObj)}
+      />
+      {isEditing
+        ? (
+          <EditArea
+            text={currentPost.text}
+            title={currentPost.title}
+            handleSave={handleSave}
+            handleCancel={() => setIsEditing(false)}
+          />
+        )
+        : (
+          <VerticalCard>
+            <p> Choose a post to edit </p>
+          </VerticalCard>
+        )}
     </Container>
   );
 }
 
-const PastBlogPosts = styled(ListTile)`
-  width: 32%;
-  > ${ListItem} {
-    cursor: pointer;
-  }
-`;
-
-const EditArea = styled(Tile)`
-  flex: 2;
-`;
-
 const Container = styled(Tile)`
   flex-direction: row;
   justify-content: flex-start;
+  align-items: flex-start;
 `;
