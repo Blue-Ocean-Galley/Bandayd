@@ -2,26 +2,32 @@ const { Op } = require('sequelize');
 const { Blog } = require('../models');
 const logger = require('../../config/winston');
 
-//  getting all the blog post limited to first 10
+//  getting all the blog post
 
-exports.getAllBlog = (req, res, next) => Blog.findAll()
-  .then((result) => {
-    res.send(result);
-    next();
-  })
-  .catch((err) => {
-    logger.error(err);
-    res.send(500);
-    next(err);
-  });
-
-//  getting a single blog post
-
-exports.getABlog = (req, res, next) => {
+exports.getAllBlog = (req, res, next) => {
   const bandID = req.params.id;
   return Blog.findAll({
     where: {
-      id: bandID,
+      bandId: bandID,
+    },
+  })
+    .then((result) => {
+      res.send(result);
+      next();
+    })
+    .catch((err) => {
+      logger.error(err);
+      res.send(500);
+      next(err);
+    });
+};
+//  getting a single blog post
+
+exports.getABlog = (req, res, next) => {
+  const blogID = req.params.id;
+  return Blog.findAll({
+    where: {
+      id: blogID,
     },
   })
     .then((result) => {
@@ -42,7 +48,7 @@ exports.updateBlog = (req, res, next) => {
   const updatePost = req.body.post;
   return Blog.update({ post: updatePost }, {
     where: {
-      id: bandID,
+      bandId: bandID,
     },
   })
     .then(() => {

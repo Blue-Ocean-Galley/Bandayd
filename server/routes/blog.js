@@ -4,13 +4,13 @@ const { getABlog, getAllBlog, updateBlog, addNewBlog } = requrie('../controllers
 
 const router = express.Router();
 //  getting all the blogs
-router.get('/blogs', getAllBlog);
+router.get('/blogs/:bandId', getAllBlog);
 
 //  getting a single blog
 router.get('/blogs/:id', getABlog);
 
 //  posting a new blog
-router.post('/blogs', addNewBlog);
+router.post('/blogs/:bandId', addNewBlog);
 
 //  updating an existing blog
 router.put('/blogs/:id', updateBlog);
