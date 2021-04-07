@@ -1,5 +1,4 @@
 const { Model } = require('sequelize');
-const Band = require('./band');
 
 module.exports = (sequelize, DataTypes) => {
   class Show extends Model {
@@ -10,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) { // eslint-disable-line no-eval
       // define association here
-      Band.hasMany(Show);
-      Show.belongsTo(Band);
+      models.Band.hasMany(Show);
+      Show.belongsTo(models.Band);
     }
   }
 
