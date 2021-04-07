@@ -1,11 +1,10 @@
-const { Op } = require('sequelize');
 const { Blog } = require('../models');
 const logger = require('../../config/winston');
 
 //  getting all the blog post
 
 exports.getAllBlog = (req, res, next) => {
-  const bandID = req.params.id;
+  const bandID = req.params.bandId;
   return Blog.findAll({
     where: {
       bandId: bandID,
