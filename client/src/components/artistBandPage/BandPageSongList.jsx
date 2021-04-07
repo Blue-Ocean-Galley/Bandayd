@@ -1,5 +1,5 @@
 import React from 'react';
-import BandSongListItem from './BandSongListItem'
+import BandSongListItem from './BandPageSongListItem.jsx'
 import {
   BrowserRouter as Router,
   Switch,
@@ -32,6 +32,7 @@ class BandSongList extends React.Component {
   }
 
   render() {
+    console.log('Songs', this.props.songs)
     return (
       <Router>
         <div id="outer-song-list-container">
@@ -43,11 +44,14 @@ class BandSongList extends React.Component {
             <h3>Featured Songs</h3>
             <button type="button" onClick={this.addSong.bind(this)}>+</button>
             {this.props.songs.map((song) => {
-              <BandSongListItem
-                artist={song.artist}
-                song={song.song}
-                key={song.id}
-              />
+              return (
+                <BandSongListItem
+                  artist={song.artist}
+                  song={song.song}
+                  key={song.id}
+                />
+              )
+
             })}
           </div>
         </div>

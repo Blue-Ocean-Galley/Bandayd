@@ -31,7 +31,7 @@ class BandSongListItem extends React.Component {
       <Router>
         <div>
           <button type="button" onClick={this.playSong.bind(this)}>Play</button>
-          <span id="song-list-name">{this.props.name}</span>
+          <span id="song-list-songname">{this.props.song}</span>
           <span id="song-list-artist">{this.props.artist}</span>
         </div>
       </Router>

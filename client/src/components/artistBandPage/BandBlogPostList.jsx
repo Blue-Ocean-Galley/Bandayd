@@ -30,11 +30,13 @@ class BandBlogPostList extends React.Component {
           <h3>Past Blog Posts</h3>
           <button type="button" onClick={this.addBlog.bind(this)}>Create New</button>
           {this.props.blogPosts.map((blogPost) => {
-            <BandBlogPostItem
-              title={blogPost.title}
-              body={blogPost.body}
-              key={blogPost.id}
-            />
+            return (
+              <BandBlogPostItem
+                title={blogPost.title}
+                body={blogPost.body}
+                key={blogPost.id}
+              />
+            )
           })}
         </div>
       </Router>

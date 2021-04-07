@@ -51,17 +51,16 @@ class BandPage extends React.Component {
   }
 
   render() {
+    console.log('band bio', this.state.tempBio)
     return (
       <Router>
-        <div class='band-page-container'>
-
+        <div className='band-page-container'>
           <BandPageHeader />
           <BandPageSongList songs={this.state.tempSongs}/>
           <BandBio bandBio={this.state.tempBio}/>
           <UpcomingShowsList shows={this.state.tempShows}/>
           <BandBlogPostList blogPosts={this.state.tempBlogPosts}/>
         </div>
-
       </Router>
 
     )

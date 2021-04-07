@@ -18,7 +18,11 @@ class BandBio extends React.Component {
   componentDidMount() {
   }
 
-  handleEditBio() {
+  editBio() {
+
+  }
+
+  createNewBio() {
 
   }
 
@@ -27,8 +31,9 @@ class BandBio extends React.Component {
       <Router>
         <div>
           <h3>About the Band</h3>
-          <button type="button" id="editBio" onClick={this.handleEditBio.bind(this)}>+</button>
+          <button type="button" id="editBio" onClick={this.createNewBio.bind(this)}>Create New</button>
           <p>{this.props.bandBio}</p>
+          <img id="edit-blog-pencil" src='havent found a good one yet' alt="edit blog" onClick={this.editBio.bind(this)}></img>
         </div>
       </Router>
     )

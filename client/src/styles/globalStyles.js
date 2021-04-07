@@ -44,7 +44,6 @@ const CircleButtonPreset = styled(ButtonPreset)`
 const TilePreset = styled.div`
   background-color: ${({ theme }) => theme.primary_600};
   display: flex;
-  flex-direction: column;
   align-items: center;
   & > * {
     width: 90%;
@@ -70,6 +69,7 @@ const InputPreset = styled.input`
 
 const TextAreaPreset = styled.textarea`
   resize: vertical;
+  width: 90%;
   padding: 1.5rem;
   border-radius: 1.5rem;
   border: 0;
@@ -86,6 +86,23 @@ const CardPreset = styled.div`
   justify-content: space-between;
 `;
 
+const FormPreset = styled.form`
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const ListItemPreset = styled.div`
+  background: ${({ theme }) => theme.primary_200};
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
 export default GlobalStyle;
 export const Button = ButtonPreset;
 export const CircleButton = CircleButtonPreset;
@@ -94,3 +111,5 @@ export const ListTile = ListTilePreset;
 export const Input = InputPreset;
 export const TextArea = TextAreaPreset;
 export const Card = CardPreset;
+export const Form = FormPreset;
+export const ListItem = ListItemPreset;

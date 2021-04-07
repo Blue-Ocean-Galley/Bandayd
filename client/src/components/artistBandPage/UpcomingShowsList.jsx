@@ -30,11 +30,14 @@ class UpcomingShowsList extends React.Component {
           <h3>Upcoming Shows</h3>
           <button type="button" onClick={this.addShow.bind(this)}>Add a Show</button>
           {this.props.shows.map((show) => {
-            <UpcomingShowsListItem
-              date={show.date}
-              location={show.location}
-              key={show.id}
-            />
+            return (
+              <UpcomingShowsListItem
+                date={show.date}
+                location={show.location}
+                key={show.id}
+              />
+            )
+
           })}
         </div>
       </Router>

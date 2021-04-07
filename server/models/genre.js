@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) { // eslint-disable-line no-eval
       // define association here
-      Genre.hasMany(Band);
-      Band.belongsTo(Genre);
+      Genre.hasMany(models.Band);
+      models.Band.belongsTo(Genre);
     }
   }
   Genre.init({
