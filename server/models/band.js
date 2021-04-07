@@ -17,7 +17,11 @@ module.exports = (sequelize, DataTypes) => {
   Band.init({
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
-    email: DataTypes.STRING,
+    email: {
+      type:DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
     genreId: {
       type: DataTypes.STRING,
       references: {
