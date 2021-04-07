@@ -1,4 +1,5 @@
 import React from 'react';
+import BandPage from './artistBandPage/BandPage.jsx'
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,10 +11,11 @@ import GlobalStyles from './styles/globalStyles';
 import darkTheme from './styles/theme';
 import SplashPageContainer from './splashPage/splashPageContainer';
 
+
 export default function App() {
   return (
     <Router>
-      <ThemeProvider theme={darkTheme}>
+      {/* <ThemeProvider theme={darkTheme}>
         <GlobalStyles />
         <NavBar>
           <LeftColumn>
@@ -44,7 +46,9 @@ export default function App() {
             <div>Signup coming soon!</div>
           </Route>
         </Switch>
-      </ThemeProvider>
+      </ThemeProvider> */}
+
+      <BandPage />
     </Router>
   );
 }
