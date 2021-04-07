@@ -1,6 +1,7 @@
 const express = require('express');
 const logger = require('../config/winston');
 const router = require('./routes');
+
 const app = express();
 
 const PORT = process.env.SERVER_PORT || 3010;

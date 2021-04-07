@@ -12,7 +12,7 @@ exports.getBands = (req, res, next) => {
     where: {
       id: {
         [Op.gt]: page - 1,
-      }
+      },
     },
   }).then((results) => {
     res.send(results);
@@ -36,8 +36,8 @@ exports.getOneBand = (req, res, next) => {
     include: {
       model: Genre,
       required: true,
-      attributes: { exclude: ['createdAt', 'updatedAt', 'id'] }
-    }
+      attributes: { exclude: ['createdAt', 'updatedAt', 'id'] },
+    },
   }).then((results) => {
     res.send(results);
     next();

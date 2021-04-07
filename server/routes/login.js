@@ -1,5 +1,5 @@
 const express = require('express');
-const logger = require('../config/winston');
+// const logger = require('../../config/winston');
 const { addUser } = require('../controllers/login');
 
 const router = express.Router();

@@ -1,5 +1,5 @@
 const express = require('express');
-const logger = require('../../config/winston');
+// const logger = require('../../config/winston');
 const { getBands, getOneBand } = require('../controllers/bands');
 
 const router = express.Router();
