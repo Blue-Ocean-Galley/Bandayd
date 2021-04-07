@@ -1,11 +1,11 @@
 const express = require('express');
-const logger = require('../../config/winston');
-const { getBands, getOneBand } = require('../controllers');
+// const logger = require('../../config/winston');
+const { getBands, getOneBand } = require('../controllers/bands');
 
 const router = express.Router();
 
-router.get('/bands', getBands);
+router.get('/', getBands);
 
-router.get('/bands/:id', getOneBand);
+router.get('/:id', getOneBand);
 
 module.exports = router;
