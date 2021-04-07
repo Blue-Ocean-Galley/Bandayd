@@ -5,6 +5,9 @@ module.exports = {
     database: 'bandayd_dev',
     host: 'localhost',
     dialect: 'mariadb',
+    migrationStorage: 'sequelize',
+    seederStorage: 'sequelize',
+    logging: true,
   },
   production: {
     username: process.env.DB_USER,
@@ -12,5 +15,7 @@ module.exports = {
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     dialect: 'mariadb',
+    migrationStorage: 'sequelize',
+    seederStorage: 'sequelize',
   },
 };
