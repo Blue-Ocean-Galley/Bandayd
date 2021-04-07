@@ -30,6 +30,6 @@ jobs:
           ${{ runner.OS }}-node-
           ${{ runner.OS }}-
     - name: Install dependencies in package
-      run: npm install --package-lock-only
+      run: npm install
     - name: Run all unit tests in package
       run: npm test
