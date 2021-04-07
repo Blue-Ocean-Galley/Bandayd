@@ -3,6 +3,7 @@ const express = require('express');
 const login = require('./login');
 const bands = require('./bands');
 const songs = require('./songs');
+const genres = require('./genres');
 
 const router = express.Router();
 
@@ -12,6 +13,8 @@ router.use('/login', login);
 router.use('/bands', bands);
 // all song routes
 router.use('/songs', songs)
+// all genre routes
+router.use('/genres', genres);
 // all show routes
 
 
