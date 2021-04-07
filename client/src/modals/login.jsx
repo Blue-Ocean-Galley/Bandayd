@@ -71,7 +71,10 @@ export default function Login({ cb = () => {} }) {
   );
 }
 Login.propTypes = {
-  cb: PropTypes.func.isRequired,
+  cb: PropTypes.func,
+};
+Login.defaultProps = {
+  cb: () => {},
 };
 
 const LoginTile = styled(Tile)`
