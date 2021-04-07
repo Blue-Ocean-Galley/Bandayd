@@ -10,7 +10,9 @@
     "build:prod": "webpack --mode production",
     "build:dev": "webpack --mode development --watch",
     "start": "node server/index.js",
+    "start:server": "node server/server.js",
     "debug": "npx nodemon server/index.js",
+    "debug:server": "npx nodemon server/server.js",
     "lint": "npx eslint --ext .js,.jsx .",
     "migrate": "npx sequelize-cli db:migrate"
   },
@@ -36,6 +38,7 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-modal": "^3.12.1",
     "react-router-dom": "^5.2.0",
     "sequelize": "^6.6.2",
     "styled-components": "^5.2.3",
