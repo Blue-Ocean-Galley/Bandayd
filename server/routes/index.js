@@ -1,7 +1,8 @@
 const express = require('express');
 
-const bands = require('./bands');
 const login = require('./login');
+const bands = require('./bands');
+const songs = require('./songs');
 
 const router = express.Router();
 
@@ -9,9 +10,9 @@ const router = express.Router();
 router.use('/login', login);
 // all band routes
 router.use('/bands', bands);
-
+// all song routes
+router.use('/songs', songs)
 // all show routes
 
-// all song routes
 
 module.exports = router;
