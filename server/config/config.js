@@ -1,5 +1,3 @@
-const logger = require('./winston');
-
 module.exports = {
   development: {
     username: 'student',
@@ -7,9 +5,6 @@ module.exports = {
     database: 'bandayd_dev',
     host: 'localhost',
     dialect: 'mariadb',
-    migrationStorage: 'sequelize',
-    seederStorage: 'sequelize',
-    logging: (msg) => logger.debug(msg),
   },
   production: {
     username: process.env.DB_USER,
@@ -17,7 +12,5 @@ module.exports = {
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     dialect: 'mariadb',
-    migrationStorage: 'sequelize',
-    seederStorage: 'sequelize',
   },
 };
