@@ -7,7 +7,7 @@ exports.getGenres = (req, res, next) => {
 
   return Genre.findAll({
     attributes: { exclude: ['createdAt', 'updatedAt'] },
-    limit: count,
+    limit: Number(count),
     where: {
       id: {
         [Op.gt]: page - 1,
