@@ -1,12 +1,13 @@
 const express = require('express');
 const logger = require('../config/winston');
+const { addUser } = require('../controllers/login');
 
 const router = express.Router();
 
-router.route('/login')
-  .post((req, res) => {
-    // add a user
-  })
+router.route('/')
+  .post(addUser)
   .get((req, res) => {
-    // get some kind of session information
+    res.send('Why are you trying to get something back from login? You weirdo!');
   });
+
+module.exports = router;
