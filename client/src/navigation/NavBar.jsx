@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import Dropdown from './Dropdown';
-import { Button, Card, Tile } from '../styles/globalStyles';
+import { Button } from '../styles/globalStyles';
 
 const Navigation = () => {
   const [isLoggedIn, logIn] = useState(false);
