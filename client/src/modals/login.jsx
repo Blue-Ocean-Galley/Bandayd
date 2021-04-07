@@ -41,7 +41,7 @@ export default function Login() {
         isOpen={showModal}
         style={customStyles}
         onRequestClose={() => toggleModal(!showModal)}
-        shouldCloseOnOverlayClick="true"
+        shouldCloseOnOverlayClick
       >
         <LoginTile>
           <FeatureForm>
