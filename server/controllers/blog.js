@@ -3,20 +3,15 @@ const { Blog } = require('../models');
 
 //  getting all the blog post limited to first 10
 
-exports.getAllBlog = (req, res, next) => {
-  const count = 10;
-  return Blog.findAll({
-    limit: count,
+exports.getAllBlog = (req, res, next) => Blog.findAll()
+  .then((result) => {
+    res.send(result);
+    next();
   })
-    .then((result) => {
-      res.send(result);
-      next();
-    })
-    .catch((err) => {
-      res.send(500);
-      next(err);
-    });
-};
+  .catch((err) => {
+    res.send(500);
+    next(err);
+  });
 
 //  getting a single blog post
 
