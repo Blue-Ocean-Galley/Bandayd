@@ -1,6 +1,5 @@
 import React from 'react';
 import BandBio from './BandBio.jsx'
-import BandNav from './BandNav.jsx'
 import BandPageHeader from './BandPageHeader.jsx'
 import UpcomingShowsList from './UpcomingShowsList.jsx'
 import BandPageSongList from './BandPageSongList.jsx'
@@ -55,7 +54,7 @@ class BandPage extends React.Component {
     return (
       <Router>
         <div class='band-page-container'>
-          <BandNav />
+
           <BandPageHeader />
           <BandPageSongList songs={this.state.tempSongs}/>
           <BandBio bandBio={this.state.tempBio}/>

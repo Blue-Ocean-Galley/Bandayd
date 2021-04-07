@@ -18,10 +18,6 @@ class BandBlogPostItem extends React.Component {
   componentDidMount() {
   }
 
-  handleChange(event) {
-
-  }
-
   render() {
     return (
       <Router>
