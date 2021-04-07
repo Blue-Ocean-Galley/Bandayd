@@ -20,6 +20,7 @@ export default function Login({ cb = () => {} }) {
     // };
     username.value = '';
     password.value = '';
+    cb();
   }
 
   const customStyles = {
@@ -37,13 +38,7 @@ export default function Login({ cb = () => {} }) {
 
   return (
     <>
-      <Button onClick={() => {
-        toggleModal(!showModal);
-        cb();
-      }}
-      >
-        Login
-      </Button>
+      <Button onClick={() => toggleModal(!showModal)}> Login </Button>
       <Modal
         isOpen={showModal}
         style={customStyles}
