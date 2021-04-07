@@ -69,8 +69,8 @@ exports.addNewBlog = (req, res, next) => Blog.create({
   post: req.body.post,
   bandId: req.body.bandId,
 })
-  .then(() => {
-    res.status(201).send('Successfully Added a Blog post');
+  .then((result) => {
+    res.status(201).send(result);
     next();
   })
   .catch((err) => {
