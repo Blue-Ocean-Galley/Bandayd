@@ -7,12 +7,12 @@ const router = express.Router();
 router.get('/blogs', getAllBlog);
 
 //  getting a single blog
-router.get('/blogs', getABlog);
+router.get('/blogs/:id', getABlog);
 
 //  posting a new blog
 router.post('/blogs', addNewBlog);
 
 //  updating an existing blog
-router.put('/blogs', updateBlog);
+router.put('/blogs/:id', updateBlog);
 
 module.exports = router;

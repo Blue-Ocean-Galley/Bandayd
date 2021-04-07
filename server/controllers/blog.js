@@ -1,5 +1,6 @@
 const { Op } = require('sequelize');
 const { Blog } = require('../models');
+const logger = require('../../config/winston');
 
 //  getting all the blog post limited to first 10
 
@@ -9,6 +10,7 @@ exports.getAllBlog = (req, res, next) => Blog.findAll()
     next();
   })
   .catch((err) => {
+    logger.error(err);
     res.send(500);
     next(err);
   });
@@ -27,6 +29,7 @@ exports.getABlog = (req, res, next) => {
       next();
     })
     .catch((err) => {
+      logger.error(err);
       res.send(500);
       next(err);
     });
@@ -43,10 +46,11 @@ exports.updateBlog = (req, res, next) => {
     },
   })
     .then(() => {
-      res.status(200).send('Successfully Added');
+      res.status(201).send('Successfully Added');
       next();
     })
     .catch((err) => {
+      logger.error(err);
       res.send(400);
       next(err);
     });
@@ -61,10 +65,11 @@ exports.addNewBlog = (req, res, next) => Blog.create({
   bandId: req.body.bandId,
 })
   .then(() => {
-    res.status(200).send('Successfully Added a Blog post');
+    res.status(201).send('Successfully Added a Blog post');
     next();
   })
   .catch((err) => {
+    logger.error(err);
     res.send(400);
     next(err);
   });
