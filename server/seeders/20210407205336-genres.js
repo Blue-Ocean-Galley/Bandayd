@@ -6,79 +6,79 @@ module.exports = {
     return queryInterface.bulkInsert('Genres', [
       {
         "id": 1,
-        "genre": "Black Metal",
+        name: "Black Metal",
         createdAt,
         updatedAt
       },
       {
         "id": 2,
-        "genre": "Christian",
+        name: "Christian",
         createdAt,
         updatedAt
       },
       {
         "id": 3,
-        "genre": "Crust Punk",
+        name: "Crust Punk",
         createdAt,
         updatedAt
       },
       {
         "id": 4,
-        "genre": "Death Metal",
+        name: "Death Metal",
         createdAt,
         updatedAt
       },
       {
         "id": 5,
-        "genre": "Djent",
+        name: "Djent",
         createdAt,
         updatedAt
       },
       {
         "id": 6,
-        "genre": "Fantasy",
+        name: "Fantasy",
         createdAt,
         updatedAt
       },
       {
         "id": 7,
-        "genre": "Gothic",
+        name: "Gothic",
         createdAt,
         updatedAt
       },
       {
         "id": 8,
-        "genre": "Grindcore",
+        name: "Grindcore",
         createdAt,
         updatedAt
       },
       {
         "id": 9,
-        "genre": "Hair Metal",
+        name: "Hair Metal",
         createdAt,
         updatedAt
       },
       {
         "id": 10,
-        "genre": "Industrial",
+        name: "Industrial",
         createdAt,
         updatedAt
       },
       {
         "id": 11,
-        "genre": "Metalcore",
+        name: "Metalcore",
         createdAt,
         updatedAt
       },
       {
         "id": 12,
-        "genre": "Thrash",
+        name: "Thrash",
         createdAt,
         updatedAt
       },
       {
         "id": 13,
-        "genre": "Viking",
+        name: "Viking",
         createdAt,
         updatedAt
       }
