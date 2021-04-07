@@ -1,11 +1,10 @@
-const { Op } = require('sequelize');
 const { Blog } = require('../models');
 const logger = require('../../config/winston');
 
 //  getting all the blog post
 
 exports.getAllBlog = (req, res, next) => {
-  const bandID = req.params.id;
+  const bandID = req.params.bandId;
   return Blog.findAll({
     where: {
       bandId: bandID,
@@ -70,8 +69,8 @@ exports.addNewBlog = (req, res, next) => Blog.create({
   post: req.body.post,
   bandId: req.body.bandId,
 })
-  .then(() => {
-    res.status(201).send('Successfully Added a Blog post');
+  .then((result) => {
+    res.status(201).send(result);
     next();
   })
   .catch((err) => {
