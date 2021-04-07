@@ -16,8 +16,6 @@ class BandBlogPostList extends React.Component {
     };
   }
 
-  componentDidMount() {
-  }
 
   addBlog() {
 
