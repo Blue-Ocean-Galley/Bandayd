@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
+import PropTypes from 'prop-types';
 
 import { Button, Tile, Form } from '../styles/globalStyles';
 
 Modal.setAppElement(document.getElementById('app'));
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.6)';
 
-export default function Login() {
+export default function Login({ cb = () => {} }) {
   const [showModal, toggleModal] = useState(false);
 
   function submitLogin(e) {
@@ -19,6 +20,7 @@ export default function Login() {
     // };
     username.value = '';
     password.value = '';
+    cb();
   }
 
   const customStyles = {
@@ -36,7 +38,7 @@ export default function Login() {
 
   return (
     <>
-      <Button onClick={() => toggleModal(!showModal)}>Login</Button>
+      <Button onClick={() => toggleModal(!showModal)}> Login </Button>
       <Modal
         isOpen={showModal}
         style={customStyles}
@@ -68,6 +70,12 @@ export default function Login() {
     </>
   );
 }
+Login.propTypes = {
+  cb: PropTypes.func,
+};
+Login.defaultProps = {
+  cb: () => {},
+};
 
 const LoginTile = styled(Tile)`
   display: flex;
