@@ -9,7 +9,7 @@ export default function Dropdown() {
         <DropdownLink to="/">Profile</DropdownLink>
       </li>
       <li>
-        <DropdownLink to="/">Blog</DropdownLink>
+        <DropdownLink to="/editblog">Blog</DropdownLink>
       </li>
     </DropDownList>
   );
