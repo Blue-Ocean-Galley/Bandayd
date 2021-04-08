@@ -55,7 +55,7 @@ exports.getOneSong = (req, res, next) => {
 };
 
 exports.addOneSong = (req, res, next) => {
-  const { title, album, track } = req.body;
+  const { title, album, track, url } = req.body;
   const { bandId } = req.params;
 
   return Song.create({
@@ -63,6 +63,7 @@ exports.addOneSong = (req, res, next) => {
     album,
     track,
     bandId,
+    url,
   }).then(() => {
     res.status(201).send(`Successfully added song ${title} to library`);
     next();

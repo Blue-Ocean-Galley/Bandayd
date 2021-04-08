@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     album: DataTypes.STRING,
     track: DataTypes.INTEGER(3),
+    url: DataTypes.TEXT,
     bandId: {
       type: DataTypes.INTEGER,
       references: {
