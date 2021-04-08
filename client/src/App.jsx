@@ -11,6 +11,7 @@ import BandPage from './components/artistBandPage/BandPage';
 import GlobalStyles from './styles/globalStyles';
 import darkTheme from './styles/theme';
 import SplashPageContainer from './splashPage/SplashPageContainer';
+import EditBlogPageContainer from './editBlogPage/EditBlogPageContainer';
 
 export default function App() {
   return (
@@ -47,6 +48,9 @@ export default function App() {
           </Route>
           <Route path="/band">
             <BandPage />
+          </Route>
+          <Route path="/editblog">
+            <EditBlogPageContainer />
           </Route>
         </Switch>
       </ThemeProvider>
