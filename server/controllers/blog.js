@@ -1,12 +1,12 @@
-const { Op } = require('sequelize');
 const { Blog } = require('../models');
 const logger = require('../../config/winston');
 
 //  getting all the blog post
 
 exports.getAllBlog = (req, res, next) => {
-  const bandID = req.params.id;
+  const bandID = req.params.bandId;
   return Blog.findAll({
+    attributes: { exclude: ['BandId', 'createdAt', 'updatedAt'] },
     where: {
       bandId: bandID,
     },
@@ -26,6 +26,7 @@ exports.getAllBlog = (req, res, next) => {
 exports.getABlog = (req, res, next) => {
   const blogID = req.params.id;
   return Blog.findAll({
+    attributes: { exclude: ['BandId', 'createdAt', 'updatedAt'] },
     where: {
       id: blogID,
     },
@@ -44,15 +45,20 @@ exports.getABlog = (req, res, next) => {
 // updating the blog post of a specific user
 
 exports.updateBlog = (req, res, next) => {
-  const bandID = req.params.id;
-  const updatePost = req.body.post;
-  return Blog.update({ post: updatePost }, {
+  const postID = req.params.id;
+  // const updatePost = req.body.post;
+  return Blog.update({
+    name: req.body.name,
+    description: req.body.description,
+    post: req.body.post,
+    bandId: req.body.bandId,
+  }, {
     where: {
-      bandId: bandID,
+      id: postID,
     },
   })
     .then(() => {
-      res.status(201).send('Successfully Added');
+      res.status(201).send('Successfully Updated');
       next();
     })
     .catch((err) => {
@@ -70,8 +76,8 @@ exports.addNewBlog = (req, res, next) => Blog.create({
   post: req.body.post,
   bandId: req.body.bandId,
 })
-  .then(() => {
-    res.status(201).send('Successfully Added a Blog post');
+  .then((result) => {
+    res.status(201).send(result);
     next();
   })
   .catch((err) => {
