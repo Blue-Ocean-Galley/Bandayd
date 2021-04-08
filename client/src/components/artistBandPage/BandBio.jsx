@@ -20,7 +20,6 @@ export default function BandBio({ bandBio }) {
         handleSave={editBio}
       />
       <Card>{bio}</Card>
-      <img id="edit-blog-pencil" src="http://placeimg.com/640/480/cats" height="200px" alt="edit blog" />
     </VerticalCard>
   );
 }
