@@ -8,7 +8,7 @@ import {
   NavLink,
 } from 'react-router-dom';
 
-function addSong () {
+function addBlog () {
 
 }
 
@@ -20,11 +20,15 @@ function BandBlogPostList ({blogPosts}) {
       <button onClick={() => { setModalIsOpen(true) }}>+</button>
       <Modal isOpen={modalIsOpen}>
         <h3>Add a Blog Post</h3>
-        <form onSubmit={addSong()}>
-          <label htmlFor="song-name-input">Song Name</label>
-          <input id="song-name-input" type="text" placeholder=""></input>
-          <label htmlFor="blog-title-input">Title</label>
-          <input id="blog-body-input" stype="text"></input>
+        <form onSubmit={addBlog()}>
+          <label htmlFor="blog-name-input">Blog Name</label>
+          <input id="blog-name-input" type="text" placeholder=""></input>
+
+          <label htmlFor="blog-description-input">Description</label>
+          <input id="blog-description-input" type="text" placeholder=""></input>
+
+          <label htmlFor="blog-post-input">Post</label>
+          <textarea id="blog-post-input"></textarea>
         </form>
         <button onClick={() => setModalIsOpen(false)}>Add Blog Post</button>
       </Modal>

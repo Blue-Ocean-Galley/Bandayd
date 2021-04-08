@@ -22,8 +22,13 @@ function UpcomingShowsList ({shows}){
         <form onSubmit={addShow()}>
           <label for="show-name-input">Show Name</label>
           <input id="show-name-input" type="text" placeholder=""></input>
+
           <label for="show-location-input">Show Location</label>
           <input id="show-location-input" stype="text"></input>
+
+          <label for="show-description-input">Show Description</label>
+          <input id="show-description-input" stype="text"></input>
+
           <label for="show-date-input">Show Date</label>
           <input id="show-date-input" stype="text"></input>
         </form>

@@ -26,10 +26,14 @@ function BandSongList ({songs}) {
           <Modal isOpen={modalIsOpen}>
             <h3>Add a Song</h3>
             <form onSubmit={addSong()}>
-              <label for="song-name-input">Song Name</label>
-              <input id="song-name-input" type="text" placeholder=""></input>
-              <label for="song-album-input">Album</label>
-              <input id="song-album-input" stype="text"></input>
+              <label hmtlFor="song-title-input">Song Title</label>
+              <input id="song-title-input" type="text" placeholder=""></input>
+
+              <label hmtlFor="song-album-input">Album</label>
+              <input id="song-album-input" type="text"></input>
+
+              <label hmtlFor="song-genre-input">Genre</label>
+              <input id="song-genre-input" type="text"></input>
             </form>
             <button onClick={() => setModalIsOpen(false)}>Add Song</button>
           </Modal>
