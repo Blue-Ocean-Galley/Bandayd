@@ -17,6 +17,7 @@ export default function BandBio({ bandBio }) {
       <h3>About the Band</h3>
       <EditBio
         text={bio}
+        id={0}
         handleSave={editBio}
       />
       <Card>{bio}</Card>
