@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function BandSongListItem({ song, artist }) {
   return (
@@ -9,3 +10,11 @@ export default function BandSongListItem({ song, artist }) {
     </div>
   );
 }
+BandSongListItem.propTypes = {
+  song: PropTypes.string,
+  artist: PropTypes.string,
+};
+BandSongListItem.defaultProps = {
+  song: '',
+  artist: '',
+};

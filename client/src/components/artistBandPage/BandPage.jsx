@@ -51,7 +51,7 @@ class BandPage extends React.Component {
         <BandPageSongList songs={this.state.tempSongs}/>
         <BandBio bandBio={this.state.tempBio}/>
         <UpcomingShowsList shows={this.state.tempShows}/>
-        <BandBlogPostList blogPosts={this.state.tempBlogPosts}/>
+        <BandBlogPostList posts={this.state.tempBlogPosts}/>
       </div>
     );
   }
