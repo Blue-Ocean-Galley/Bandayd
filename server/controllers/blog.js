@@ -6,6 +6,7 @@ const logger = require('../../config/winston');
 exports.getAllBlog = (req, res, next) => {
   const bandID = req.params.bandId;
   return Blog.findAll({
+    attributes: { exclude: ['BandId', 'createdAt', 'updatedAt'] },
     where: {
       bandId: bandID,
     },
@@ -25,6 +26,7 @@ exports.getAllBlog = (req, res, next) => {
 exports.getABlog = (req, res, next) => {
   const blogID = req.params.id;
   return Blog.findAll({
+    attributes: { exclude: ['BandId', 'createdAt', 'updatedAt'] },
     where: {
       id: blogID,
     },
