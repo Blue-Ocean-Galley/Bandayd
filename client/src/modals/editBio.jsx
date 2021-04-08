@@ -8,7 +8,7 @@ import { Button } from '../styles/globalStyles';
 Modal.setAppElement(document.getElementById('app'));
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.6)';
 
-export default function EditBio({ text, handleSave, cb = () => { } }) {
+export default function EditBio({ text, handleSave }) {
   const [showModal, toggleModal] = useState(false);
 
   const customStyles = {
@@ -31,7 +31,7 @@ export default function EditBio({ text, handleSave, cb = () => { } }) {
 
   return (
     <>
-      <Button onClick={() => toggleModal(!showModal)}> Edit Bio </Button>
+      <Button onClick={() => toggleModal(!showModal)}> Edit Bio ✏ </Button>
       <Modal
         isOpen={showModal}
         style={customStyles}
@@ -51,10 +51,6 @@ export default function EditBio({ text, handleSave, cb = () => { } }) {
   );
 }
 EditBio.propTypes = {
-  cb: PropTypes.func,
   text: PropTypes.string.isRequired,
   handleSave: PropTypes.func.isRequired,
-};
-EditBio.defaultProps = {
-  cb: () => { },
 };
