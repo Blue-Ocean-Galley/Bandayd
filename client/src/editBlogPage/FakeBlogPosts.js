@@ -42,6 +42,8 @@ module.exports.postArray = () => {
       {
         title: fakeTitles[i],
         text: fakeParagraphs[i],
+        band_id: 1,
+        post_id: i,
       },
     );
   }

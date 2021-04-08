@@ -15,6 +15,6 @@ router.get('/post/:id', getABlog);
 router.post('/:bandId', addNewBlog);
 
 //  updating an existing blog post
-router.put('/:id', updateBlog);
+router.put('/post/:id', updateBlog);
 
 module.exports = router;
