@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Modal from 'react-modal'
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,39 +7,28 @@ import {
   NavLink,
 } from 'react-router-dom';
 
+function addBio () {
 
-class BandBio extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    };
-  }
-
-  componentDidMount() {
-  }
-
-  editBio() {
-
-  }
-
-  createNewBio() {
-
-  }
-
-  render() {
+}
+function BandBio ({bandBio}){
+  const [modalIsOpen, setModalIsOpen] = useState(false)
     return (
-      <Router>
-        <div>
-          <h3>About the Band</h3>
-          <button type="button" id="editBio" onClick={this.createNewBio.bind(this)}>Create New</button>
-          <p>{this.props.bandBio}</p>
-          <img id="edit-blog-pencil" src='havent found a good one yet' alt="edit blog" onClick={this.editBio.bind(this)}></img>
-        </div>
-      </Router>
+      <div>
+        <h3>About the Band</h3>
+        <p>{bandBio}</p>
+        <img id="edit-bio-pencil" src='havent found a good one yet' alt="edit bio" onClick={() => { setModalIsOpen(true) }}></img>
+        <Modal isOpen={modalIsOpen}>
+          <h3>Edit Bio</h3>
+          <form onSubmit={addBio()}>
+            <input id="bio-input" type="text" placeholder=""></input>
+          </form>
+          <button onClick={() => setModalIsOpen(false)}>Save Bio</button>
+        </Modal>
+      </div>
     )
-  }
+
 }
 
 export default BandBio;
+
 
