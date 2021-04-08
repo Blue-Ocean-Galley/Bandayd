@@ -8,10 +8,7 @@ import {
 } from '../styles/globalStyles';
 
 export default function PastBlogPosts({ onPostClick = () => {}, posts }) {
-  console.log('rerendering past blog posts');
-
   const handleClick = (post) => {
-    console.log('clicked post', post);
     onPostClick(post);
   };
 
@@ -19,8 +16,8 @@ export default function PastBlogPosts({ onPostClick = () => {}, posts }) {
     <PastBlogPostContainer>
       <h3> Past Blog Posts </h3>
       <Button onClick={() => onPostClick({
-        title: '',
-        text: '',
+        name: '',
+        post: '',
       })}
       >
         Create New
