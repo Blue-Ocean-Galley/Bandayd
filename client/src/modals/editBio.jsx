@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import EditArea from '../editBlogPage/EditArea';
@@ -14,6 +14,7 @@ export default function EditBio({ text, handleSave }) {
   const customStyles = {
     content: {
       top: '50%',
+      width: '40%',
       left: '50%',
       right: 'auto',
       bottom: 'auto',
@@ -38,7 +39,7 @@ export default function EditBio({ text, handleSave }) {
         onRequestClose={() => toggleModal(!showModal)}
         shouldCloseOnOverlayClick
       >
-        <EditArea
+        <EditModal
           text={text}
           title="Bio"
           handleSave={onSave}
@@ -54,3 +55,8 @@ EditBio.propTypes = {
   text: PropTypes.string.isRequired,
   handleSave: PropTypes.func.isRequired,
 };
+
+const EditModal = styled(EditArea)`
+  width: 30rem;
+  margin: 0;
+`;
