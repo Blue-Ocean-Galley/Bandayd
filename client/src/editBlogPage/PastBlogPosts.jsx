@@ -8,14 +8,19 @@ import {
 } from '../styles/globalStyles';
 
 export default function PastBlogPosts({ onPostClick = () => {}, posts }) {
-  console.log('rerendering');
-  console.log(posts);
+  console.log('rerendering past blog posts');
+
+  const handleClick = (post) => {
+    console.log('clicked post', post);
+    onPostClick(post);
+  };
+
   return (
     <PastBlogPostContainer>
       <h3> Past Blog Posts </h3>
       <Button onClick={() => onPostClick({
-        postTitle: 'new',
-        postText: '',
+        title: '',
+        text: '',
       })}
       >
         Create New
@@ -23,13 +28,10 @@ export default function PastBlogPosts({ onPostClick = () => {}, posts }) {
       {
         posts.map((post) => (
           <ListItem
-            onClick={() => onPostClick({
-              postTitle: post.title,
-              postText: post.text,
-            })}
-            key={post.title}
+            onClick={() => handleClick(post)}
+            key={post.id}
           >
-            <p>{post.title}</p>
+            <p>{post.name}</p>
           </ListItem>
         ))
       }
