@@ -8,6 +8,7 @@ import {
   Tile,
   Input,
   Card,
+  StickyHeaderContainer,
 } from '../../styles/globalStyles';
 import Tabs from '../../styles/tabs';
 
@@ -37,12 +38,14 @@ export default function MediaList({ songs }) {
 
   return (
     <Container>
-      <h3>Featured Songs</h3>
+      <Header>
+        <h3>Featured Songs</h3>
+        <Button onClick={() => { toggleModal(true); }}> Add Song </Button>
+      </Header>
       <Tabs
         headers={['songs', 'videos']}
         contents={[SongList, [VideoContent]]}
       />
-      <Button onClick={() => { toggleModal(true); }}> + </Button>
       <Modal
         isOpen={showModal}
         style={customModalStyle}
@@ -67,7 +70,14 @@ export default function MediaList({ songs }) {
 }
 const Container = styled(Tile)`
   flex-direction: column;
-  height: 100%;
+  height: 50rem;
+  overflow: auto;
+  padding-bottom: 0.5rem;
+  margin-top: 1rem;
+  background: ${({ theme }) => theme.background};
+  ::-webkit-scrollbar {
+  display: none;
+}
 `;
 const Label = styled.label`
   color: ${({ theme }) => theme.darkText};
@@ -76,6 +86,9 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+`;
+const Header = styled(StickyHeaderContainer)`
+  padding-bottom: 0.5rem;
 `;
 MediaList.propTypes = {
   songs: PropTypes.instanceOf(Array),
