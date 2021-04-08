@@ -137,6 +137,14 @@ export const TabContent = styled.div`
   ${(props) => (props.active ? '' : 'display:none')}
 `;
 
+export const StickyHeaderContainer = styled.div`
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 0rem 2rem;
+  background-color: ${({ theme }) => theme.primary_600};
+`;
+
 export default GlobalStyle;
 export const Button = ButtonPreset;
 export const CircleButton = CircleButtonPreset;
