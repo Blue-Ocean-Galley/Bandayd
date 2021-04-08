@@ -15,9 +15,7 @@ export default function MediaList({ songs }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const SongList = songs.map((song) => (
     <BandSongListItem
-      artist={song.artist}
-      song={song.song}
-      key={song.id}
+      trackId={song.trackId}
     />
   ));
 
