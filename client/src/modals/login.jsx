@@ -38,7 +38,7 @@ export default function Login({ cb = () => {} }) {
 
   return (
     <>
-      <Button onClick={() => toggleModal(!showModal)}> Login </Button>
+      <NavButton onClick={() => toggleModal(!showModal)}> Login </NavButton>
       <Modal
         isOpen={showModal}
         style={customStyles}
@@ -86,4 +86,15 @@ const LoginTile = styled(Tile)`
 
 const FeatureForm = styled(Form)`
 
+`;
+const NavButton = styled(Button)`
+  padding: 1rem;
+    margin: 0.5rem;
+    color: ${({ theme }) => theme.primary_text};
+    background ${({ theme }) => theme.background};
+
+    &:hover {
+      color: ${({ theme }) => theme.background};
+      background: ${({ theme }) => theme.secondary_light};
+    }
 `;
