@@ -4,8 +4,8 @@ export default function BandSongListItem({ song, artist }) {
   return (
     <div>
       <button type="button">Play</button>
-      <span>{this.props.song}</span>
-      <span>{this.props.artist}</span>
+      <span>{song}</span>
+      <span>{artist}</span>
     </div>
   );
 }
