@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -22,7 +23,12 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const ButtonPreset = styled.button`
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: ${({ theme }) => theme.primary_text};
+`;
+
+export const Button = styled.button`
   text-transform: uppercase;
   margin: 0;
   padding: 1rem;
@@ -31,17 +37,17 @@ const ButtonPreset = styled.button`
   color: ${({ theme }) => theme.primary_text};
   cursor: pointer;
   &:hover {
-    background-color: ${({ theme }) => theme.primary_600};
-    color: ${({ theme }) => theme.secondaryText};
+    background-color: ${({ theme }) => theme.secondary_light};
+    color: ${({ theme }) => theme.dark_text};
   }
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.13);
 `;
 
-const CircleButtonPreset = styled(ButtonPreset)`
+export const CircleButton = styled(Button)`
   border-radius: 24px;
 `;
 
-const TilePreset = styled.div`
+export const Tile = styled.div`
   background-color: ${({ theme }) => theme.primary_600};
   display: flex;
   align-items: center;
@@ -50,12 +56,12 @@ const TilePreset = styled.div`
   }
 `;
 
-const ListTilePreset = styled(TilePreset)`
+export const ListTile = styled(Tile)`
   display: flex;
   flex-direction: column;
 `;
 
-const InputPreset = styled.input`
+export const Input = styled.input`
   padding: 1rem;
   margin: 1rem 0;
   border: 0;
@@ -70,7 +76,7 @@ const InputPreset = styled.input`
   }
 `;
 
-const TextAreaPreset = styled.textarea`
+export const TextArea = styled.textarea`
   resize: vertical;
   width: 90%;
   padding: 1.5rem;
@@ -79,7 +85,7 @@ const TextAreaPreset = styled.textarea`
   box-shadow: 0.4rem 0.4rem 1rem rgba(0,0,0,0.06);
 `;
 
-const CardPreset = styled.div`
+export const Card = styled.div`
   background-color: ${({ theme }) => theme.primary_400};
   padding: 1.5rem;
   margin: 1rem;
@@ -89,18 +95,18 @@ const CardPreset = styled.div`
   justify-content: space-between;
 `;
 
-const VerticalCardPreset = styled(CardPreset)`
+export const VerticalCard = styled(Card)`
   flex-direction: column;
 `;
 
-const FormPreset = styled.form`
+export const Form = styled.form`
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-const ListItemPreset = styled.div`
+export const ListItem = styled.div`
   background: ${({ theme }) => theme.primary_200};
   padding: 0.5rem;
   margin: 0.5rem;
@@ -144,18 +150,8 @@ export const StickyHeaderContainer = styled.div`
   position: sticky;
   top: 0;
   width: 100%;
-  padding: 0rem 2rem;
-  background-color: ${({ theme }) => theme.primary_600};
+  padding: 1rem 2rem;
+  background: ${({ theme }) => theme.primary};
 `;
 
 export default GlobalStyle;
-export const Button = ButtonPreset;
-export const CircleButton = CircleButtonPreset;
-export const Tile = TilePreset;
-export const ListTile = ListTilePreset;
-export const Input = InputPreset;
-export const TextArea = TextAreaPreset;
-export const Card = CardPreset;
-export const Form = FormPreset;
-export const ListItem = ListItemPreset;
-export const VerticalCard = VerticalCardPreset;
