@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import EditBio from '../../modals/editBio';
 import {
   VerticalCard,
@@ -6,7 +7,7 @@ import {
 } from '../../styles/globalStyles';
 
 export default function BandBio({ bandBio }) {
-  const [bio, setBio] = useState('Add a bio!');
+  const [bio, setBio] = useState(bandBio);
 
   const editBio = (post) => {
     setBio(post.post);
@@ -16,7 +17,7 @@ export default function BandBio({ bandBio }) {
     <VerticalCard>
       <h3>About the Band</h3>
       <EditBio
-        text={bio}
+        text={bandBio}
         id={0}
         handleSave={editBio}
       />
@@ -24,3 +25,9 @@ export default function BandBio({ bandBio }) {
     </VerticalCard>
   );
 }
+BandBio.propTypes = {
+  bandBio: PropTypes.string,
+};
+BandBio.defaultProps = {
+  bandBio: 'Add a bio!',
+};
