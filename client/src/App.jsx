@@ -7,10 +7,10 @@ import {
   NavLink,
 } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
-import BandPage from './components/artistBandPage/BandPage.jsx';
+import BandPage from './components/artistBandPage/BandPage';
 import GlobalStyles from './styles/globalStyles';
 import darkTheme from './styles/theme';
-import SplashPageContainer from './splashPage/splashPageContainer';
+import SplashPageContainer from './splashPage/SplashPageContainer';
 
 export default function App() {
   return (
@@ -33,7 +33,7 @@ export default function App() {
         <Switch>
           <Route exact path="/">
             <main>
-              <SplashPageContainer toPath='/login' />
+              <SplashPageContainer toPath="/login" />
             </main>
           </Route>
           <Route path="/bands">
@@ -45,6 +45,9 @@ export default function App() {
           <Route path="/login">
             <div>Signup coming soon!</div>
           </Route>
+          <Route path="/band">
+            <BandPage />
+          </Route>
         </Switch>
       </ThemeProvider>
     </Router>
@@ -52,48 +55,48 @@ export default function App() {
 }
 
 // style list with styled components
-// export const NavBar = styled.nav`
-//   height: 7rem;
-//   display: flex;
-//   align-items: center;
-//   `;
+export const NavBar = styled.nav`
+  height: 7rem;
+  display: flex;
+  align-items: center;
+  `;
 
-// export const LeftColumn = styled.div`
-//   display: flex;
-//   margin: 0;
-//   padding: 0;
-//   justify-content: flex-start;
-//   width: 30%;
-// `;
+export const LeftColumn = styled.div`
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: flex-start;
+  width: 30%;
+`;
 
-// export const RightColumn = styled.div`
-//   margin: 0;
-//   padding: 0;
-//   display: flex;
-//   justify-content: flex-end;
-//   width: 70%;
-// `;
+export const RightColumn = styled.div`
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  width: 70%;
+`;
 
-// export const NavList = styled.ul`
-//   margin: 0 15px;
-//   padding: 0;
-//   list-style-type: none;
-//   overflow: hidden;
-// `;
+export const NavList = styled.ul`
+  margin: 0 15px;
+  padding: 0;
+  list-style-type: none;
+  overflow: hidden;
+`;
 
-// export const NavItem = styled.li`
-//   display: inline-flex;
-// `;
+export const NavItem = styled.li`
+  display: inline-flex;
+`;
 
-// export const StyledNavLink = styled(NavLink)`
-//   display: block;
-//   text-decoration: none;
-//   padding: 14px 14px;
-//   color: ${({ theme }) => theme.primary_text};
-//   background-color: ${({ theme }) => theme.background};
+export const StyledNavLink = styled(NavLink)`
+  display: block;
+  text-decoration: none;
+  padding: 14px 14px;
+  color: ${({ theme }) => theme.primary_text};
+  background-color: ${({ theme }) => theme.background};
 
-//   &:hover {
-//     color: ${({ theme }) => theme.background};
-//     background-color: ${({ theme }) => theme.primary_text};
-//   }
-// `;
+  &:hover {
+    color: ${({ theme }) => theme.background};
+    background-color: ${({ theme }) => theme.primary_text};
+  }
+`;
