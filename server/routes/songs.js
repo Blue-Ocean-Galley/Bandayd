@@ -1,10 +1,12 @@
 const express = require('express');
-//const logger = require('../config/winston');
-const { getSongs, getOneSong } = require('../controllers/songs');
+// const logger = require('../config/winston');
+const { getSongs, getOneSong, addOneSong } = require('../controllers/songs');
 
 const router = express.Router();
 
-router.get('/:bandId', getSongs);
+router.route('/:bandId')
+  .get(getSongs)
+  .post(addOneSong);
 
 router.get('/:bandId/:songId', getOneSong);
 

@@ -1,4 +1,3 @@
-const { Op } = require('sequelize');
 const { Band, Song } = require('../models');
 const logger = require('../../config/winston');
 
@@ -25,7 +24,7 @@ exports.getSongs = (req, res, next) => {
       res.status(500).send(`There was an error getting songs by ${bandId}`);
       next(err);
     });
-}
+};
 
 // get individual song by artist
 exports.getOneSong = (req, res, next) => {
@@ -43,7 +42,7 @@ exports.getOneSong = (req, res, next) => {
       where: {
         id: songId,
       },
-    }
+    },
   }).then((results) => {
     res.send(results);
     next();
@@ -51,6 +50,26 @@ exports.getOneSong = (req, res, next) => {
     .catch((err) => {
       logger.error(err);
       res.status(500).send(`There was an error fetching song ${songId}`);
+      next(err);
+    });
+};
+
+exports.addOneSong = (req, res, next) => {
+  const { title, album, track } = req.body;
+  const { bandId } = req.params;
+
+  return Song.create({
+    title,
+    album,
+    track,
+    bandId,
+  }).then(() => {
+    res.status(201).send(`Successfully added song ${title} to library`);
+    next();
+  })
+    .catch((err) => {
+      logger.error(err);
+      res.status(500).send(`Error adding song ${title} to library`);
       next(err);
     });
 };

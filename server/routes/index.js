@@ -13,7 +13,7 @@ router.use('/login', login);
 // all band routes
 router.use('/bands', bands);
 // all song routes
-router.use('/songs', songs)
+router.use('/songs', songs);
 // all genre routes
 router.use('/genres', genres);
 // all show routes
