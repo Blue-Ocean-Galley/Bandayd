@@ -5,7 +5,7 @@ import BandPageHeader from './BandPageHeader';
 import UpcomingShowsList from './UpcomingShowsList';
 import MediaList from './MediaList';
 import BandBlogPostList from './BandBlogPostList';
-import { ListTile, Tile, Input } from '../../styles/globalStyles';
+import { Tile, ListTile, Card } from '../../styles/globalStyles';
 
 export default function BandPage() {
   const tempSongs = [
@@ -52,16 +52,39 @@ export default function BandPage() {
   return (
     <div className="band-page-container">
       <BandPageHeader />
-      <Tile>
+      <FirstSection>
         <MediaList songs={tempSongs} />
-        <ListTile>
+        <Column>
           <BandBio bandBio={tempBio} />
-        </ListTile>
-      </Tile>
-      <Tile>
-        <UpcomingShowsList shows={tempShows} />
+          <UpcomingShowsList shows={tempShows} />
+        </Column>
+      </FirstSection>
+      <SecondSection>
         <BandBlogPostList />
-      </Tile>
+        <Map>
+          Map Goes Here
+        </Map>
+      </SecondSection>
     </div>
   );
 }
+const FirstSection = styled(Tile)`
+  align-items: flex-start;
+  background: ${({ theme }) => theme.background};
+  margin: 1rem 0.5rem;
+`;
+const Column = styled(ListTile)`
+  align-items: flex-start;
+  justify-content: center;
+  background: ${({ theme }) => theme.background};
+`;
+const SecondSection = styled(Tile)`
+  align-items: flex-start;
+  background: ${({ theme }) => theme.primary_800};
+  margin: 1rem 0.5rem;
+`;
+const Map = styled(Card)`
+  flex: 1;
+  margin-top: 0;
+  height: 39rem;
+`;

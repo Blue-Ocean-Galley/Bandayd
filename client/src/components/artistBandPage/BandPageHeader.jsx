@@ -15,7 +15,7 @@ export default function BandPageHeader({ profileUrl }) {
 const HeaderContainer = styled(Tile)`
   justify-content: flex-start;
   align-items: center;
-  background-color: ${({ theme }) => theme.primary_700};
+  background-color: '#601b06';
 `;
 const ProfilePic = styled.img`
   width: 20rem;
