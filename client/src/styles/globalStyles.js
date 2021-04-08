@@ -107,6 +107,36 @@ const ListItemPreset = styled.div`
   justify-content: space-between;
 `;
 
+export const TabRow = styled.div`
+  overflow: hidden;
+  background: ${({ theme }) => theme.primary_400};
+  font-family: Open Sans;
+  height: 3em;
+`;
+export const Tab = styled.button`
+border: none;
+  outline: none;
+  cursor: pointer;
+  width: 40%;
+  position: relative;
+
+  margin-right: 0.1em;
+  font-size: 1em;
+  border: ${(props) => (props.active ? '1px solid #ccc' : '')};
+  border-bottom: ${(props) => (props.active ? 'none' : '')};
+  background-color: ${(props) => (props.active ? '#d4d6d7' : '#515b60')};
+  height: ${(props) => (props.active ? '3em' : '2.6em; top:.4em')};
+  transition: background-color 0.5s ease-in-out;
+
+  :hover {
+    background-color: '#d4d6d7';
+  }
+`;
+
+export const TabContent = styled.div`
+  ${(props) => (props.active ? '' : 'display:none')}
+`;
+
 export default GlobalStyle;
 export const Button = ButtonPreset;
 export const CircleButton = CircleButtonPreset;
