@@ -15,7 +15,7 @@ import SplashPageContainer from './splashPage/splashPageContainer';
 export default function App() {
   return (
     <Router>
-      {/* <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={darkTheme}>
         <GlobalStyles />
         <NavBar>
           <LeftColumn>
@@ -46,8 +46,7 @@ export default function App() {
             <div>Signup coming soon!</div>
           </Route>
         </Switch>
-      </ThemeProvider> */}
-      <BandPage />
+      </ThemeProvider>
     </Router>
   );
 }
