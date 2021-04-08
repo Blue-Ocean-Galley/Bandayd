@@ -24,7 +24,8 @@ export default function Tabs({ headers, contents }) {
       <>
         {
           contents.map((content, idx) => ( // figure out a better key here..
-            <TabContent active={active === idx} key={Math.random() * 500} id={idx}>
+            // eslint-disable-next-line react/no-array-index-key
+            <TabContent active={active === idx} key={idx} id={idx}>
               {content}
             </TabContent>
           ))
