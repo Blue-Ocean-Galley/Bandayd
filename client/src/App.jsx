@@ -17,10 +17,10 @@ export default function App() {
     <Router>
       <ThemeProvider theme={darkTheme}>
         <GlobalStyles />
+        <Navigation />
         <Switch>
           <Route exact path="/">
             <main>
-              <Navigation />
               <SplashPageContainer toPath="/login" />
             </main>
           </Route>
