@@ -1,24 +1,20 @@
 const { Band } = require('../models');
 const logger = require('../../config/winston');
 
-exports.addUser = (req, res, next) => Band.create({
-  name: req.body.name,
-  email: req.body.email,
-  description: req.body.description,
-  genreId: req.body.genreId,
+exports.login = (req, res, next) => Band.findOne({
+  attributes: ['id'],
+  where: {
+    email: req.body.email,
+    password: req.body.password,
+  },
 })
   .catch((err) => {
     logger.error(err);
-    // if a particular error type is thrown - send a message to the client
-    if (err.name === 'SequelizeUniqueConstraintError') {
-      res.status(400).send(`Sorry the email ${req.body.email} is already being used for another band`);
-    } else {
-      res.status(500).send('The server encountered an error');
-    }
+    res.status(500).send('Unable to login');
     next(err);
   })
-  .then(() => {
-    // else create the new user
-    res.status(201).send(`Successfully created new band ${req.body.name}`);
+  .then((data) => {
+    console.log(data.data.id);
+    res.status(200).send(data);
     next();
   });

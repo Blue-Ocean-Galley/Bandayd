@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
+import axios from 'axios';
 
 import { Button, Tile, Form } from '../styles/globalStyles';
+import cookies from '../cookies';
 import Signup from './signup';
 
 Modal.setAppElement(document.getElementById('app'));
@@ -14,10 +16,23 @@ export default function Login() {
   function submitLogin(e) {
     e.preventDefault();
     const { email, password } = e.target.form;
-    // const data = {
-    //   username: username.value,
-    //   password: password.value,
-    // };
+    const data = {
+      email: email.value,
+      password: password.value,
+    };
+    axios.post('http://localhost:3010/api/login/login', data)
+      .then((response) => {
+        console.log(response);
+        const expires = new Date();
+        expires.setMinutes(expires.getMinutes() + 1);
+        cookies.set({
+          userId: response.data.id,
+          expires: expires.toGMTString(),
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     email.value = '';
     password.value = '';
   }

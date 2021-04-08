@@ -30,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       }
     },
+    password: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Band',
