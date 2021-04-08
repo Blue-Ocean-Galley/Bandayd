@@ -41,9 +41,9 @@ function BandBlogPostList ({blogPosts}) {
   )
 
 }
-BlogPostList.propTypes = {
-  posts: PropTypes.instanceOf(Array),
-};
-BlogPostList.defaultProps = {
-  posts: [],
-};
+// BlogPostList.propTypes = {
+//   posts: PropTypes.instanceOf(Array),
+// };
+// BlogPostList.defaultProps = {
+//   posts: [],
+// };
