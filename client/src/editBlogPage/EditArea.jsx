@@ -21,8 +21,8 @@ export default function EditArea({
       <div>
         <Button onClick={handleCancel}> Cancel </Button>
         <Button onClick={() => handleSave({
-          text: currentText,
-          title: currentTitle,
+          post: currentText,
+          name: currentTitle,
           id,
         })}
         >
