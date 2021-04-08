@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import Modal from 'react-modal';
 
 import { Button, Tile, Form } from '../styles/globalStyles';
@@ -22,13 +23,28 @@ export default function TourList() {
     setAddress(e.target.value);
   };
 
+  const searchAddress = (e) => {
+    e.preventDefault();
+    axios.get('https://nominatim.openstreetmap.org', {
+      params: {
+        q: address,
+        format: 'json',
+        limit: 1,
+        addressdetails: 1,
+      },
+    })
+      .then((res) => {
+        setAddress(res.data[0].display_name);
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div>
       <h3>Upcoming Shows</h3>
       <Button onClick={() => setTourModal(!showTourModal)}>Add New Show</Button>
       <Modal
         isOpen={showTourModal}
-        // style={customStyles}
         onRequestClose={() => setTourModal(!showTourModal)}
         shouldCloseOnOverlayClick
       >
@@ -43,7 +59,7 @@ export default function TourList() {
           </div>
           <input type="text" value={address} onChange={updateAddress} />
           <div>
-            <Button onClick={() => setTourModal(!showTourModal)}>Submit</Button>
+            <Button onClick={searchAddress}>Search</Button>
           </div>
         </form>
       </Modal>
