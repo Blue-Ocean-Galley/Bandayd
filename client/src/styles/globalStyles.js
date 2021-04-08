@@ -65,6 +65,9 @@ const InputPreset = styled.input`
   &:focus {
     border: 1px solid ${({ theme }) => theme.primary_400};
   }
+  &:invalid {
+    border: 1px solid ${({ theme }) => theme.secondary};
+  }
 `;
 
 const TextAreaPreset = styled.textarea`
