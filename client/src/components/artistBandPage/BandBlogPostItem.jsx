@@ -1,34 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-} from 'react-router-dom';
+  Card,
+} from '../../styles/globalStyles';
 
-
-class BandBlogPostItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    };
-  }
-
-  componentDidMount() {
-  }
-
-  render() {
-    return (
-      <Router>
-        <div>
-          <span id="blog-list-title">{this.props.title}</span>
-          <span id="blog-list-body">{this.props.body}</span>
-        </div>
-      </Router>
-    )
-  }
+export default function BandBlogPostItem({ name, post }) {
+  return (
+    <Post>
+      <p>{name}</p>
+      <p>{post}</p>
+    </Post>
+  );
 }
+const Post = styled(Card)`
 
-export default BandBlogPostItem;
-
+`;
