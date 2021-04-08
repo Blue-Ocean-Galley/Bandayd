@@ -1,17 +1,10 @@
 import React from 'react';
-import BandBio from './BandBio.jsx'
-import BandPageHeader from './BandPageHeader.jsx'
-import UpcomingShowsList from './UpcomingShowsList.jsx'
-import BandPageSongList from './BandPageSongList.jsx'
-import BandBlogPostList from './BandBlogPostList.jsx'
-
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-} from 'react-router-dom';
-
+import BandBio from './BandBio';
+import BandPageHeader from './BandPageHeader';
+import UpcomingShowsList from './UpcomingShowsList';
+import BandPageSongList from './BandPageSongList';
+import BandBlogPostList from './BandBlogPostList';
+import styled from 'styled-components';
 
 class BandPage extends React.Component {
   constructor(props) {
@@ -53,17 +46,14 @@ class BandPage extends React.Component {
   render() {
     console.log('band bio', this.state.tempBio)
     return (
-      <Router>
-        <div className='band-page-container'>
-          <BandPageHeader />
-          <BandPageSongList songs={this.state.tempSongs}/>
-          <BandBio bandBio={this.state.tempBio}/>
-          <UpcomingShowsList shows={this.state.tempShows}/>
-          <BandBlogPostList blogPosts={this.state.tempBlogPosts}/>
-        </div>
-      </Router>
-
-    )
+      <div className='band-page-container'>
+        <BandPageHeader />
+        <BandPageSongList songs={this.state.tempSongs}/>
+        <BandBio bandBio={this.state.tempBio}/>
+        <UpcomingShowsList shows={this.state.tempShows}/>
+        <BandBlogPostList blogPosts={this.state.tempBlogPosts}/>
+      </div>
+    );
   }
 }
 
