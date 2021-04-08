@@ -31,10 +31,4 @@ describe('Navigation bar', () => {
     const showPage = screen.getByText(/^New shows/i);
     expect(showPage).toHaveTextContent('New shows coming soon!');
   });
-
-  it('Renders the signup page', () => {
-    fireEvent.click(screen.getByText(/Log In/i));
-    const homePage = screen.getByText(/^Account/i);
-    expect(homePage).toHaveTextContent('Account');
-  });
 });
