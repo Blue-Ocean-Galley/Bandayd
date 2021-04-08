@@ -16,7 +16,6 @@ const ImgWrapper = styled(Link)`
   max-width: 48rem;
   height: 30rem;
   background: linear-gradient(to right, ${(props) => props.overlay}, ${(props) => props.overlay}), url("${(props) => props.imgUrl}") no-repeat top center;
-  z-index: 1;
 
   &:hover {
     box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 12px 20px rgba(0,0,0,0.23);
