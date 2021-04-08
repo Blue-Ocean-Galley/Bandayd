@@ -9,16 +9,17 @@ import PastBlogPosts from './PastBlogPosts';
 import EditArea from './EditArea';
 
 export default function EditBlogPageContainer({ bandId = 1 }) {
-  bandId = 1;
   const [isEditing, setIsEditing] = useState(false);
   useEffect(() => {
   }, [isEditing]);
+
   const [currentPost, setCurrentPost] = useState({});
   useEffect(() => {
   }, [isEditing]);
+
   const [posts, setPosts] = useState({});
   useEffect(() => {
-    // get request goes here
+    // Initial get request
     axios.get(`http://localhost:3010/api/blogs/${bandId}`).then((res) => {
       const postObj = {};
       res.data.forEach((post) => {
@@ -31,32 +32,30 @@ export default function EditBlogPageContainer({ bandId = 1 }) {
   const handleSave = (post) => {
     setIsEditing(false);
     if (!currentPost.id) {
-      // post request returns new id
-      // setPosts((prevState) => ({ ...prevState, [newId]: post }));
+      // if no id, it's as new post
       axios.post(`http://localhost:3010/api/blogs/${bandId}`,
         {
-          post: {
-            name: post.title,
-            post: post.text,
-            bandId,
-          },
+          name: post.name,
+          post: post.post,
+          bandId,
         }).then((res) => {
+        // Adds new post by id to post list
         setPosts((prevState) => ({ ...prevState, [res.data.id]: res.data }));
       });
-    } else if (post.text !== currentPost.post
-      || post.title !== currentPost.name) {
-      console.log('updating post', post);
+    } else if (post.post !== currentPost.post
+      || post.name !== currentPost.name) { // only send put request if text or title was changed
       setPosts((prevState) => ({ ...prevState, [post.id]: post }));
-      // updated post: put req
-      axios.put(`http://localhost:3010/api/blogs/${post.id}`,
+
+      axios.put(`http://localhost:3010/api/blogs/post/${post.id}`,
         {
           id: post.id,
-          name: post.title,
-          post: post.text,
+          name: post.name,
+          post: post.post,
           bandId,
         });
     }
   };
+
   const handleBlogPostClick = (post) => {
     setIsEditing(true);
     setCurrentPost(post);
