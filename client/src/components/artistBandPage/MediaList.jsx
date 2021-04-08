@@ -12,7 +12,21 @@ import {
 import Tabs from '../../styles/tabs';
 
 export default function MediaList({ songs }) {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [showModal, toggleModal] = useState(false);
+
+  const customModalStyle = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      backgroundColor: '#333',
+      border: 'none',
+    },
+  };
+
   const SongList = songs.map((song) => (
     <BandSongListItem
       trackId={song.trackId}
@@ -28,20 +42,25 @@ export default function MediaList({ songs }) {
         headers={['songs', 'videos']}
         contents={[SongList, [VideoContent]]}
       />
-      <Button onClick={() => { setModalIsOpen(true); }}> + </Button>
+      <Button onClick={() => { toggleModal(true); }}> + </Button>
       <Modal
-        isOpen={modalIsOpen}
+        isOpen={showModal}
+        style={customModalStyle}
+        onRequestClose={() => toggleModal(!showModal)}
         shouldCloseOnOverlayClick
       >
         <h3>Add a Song</h3>
-        <form onSubmit={() => {}}>
+        <Form onSubmit={() => {}}>
+          <Label for="song-title-Input">Title</Label>
           <Input id="song-title-Input" type="text" placeholder="" />
-
+          <Label for="song-album-Input">Album</Label>
           <Input id="song-album-Input" type="text" />
-
+          <Label for="song-Genre-Input">Genre</Label>
           <Input id="song-genre-Input" type="text" />
-        </form>
-        <Button onClick={() => { setModalIsOpen(false); }}> Add Song </Button>
+          <Label for="song-link">Spotify Link</Label>
+          <Input id="song-link" type="url" />
+        </Form>
+        <Button onClick={() => { toggleModal(false); }}> Add Song </Button>
       </Modal>
     </Container>
   );
@@ -49,6 +68,14 @@ export default function MediaList({ songs }) {
 const Container = styled(Tile)`
   flex-direction: column;
   height: 100%;
+`;
+const Label = styled.label`
+  color: ${({ theme }) => theme.darkText};
+`;
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 MediaList.propTypes = {
   songs: PropTypes.instanceOf(Array),
