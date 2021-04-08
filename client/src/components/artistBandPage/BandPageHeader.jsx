@@ -1,53 +1,30 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-} from 'react-router-dom';
 import { Tile } from '../../styles/globalStyles';
 
-class BandPageHeader extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      image: []
-    };
-  }
-
-  handleUpload(e){
-    // const file = e.target.files[0];
-    // const newImages = [...this.state.image];
-    // newImages.push(file);
-    // this.setState({
-    //   image: newImages
-    // });
-  }
-
-  handleShareButton(event) {
-
-  }
-
-  componentDidMount() {
-  }
-
-  render() {
-    return (
-      <Router>
-        <HeaderContainer>
-          <div id="proflie-pic-uploader">
-            {/* <input type="file" value="+" onChange={this.handleUpload.bind(this)} /> */}
-            <img src={!!this.state.image[0] ? this.state.image[0] : ''} alt="band-profile-pic" alt="Band Proflie Picture"></img>
-            <button type="button" onClick={this.handleShareButton.bind(this)}>Share</button>
-          </div>
-        </HeaderContainer>
-      </Router>
-    )
-  }
+export default function BandPageHeader({ profileUrl }) {
+  return (
+    <HeaderContainer>
+      <ProfilePic src={profileUrl} alt="band-profile-pic" />
+      <h1> Band Name </h1>
+    </HeaderContainer>
+  );
 }
 
 const HeaderContainer = styled(Tile)`
+  justify-content: flex-start;
+  align-items: center;
+  background-color: ${({ theme }) => theme.primary_700};
 `;
-
-export default BandPageHeader;
+const ProfilePic = styled.img`
+  width: 20rem;
+  height: 20rem;
+  margin: 2rem;
+`;
+BandPageHeader.propTypes = {
+  profileUrl: PropTypes.string,
+};
+BandPageHeader.defaultProps = {
+  profileUrl: 'http://placeimg.com/640/480/fashion',
+};

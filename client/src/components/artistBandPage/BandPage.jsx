@@ -1,10 +1,11 @@
 import React from 'react';
+import styled from 'styled-components';
 import BandBio from './BandBio';
 import BandPageHeader from './BandPageHeader';
 import UpcomingShowsList from './UpcomingShowsList';
 import BandPageSongList from './BandPageSongList';
 import BandBlogPostList from './BandBlogPostList';
-import styled from 'styled-components';
+import { ListTile, Tile, Input } from '../../styles/globalStyles';
 
 class BandPage extends React.Component {
   constructor(props) {
@@ -48,9 +49,13 @@ class BandPage extends React.Component {
     return (
       <div className='band-page-container'>
         <BandPageHeader />
-        <BandPageSongList songs={this.state.tempSongs}/>
-        <BandBio bandBio={this.state.tempBio}/>
-        <UpcomingShowsList shows={this.state.tempShows}/>
+        <Tile>
+          <BandPageSongList songs={this.state.tempSongs}/>
+          <ListTile>
+            <BandBio bandBio={this.state.tempBio}/>
+            <UpcomingShowsList shows={this.state.tempShows}/>
+          </ListTile>
+        </Tile>
         {/* <BandBlogPostList posts={this.state.tempBlogPosts}/> */}
       </div>
     );
