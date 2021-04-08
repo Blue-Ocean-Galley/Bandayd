@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+/* eslint-disable arrow-body-style */
+import React, { useState, useMemo } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import TourEntry from './TourEntry.jsx';
+import { latLngBounds } from 'leaflet';
 
 import { Button, Tile, Card, Form } from '../styles/globalStyles';
 
@@ -15,6 +17,7 @@ export default function TourList() {
   const [showName, setShowName] = useState('');
   const [address, setAddress] = useState('');
   const [showInfo, setShowInfo] = useState({});
+  const [newDate, setNewDate] = useState();
   const [shows, setShows] = useState([
     {
       id: 1,
@@ -55,6 +58,11 @@ export default function TourList() {
   const updateAddress = (e) => {
     e.preventDefault();
     setAddress(e.target.value);
+  };
+
+  const updateNewDate = (e) => {
+    e.preventDefault();
+    setNewDate(e.target.value);
   };
 
   const searchAddress = (e) => {
@@ -101,6 +109,17 @@ export default function TourList() {
   };
 
   const renderShows = () => shows.map((show) => <TourEntry key={show.id} show={show} />);
+  const renderMarkers = () => shows.map((show) => {
+    return (
+      <Marker position={[show.latitude, show.longitude]} key={show.id}>
+        <Popup>
+          {show.name}
+          {show.showDate}
+          {show.displayName}
+        </Popup>
+      </Marker>
+    );
+  });
 
   return (
     <div>
@@ -109,6 +128,13 @@ export default function TourList() {
         <Button onClick={() => setTourModal(!showTourModal)}>Add New Show</Button>
       </span>
       {renderShows()}
+      <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '300px' }}>
+        <TileLayer
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {renderMarkers()}
+      </MapContainer>
 
       {/* MODAL */}
       <Modal
@@ -116,29 +142,37 @@ export default function TourList() {
         onRequestClose={() => setTourModal(!showTourModal)}
         shouldCloseOnOverlayClick
       >
-        <h4>Add A New Show</h4>
-        <Form>
-          <div>
-            Name:
-          </div>
-          <input type="text" value={showName} onChange={updateName} />
-          <div>
-            Address:
-          </div>
-          <input type="text" value={address} onChange={updateAddress} />
-          <div>
-            <Button onClick={searchAddress}>Search</Button>
-            <Button>Confirm</Button>
-          </div>
-        </Form>
-        <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '300px', width: '300px' }}>
-          <TileLayer
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          {renderMarker()}
+        <Tile>
+          <h4>Add A New Show</h4>
+          <Form>
+            <div>
+              Show Name:
+            </div>
+            <input type="text" value={showName} onChange={updateName} />
+            <div>
+              Date:
+            </div>
+            <input type="date" name="show-date"
+              value={newDate}
+              min="2021-01-01" max="2031-12-31" />
+            <div>
+              Address:
+            </div>
+            <input type="text" value={address} onChange={updateAddress} />
+            <div>
+              <Button onClick={searchAddress}>Search</Button>
+              <Button>Confirm</Button>
+            </div>
+          </Form>
+          <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '300px', width: '300px', zIndex: 100000000 }}>
+            <TileLayer
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            {renderMarker()}
 
-        </MapContainer>
+          </MapContainer>
+        </Tile>
       </Modal>
     </div>
   );
