@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import BandBlogPostItem from './BandBlogPostItem';
 import {
   ListTile,
+  StickyHeaderContainer,
 } from '../../styles/globalStyles';
 
 export default function BlogPostList() {
@@ -24,12 +25,14 @@ export default function BlogPostList() {
 
   return (
     <StyledList>
-      <h3>Past Blog Posts</h3>
-      <button type="button">
-        <Link to="/editblog">
-          Create New
-        </Link>
-      </button>
+      <StickyHeaderContainer>
+        <h3>Past Blog Posts</h3>
+        <button type="button">
+          <Link to="/editblog">
+            Create New
+          </Link>
+        </button>
+      </StickyHeaderContainer>
       { Object.values(posts).map((blogPost) => (
         <BandBlogPostItem
           post={blogPost.post}
@@ -49,4 +52,6 @@ export default function BlogPostList() {
 // };
 const StyledList = styled(ListTile)`
   width: 50%;
+  height: 40rem;
+  overflow: auto;
 `;
