@@ -43,15 +43,20 @@ exports.getABlog = (req, res, next) => {
 // updating the blog post of a specific user
 
 exports.updateBlog = (req, res, next) => {
-  const bandID = req.params.id;
-  const updatePost = req.body.post;
-  return Blog.update({ post: updatePost }, {
+  const postID = req.params.id;
+  // const updatePost = req.body.post;
+  return Blog.update({
+    name: req.body.name,
+    description: req.body.description,
+    post: req.body.post,
+    bandId: req.body.bandId,
+  }, {
     where: {
-      bandId: bandID,
+      id: postID,
     },
   })
     .then(() => {
-      res.status(201).send('Successfully Added');
+      res.status(201).send('Successfully Updated');
       next();
     })
     .catch((err) => {
