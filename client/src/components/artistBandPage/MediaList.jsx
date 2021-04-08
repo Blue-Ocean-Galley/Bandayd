@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import BandSongListItem from './BandPageSongListItem';
-import { Button, Tile, Input, Card } from '../../styles/globalStyles';
+import {
+  Button,
+  Tile,
+  Input,
+  Card,
+} from '../../styles/globalStyles';
 import Tabs from '../../styles/tabs';
 
 export default function MediaList({ songs }) {
@@ -15,7 +21,7 @@ export default function MediaList({ songs }) {
     />
   ));
 
-  const VideoContent = <Card> Videos Coming Soon</Card>;
+  const VideoContent = <Card key="video-content"> Videos Coming Soon</Card>;
 
   return (
     <Container>
@@ -30,7 +36,7 @@ export default function MediaList({ songs }) {
         shouldCloseOnOverlayClick
       >
         <h3>Add a Song</h3>
-        <form onSubmit={addSong()}>
+        <form onSubmit={() => {}}>
           <Input id="song-title-Input" type="text" placeholder="" />
 
           <Input id="song-album-Input" type="text" />
@@ -46,3 +52,9 @@ const Container = styled(Tile)`
   flex-direction: column;
   height: 100%;
 `;
+MediaList.propTypes = {
+  songs: PropTypes.instanceOf(Array),
+};
+MediaList.defaultProps = {
+  songs: [],
+};
