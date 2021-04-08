@@ -6,15 +6,15 @@ const {
 
 const router = express.Router();
 //  getting all the blog posts for a specific band
-router.get('/:bandId', getAllBlog);
+//  posting a new blog post for a band
+router.route('/:bandId')
+  .get(getAllBlog)
+  .post(addNewBlog);
 
 //  getting a single blog post by post id
-router.get('/post/:id', getABlog);
-
-//  posting a new blog post for a band
-router.post('/:bandId', addNewBlog);
-
 //  updating an existing blog post
-router.put('/post/:id', updateBlog);
+router.route('/post/:id')
+  .get(getABlog)
+  .put(updateBlog);
 
 module.exports = router;
