@@ -37,7 +37,10 @@ export default function PastBlogPosts({ onPostClick = () => {}, posts }) {
 }
 PastBlogPosts.propTypes = {
   onPostClick: PropTypes.func.isRequired,
-  posts: PropTypes.instanceOf(Array).isRequired,
+  posts: PropTypes.instanceOf(Array),
+};
+PastBlogPosts.defaultProps = {
+  posts: [],
 };
 
 const PastBlogPostContainer = styled(ListTile)`
