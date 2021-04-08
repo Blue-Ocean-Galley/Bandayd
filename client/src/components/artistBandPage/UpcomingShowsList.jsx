@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 import UpcomingShowsListItem from './UpcomingShowsListItem';
 import {
-  ListTile,
+  VerticalCard,
   Button,
   CircleButton,
   Input,
@@ -29,7 +30,7 @@ export default function UpcomingShowsList({ shows }) {
   };
 
   return (
-    <ListTile>
+    <VerticalCard>
       <h3>Upcoming Shows</h3>
       <CircleButton onClick={() => { toggleModal(true); }}>+</CircleButton>
       <Modal
@@ -40,16 +41,16 @@ export default function UpcomingShowsList({ shows }) {
       >
         <h3>Add a Show</h3>
         <Form onSubmit={addShow()}>
-          <Label for="show-name-Input">Show Name</Label>
+          <Label htmlFor="show-name-Input">Show Name</Label>
           <Input id="show-name-Input" type="text" placeholder="" />
 
-          <Label for="show-location-Input">Show Location</Label>
+          <Label htmlFor="show-location-Input">Show Location</Label>
           <Input id="show-location-Input" stype="text" />
 
-          <Label for="show-description-Input">Show Description</Label>
+          <Label htmlFor="show-description-Input">Show Description</Label>
           <Input id="show-description-Input" stype="text" />
 
-          <Label for="show-date-Input">Show Date</Label>
+          <Label htmlFor="show-date-Input">Show Date</Label>
           <Input id="show-date-Input" stype="text" />
         </Form>
         <Button onClick={() => toggleModal(false)}>Add Song</Button>
@@ -61,9 +62,15 @@ export default function UpcomingShowsList({ shows }) {
           key={show.id}
         />
       ))}
-    </ListTile>
+    </VerticalCard>
   );
 }
+UpcomingShowsList.propTypes = {
+  shows: PropTypes.instanceOf(Array),
+};
+UpcomingShowsList.defaultProps = {
+  shows: [],
+};
 const Label = styled.label`
   color: ${({ theme }) => theme.darkText};
 `;
