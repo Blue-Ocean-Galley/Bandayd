@@ -39,7 +39,6 @@ export default function App() {
           <Route path="/shows">
             <main>
               <Navigation />
-              <div>New shows coming soon!</div>
               <TourList />
             </main>
           </Route>

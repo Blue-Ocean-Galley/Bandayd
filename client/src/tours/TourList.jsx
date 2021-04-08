@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import TourEntry from './TourEntry.jsx';
 
-import { Button, Tile, Form } from '../styles/globalStyles';
+import { Button, Tile, Card, Form } from '../styles/globalStyles';
 
 Modal.setAppElement(document.getElementById('app'));
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.6)';
@@ -17,6 +17,7 @@ export default function TourList() {
   const [showInfo, setShowInfo] = useState({});
   const [shows, setShows] = useState([
     {
+      id: 1,
       name: 'Our cool show!!',
       showDate: '2020-07-19 09:08:35',
       displayName: 'Boston House of blues',
@@ -30,6 +31,7 @@ export default function TourList() {
       updatedAt: new Date(),
     },
     {
+      id: 2,
       name: 'Our lame show!!',
       showDate: '2020-06-19 09:28:35',
       displayName: 'The Whiskey a go-go',
@@ -98,20 +100,24 @@ export default function TourList() {
     }
   };
 
-  const renderShows = () => shows.map((show) => <TourEntry show={show} />);
+  const renderShows = () => shows.map((show) => <TourEntry key={show.id} show={show} />);
 
   return (
     <div>
-      <h3>Upcoming Shows</h3>
-      <Button onClick={() => setTourModal(!showTourModal)}>Add New Show</Button>
+      <span>
+        <h3>Upcoming Shows</h3>
+        <Button onClick={() => setTourModal(!showTourModal)}>Add New Show</Button>
+      </span>
       {renderShows()}
+
+      {/* MODAL */}
       <Modal
         isOpen={showTourModal}
         onRequestClose={() => setTourModal(!showTourModal)}
         shouldCloseOnOverlayClick
       >
         <h4>Add A New Show</h4>
-        <form>
+        <Form>
           <div>
             Name:
           </div>
@@ -124,7 +130,7 @@ export default function TourList() {
             <Button onClick={searchAddress}>Search</Button>
             <Button>Confirm</Button>
           </div>
-        </form>
+        </Form>
         <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '300px', width: '300px' }}>
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
