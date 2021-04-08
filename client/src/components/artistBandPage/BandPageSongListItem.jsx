@@ -1,20 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function BandSongListItem({ song, artist }) {
+export default function BandSongListItem({ trackId }) {
   return (
-    <div>
-      <button type="button">Play</button>
-      <span>{song}</span>
-      <span>{artist}</span>
-    </div>
+    // eslint-disable-next-line jsx-a11y/media-has-caption
+    <iframe src={`https://open.spotify.com/embed/track/${trackId}`} width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
   );
 }
 BandSongListItem.propTypes = {
-  song: PropTypes.string,
-  artist: PropTypes.string,
+  trackId: PropTypes.string,
 };
 BandSongListItem.defaultProps = {
-  song: '',
-  artist: '',
+  trackId: '6iwOCZFBlw3Xjj0fuO3sI6',
 };
