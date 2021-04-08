@@ -1,56 +1,48 @@
-import React, {useState} from 'react';
-import BandSongListItem from './BandPageSongListItem.jsx'
-import Modal from 'react-modal'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-} from 'react-router-dom';
+import React, { useState } from 'react';
+import Modal from 'react-modal';
+import styled from 'styled-components';
+import BandSongListItem from './BandPageSongListItem';
+import { Button, Tile, Input } from '../../styles/globalStyles';
+import Tabs from '../../styles/tabs';
 
 function addSong() {
 
 }
-function BandSongList ({songs}) {
-  const [modalIsOpen, setModalIsOpen] = useState(false)
-    return (
+export default function BandSongList({ songs }) {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const SongList = songs.map((song) => (
+    <BandSongListItem
+      artist={song.artist}
+      song={song.song}
+      key={song.id}
+    />
+  ));
 
-      <div id="outer-song-list-container">
-        <div>
-          <span>Songs</span>
-          <span>Videos</span>
-        </div>
-        <div id="song-list-container">
-          <h3>Featured Songs</h3>
-          <button onClick={() => {setModalIsOpen(true)}}>+</button>
-          <Modal isOpen={modalIsOpen}>
-            <h3>Add a Song</h3>
-            <form onSubmit={addSong()}>
-              <label hmtlFor="song-title-input">Song Title</label>
-              <input id="song-title-input" type="text" placeholder=""></input>
+  return (
+    <Container>
+      <h3>Featured Songs</h3>
+      <Tabs
+        headers={['songs', 'videos']}
+        contents={[SongList, SongList]}
+      />
+      <Button onClick={() => { setModalIsOpen(true); }}> + </Button>
+      <Modal
+        isOpen={modalIsOpen}
+        shouldCloseOnOverlayClick
+      >
+        <h3>Add a Song</h3>
+        <form onSubmit={addSong()}>
+          <Input id="song-title-Input" type="text" placeholder="" />
 
-              <label hmtlFor="song-album-input">Album</label>
-              <input id="song-album-input" type="text"></input>
+          <Input id="song-album-Input" type="text" />
 
-              <label hmtlFor="song-genre-input">Genre</label>
-              <input id="song-genre-input" type="text"></input>
-            </form>
-            <button onClick={() => setModalIsOpen(false)}>Add Song</button>
-          </Modal>
-          {songs.map((song) => {
-            return (
-              <BandSongListItem
-                artist={song.artist}
-                song={song.song}
-                key={song.id}
-              />
-            )
-
-          })}
-        </div>
-      </div>
-    )
+          <Input id="song-genre-Input" type="text" />
+        </form>
+        <Button onClick={() => { setModalIsOpen(false); }}> Add Song </Button>
+      </Modal>
+    </Container>
+  );
 }
-
-export default BandSongList;
-
+const Container = styled(Tile)`
+  flex-direction: column;
+`;
