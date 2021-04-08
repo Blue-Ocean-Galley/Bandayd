@@ -15,7 +15,7 @@ export default function Tabs({ headers, contents }) {
       <TabRow>
         {
           headers.map((header, idx) => (
-            <Tab onClick={handleClick} active={active === idx} id={idx}>
+            <Tab onClick={handleClick} active={active === idx} key={header} id={idx}>
               {header}
             </Tab>
           ))
@@ -23,8 +23,8 @@ export default function Tabs({ headers, contents }) {
       </TabRow>
       <>
         {
-          contents.map((content, idx) => (
-            <TabContent active={active === idx} id={idx}>
+          contents.map((content, idx) => ( // figure out a better key here..
+            <TabContent active={active === idx} key={Math.random() * 500} id={idx}>
               {content}
             </TabContent>
           ))
