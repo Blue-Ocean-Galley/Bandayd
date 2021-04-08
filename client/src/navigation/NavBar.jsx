@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import Dropdown from './Dropdown';
-import { Button } from '../styles/globalStyles';
+import Login from '../modals/login';
 
 const Navigation = () => {
   const [isLoggedIn, logIn] = useState(false);
@@ -18,14 +18,14 @@ const Navigation = () => {
           <NavItem><StyledNavLink to="/">Home</StyledNavLink></NavItem>
           <NavItem><StyledNavLink to="/bands">Bands</StyledNavLink></NavItem>
           <NavItem><StyledNavLink to="/shows">Shows</StyledNavLink></NavItem>
-          <NavItem onClick={() => setListOpen(isLoggedIn && !listOpen)}>
+          <NavItem>
             {isLoggedIn ? (
               <DropDownContainer>
                 <StyledNavLink to="/" onClick={() => setListOpen(!listOpen)}>Account</StyledNavLink>
                 { listOpen ? <Dropdown /> : null }
               </DropDownContainer>
             )
-              : <Button onClick={() => logIn(!isLoggedIn)}>Log In</Button>}
+              : <Login cb={() => logIn(!isLoggedIn)} />}
           </NavItem>
         </NavList>
       </RightColumn>

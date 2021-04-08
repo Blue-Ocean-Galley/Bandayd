@@ -8,7 +8,7 @@ exports.getBands = (req, res, next) => {
 
   return Band.findAll({
     attributes: { exclude: ['createdAt', 'updatedAt', 'GenreId'] },
-    limit: count,
+    limit: Number(count),
     where: {
       id: {
         [Op.gt]: page - 1,

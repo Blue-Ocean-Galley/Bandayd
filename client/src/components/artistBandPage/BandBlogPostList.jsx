@@ -41,6 +41,9 @@ function BandBlogPostList ({blogPosts}) {
   )
 
 }
-
-export default BandBlogPostList;
-
+BlogPostList.propTypes = {
+  posts: PropTypes.instanceOf(Array),
+};
+BlogPostList.defaultProps = {
+  posts: [],
+};

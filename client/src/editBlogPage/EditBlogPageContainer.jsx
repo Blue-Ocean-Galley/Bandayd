@@ -1,108 +1,93 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import {
-  Card,
+  VerticalCard,
   Tile,
-  ListTile,
-  Button,
-  TextArea,
-  ListItem,
 } from '../styles/globalStyles';
+import PastBlogPosts from './PastBlogPosts';
+import EditArea from './EditArea';
 
-export default function EditBlogPageContainer() {
-  // pass in band name/id
-  // get all blog posts for that band
-  // for each, create a  card
-  // list: date/title of blog post
-  // on card click, edit mode:
-  // populate edit tile with that post's text
-  // display save/cancel buttons
-
-  // if cancel is clicked, end edit mode, clear tile, hide buttons
-  const [text, setText] = useState('');
+export default function EditBlogPageContainer({ bandId = 1 }) {
   const [isEditing, setIsEditing] = useState(false);
   useEffect(() => {
   }, [isEditing]);
+
   const [currentPost, setCurrentPost] = useState({});
   useEffect(() => {
-    setText(currentPost.text);
   }, [isEditing]);
 
-  const handleSave = () => {
-    // put request with updated
+  const [posts, setPosts] = useState({});
+  useEffect(() => {
+    // Initial get request
+    axios.get(`http://localhost:3010/api/blogs/${bandId}`).then((res) => {
+      const postObj = {};
+      res.data.forEach((post) => {
+        postObj[post.id] = post;
+      });
+      setPosts(postObj);
+    });
+  }, []);
+
+  const handleSave = (post) => {
     setIsEditing(false);
+    if (!currentPost.id) {
+      // if no id, it's as new post
+      axios.post(`http://localhost:3010/api/blogs/${bandId}`,
+        {
+          name: post.name,
+          post: post.post,
+          bandId,
+        }).then((res) => {
+        // Adds new post by id to post list
+        setPosts((prevState) => ({ ...prevState, [res.data.id]: res.data }));
+      });
+    } else if (post.post !== currentPost.post
+      || post.name !== currentPost.name) { // only send put request if text or title was changed
+      setPosts((prevState) => ({ ...prevState, [post.id]: post }));
+
+      axios.put(`http://localhost:3010/api/blogs/post/${post.id}`,
+        {
+          id: post.id,
+          name: post.name,
+          post: post.post,
+          bandId,
+        });
+    }
+  };
+
+  const handleBlogPostClick = (post) => {
+    setIsEditing(true);
+    setCurrentPost(post);
   };
 
   return (
     <Container>
-      <PastBlogPosts>
-        <h3> Past Blog Posts </h3>
-        <Button onClick={() => setIsEditing(true)}> Create New </Button>
-        <ListItem onClick={() => {
-          setIsEditing(true);
-          setCurrentPost({ text: 'list item 1' });
-        }}
-        >
-          <p>
-            Title and snippet
-          </p>
-        </ListItem>
-        <ListItem onClick={() => {
-          setIsEditing(true);
-          setCurrentPost({ text: 'list item 2' });
-        }}
-        >
-          <p>
-            Title and snippet
-          </p>
-        </ListItem>
-        <ListItem onClick={() => {
-          setIsEditing(true);
-          setCurrentPost({ text: 'list item 3' });
-        }}
-        >
-          <p>
-            Title and snippet
-          </p>
-        </ListItem>
-      </PastBlogPosts>
-      <EditArea>
-        {isEditing
-          ? (
-            <Card>
-              <TextArea onChange={(e) => setText(e.target.value)} value={text} />
-              <div>
-                <Button onClick={() => setIsEditing(false)}>
-                  Cancel
-                </Button>
-                <Button onClick={() => handleSave()}>
-                  Save
-                </Button>
-              </div>
-            </Card>
-          )
-          : (
-            <Card>
-              <p> Choose a post to edit </p>
-            </Card>
-          )}
-      </EditArea>
+      <PastBlogPosts
+        onPostClick={handleBlogPostClick}
+        posts={Object.values(posts)}
+      />
+      {isEditing
+        ? (
+          <EditArea
+            id={currentPost.id}
+            text={currentPost.post}
+            title={currentPost.name}
+            handleSave={handleSave}
+            handleCancel={() => setIsEditing(false)}
+          />
+        )
+        : (
+          <VerticalCard>
+            <p> Choose a post to edit </p>
+          </VerticalCard>
+        )}
     </Container>
   );
 }
 
-const PastBlogPosts = styled(ListTile)`
-  width: 32%;
-  > ${ListItem} {
-    cursor: pointer;
-  }
-`;
-
-const EditArea = styled(Tile)`
-  flex: 2;
-`;
-
 const Container = styled(Tile)`
   flex-direction: row;
   justify-content: flex-start;
+  align-items: flex-start;
 `;

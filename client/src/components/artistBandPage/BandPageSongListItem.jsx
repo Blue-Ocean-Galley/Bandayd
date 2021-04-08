@@ -1,43 +1,20 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-
-class BandSongListItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    };
-  }
-
-  componentDidMount() {
-  }
-
-  handleChange(event) {
-
-  }
-
-  playSong() {
-
-  }
-
-  render() {
-    return (
-      <Router>
-        <div>
-          <button type="button" onClick={this.playSong.bind(this)}>Play</button>
-          <span id="song-list-songname">{this.props.song}</span>
-          <span id="song-list-artist">{this.props.artist}</span>
-        </div>
-      </Router>
-    )
-  }
+export default function BandSongListItem({ song, artist }) {
+  return (
+    <div>
+      <button type="button">Play</button>
+      <span>{song}</span>
+      <span>{artist}</span>
+    </div>
+  );
 }
-
-export default BandSongListItem;
-
+BandSongListItem.propTypes = {
+  song: PropTypes.string,
+  artist: PropTypes.string,
+};
+BandSongListItem.defaultProps = {
+  song: '',
+  artist: '',
+};

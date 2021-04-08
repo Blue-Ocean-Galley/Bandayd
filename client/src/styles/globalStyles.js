@@ -86,6 +86,10 @@ const CardPreset = styled.div`
   justify-content: space-between;
 `;
 
+const VerticalCardPreset = styled(CardPreset)`
+  flex-direction: column;
+`;
+
 const FormPreset = styled.form`
   margin: auto;
   display: flex;
@@ -113,3 +117,4 @@ export const TextArea = TextAreaPreset;
 export const Card = CardPreset;
 export const Form = FormPreset;
 export const ListItem = ListItemPreset;
+export const VerticalCard = VerticalCardPreset;
