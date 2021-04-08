@@ -6,7 +6,7 @@ export default function Dropdown() {
   return (
     <DropDownList>
       <li>
-        <DropdownLink to="/">Profile</DropdownLink>
+        <DropdownLink to="/bands">Profile</DropdownLink>
       </li>
       <li>
         <DropdownLink to="/editblog">Blog</DropdownLink>
@@ -25,17 +25,18 @@ const DropDownList = styled.ul`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.primary_400};
+  background-color: ${({ theme }) => theme.background};
   width: fit-content;
   > li {
     display: block;
-    background-color: ${({ theme }) => theme.primary_400};
+    background-color: ${({ theme }) => theme.background};
     width: max-content;
     padding: 1rem 1rem;
     width: 100%;
   }
   > li:hover {
-    background-color: ${({ theme }) => theme.primary_600};
+    background-color: ${({ theme }) => theme.secondary_light};
+    color: ${({ theme }) => theme.dark_text}
   }
 `;
 
