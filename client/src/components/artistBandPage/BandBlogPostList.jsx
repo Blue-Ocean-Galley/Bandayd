@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import axios from 'axios';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import BandBlogPostItem from './BandBlogPostItem';
 import {
   ListTile,
   StickyHeaderContainer,
+  Button,
+  StyledLink,
 } from '../../styles/globalStyles';
 
 export default function BlogPostList() {
@@ -27,31 +28,31 @@ export default function BlogPostList() {
     <StyledList>
       <StickyHeaderContainer>
         <h3>Past Blog Posts</h3>
-        <button type="button">
-          <Link to="/editblog">
+        <Button>
+          <StyledLink to="/editblog">
             Create New
-          </Link>
-        </button>
+          </StyledLink>
+        </Button>
       </StickyHeaderContainer>
       { Object.values(posts).map((blogPost) => (
-        <BandBlogPostItem
-          post={blogPost.post}
-          name={blogPost.name}
-          id={blogPost.id}
-          key={blogPost.id}
-        />
+        <StyledLink to="/editblog">
+          <BandBlogPostItem
+            post={blogPost.post}
+            name={blogPost.name}
+            id={blogPost.id}
+            key={blogPost.id}
+          />
+        </StyledLink>
       ))}
     </StyledList>
   );
 }
-// BlogPostList.propTypes = {
-//   posts: PropTypes.instanceOf(Array),
-// };
-// BlogPostList.defaultProps = {
-//   posts: [],
-// };
 const StyledList = styled(ListTile)`
   width: 50%;
   height: 40rem;
   overflow: auto;
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+  display: none;
+  }
 `;
