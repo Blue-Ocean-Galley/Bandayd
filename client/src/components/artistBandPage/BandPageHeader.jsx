@@ -1,18 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Modal from 'react-modal'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-} from 'react-router-dom';
 import { Tile } from '../../styles/globalStyles';
 
-function BandPageHeader ({picture}) {
-  const [modalIsOpen, setModalIsOpen] = useState(false)
+export default function BandPageHeader({ profileUrl }) {
   return (
     <HeaderContainer>
+<<<<<<< HEAD
       <div id="proflie-pic-uploader">
         <button onClick={() => { setModalIsOpen(true) }}>+</button>
         <Modal isOpen={modalIsOpen}>
@@ -27,9 +21,27 @@ function BandPageHeader ({picture}) {
       </div>
     </HeaderContainer>
   )
+=======
+      <ProfilePic src={profileUrl} alt="band-profile-pic" />
+      <h1> Band Name </h1>
+    </HeaderContainer>
+  );
+>>>>>>> ec89f8334a8735d246916a7a79993bc3c015d7e0
 }
 
 const HeaderContainer = styled(Tile)`
+  justify-content: flex-start;
+  align-items: center;
+  background-color: '#601b06';
 `;
-
-export default BandPageHeader;
+const ProfilePic = styled.img`
+  width: 20rem;
+  height: 20rem;
+  margin: 2rem;
+`;
+BandPageHeader.propTypes = {
+  profileUrl: PropTypes.string,
+};
+BandPageHeader.defaultProps = {
+  profileUrl: 'http://placeimg.com/640/480/fashion',
+};

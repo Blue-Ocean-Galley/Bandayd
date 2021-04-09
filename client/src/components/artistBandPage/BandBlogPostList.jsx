@@ -35,7 +35,10 @@ export default function BlogPostList() {
         </Button>
       </StickyHeaderContainer>
       { Object.values(posts).map((blogPost) => (
-        <StyledLink to="/editblog">
+        <StyledLink
+          to="/editblog"
+          key={blogPost.id}
+        >
           <BandBlogPostItem
             post={blogPost.post}
             name={blogPost.name}

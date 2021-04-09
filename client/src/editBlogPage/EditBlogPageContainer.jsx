@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import axios from 'axios';
 import {
@@ -8,8 +8,10 @@ import {
 } from '../styles/globalStyles';
 import PastBlogPosts from './PastBlogPosts';
 import EditArea from './EditArea';
+import cookies from '../cookies';
 
-export default function EditBlogPageContainer({ bandId = 1 }) {
+export default function EditBlogPageContainer() {
+  const bandId = cookies.get('userId');
   const [isEditing, setIsEditing] = useState(false);
   useEffect(() => {
   }, [isEditing]);
@@ -93,6 +95,6 @@ const Container = styled(Tile)`
   align-items: flex-start;
 `;
 
-EditBlogPageContainer.propTypes = {
-  bandId: PropTypes.number.isRequired,
-};
+// EditBlogPageContainer.propTypes = {
+//   bandId: PropTypes.number.isRequired,
+// };
