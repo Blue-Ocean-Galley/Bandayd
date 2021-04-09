@@ -38,9 +38,25 @@ export default function UpcomingShowsList() {
       border: 'none',
     },
   };
-  const handleAddShow = () => {
-    toggleModal(false);
-  };
+
+  const handleSave = (show) => {
+    axios.post(`http://localhost:3010/api/shows/${bandId}`,
+      {
+        name: show.name,
+        location: show.location,
+        description: show.description,
+        date: show.date,
+        bandId,
+      }).then((res) => {
+        // Adds new show by id to show list
+        setSongs((prevState) => ({ ...prevState, [res.data.id]: res.data }));
+      });
+  }
+
+  const [currentName, setName] = useState('');
+  const [currentLocation, setLocation] = useState('');
+  const [currentDescription, setDescription] = useState('');
+  const [currentDate setDate] = useState('');
 
   return (
     <VerticalCard>
@@ -53,20 +69,21 @@ export default function UpcomingShowsList() {
         shouldCloseOnOverlayClick
       >
         <h3>Add a Show</h3>
-        <Form onSubmit={() => handleAddShow()}>
-          <Label htmlFor="show-name-Input">Show Name</Label>
-          <Input id="show-name-Input" type="text" placeholder="" />
+        <Form onSubmit={handleSave({ name: currentName, location: currentLocation, description: currentDescription, date: currentDate })}>
+          <Label htmlfor="show-name-Input">Show Name</Label>
+          <Input onChange={(e) => setName(e.target.value)} id="show-name-Input" type="text" defaultValue={currentTitle} />
 
-          <Label htmlFor="show-location-Input">Show Location</Label>
-          <Input id="show-location-Input" stype="text" />
+          <Label htmlfor="show-location-Input">Show Location</Label>
+          <Input onChange={(e) => setLocation(e.target.value)} id="show-location-Input" type="text" defaultValue={currentLocation}/>
 
-          <Label htmlFor="show-description-Input">Show Description</Label>
-          <Input id="show-description-Input" stype="text" />
+          <Label htmlfor="show-description-Input">Show Description</Label>
+          <Input onChange={(e) => setDescription(e.target.value)} id="show-description-Input" type="text" defaultValue={currentDescription} />
 
-          <Label htmlFor="show-date-Input">Show Date</Label>
-          <Input id="show-date-Input" stype="text" />
+          <Label htmlfor="show-date-Input">Show Date</Label>
+          <Input onChange={(e) => setDate(e.target.value)} id="show-date-Input" type="text" defaultValue={currentDate} />
+
+          <Button type="submit" onClick={() => toggleModal(false)}>Add Song</Button>
         </Form>
-        <Button onClick={() => toggleModal(false)}>Add Song</Button>
       </Modal>
       {shows.map((show) => (
         <UpcomingShowsListItem
