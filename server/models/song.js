@@ -1,5 +1,7 @@
-const { Model } = require('sequelize');
-
+'use strict';
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Song extends Model {
     /**
@@ -7,25 +9,27 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) { // eslint-disable-line no-eval
+    static associate(models) {
       // define association here
-      models.Band.hasMany(Song);
-      Song.belongsTo(models.Band);
+      Song.belongsTo(models.Band, {
+        foreignKey: 'BandId',
+      });
     }
-  }
+  };
   Song.init({
     title: DataTypes.STRING,
     album: DataTypes.STRING,
     track: DataTypes.INTEGER(3),
     url: DataTypes.TEXT,
-    bandId: {
+    BandId: {
       type: DataTypes.INTEGER,
       references: {
         model: { tableName: 'Bands' },
         key: 'id',
-        allowNull: false,
       },
-    },
+      onUpdate: 'CASCADE',
+      onDelete: 'SET NULL',
+    }
   }, {
     sequelize,
     modelName: 'Song',

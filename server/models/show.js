@@ -1,5 +1,7 @@
-const { Model } = require('sequelize');
-
+'use strict';
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Show extends Model {
     /**
@@ -7,27 +9,28 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) { // eslint-disable-line no-eval
+    static associate(models) {
       // define association here
-      models.Band.hasMany(Show);
-      Show.belongsTo(models.Band);
+      Show.belongsTo(models.Band, {
+        foreignKey: 'BandId',
+      });
     }
-  }
-
+  };
   Show.init({
     name: DataTypes.STRING,
     showDate: DataTypes.DATE,
-    city: DataTypes.STRING,
-    state: DataTypes.STRING,
-    country: DataTypes.STRING,
-    bandId: {
+    latitude: DataTypes.FLOAT,
+    longitude: DataTypes.FLOAT,
+    city: DataTypes.STRING(64),
+    state: DataTypes.STRING(64),
+    country: DataTypes.STRING(64),
+    BandId: {
       type: DataTypes.INTEGER,
       references: {
         model: { tableName: 'Bands' },
         key: 'id',
-        allowNull: false,
       },
-    },
+    }
   }, {
     sequelize,
     modelName: 'Show',

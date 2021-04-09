@@ -26,7 +26,7 @@ exports.getAllBlog = (req, res, next) => {
 exports.getABlog = (req, res, next) => {
   const blogID = req.params.id;
   return Blog.findAll({
-    attributes: { exclude: ['BandId', 'createdAt', 'updatedAt'] },
+    attributes: { exclude: ['createdAt', 'updatedAt'] },
     where: {
       id: blogID,
     },

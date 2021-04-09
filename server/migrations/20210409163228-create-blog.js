@@ -17,13 +17,14 @@ module.exports = {
       post: {
         type: Sequelize.TEXT
       },
-      bandId: {
+      BandId: {
         type: Sequelize.INTEGER,
         references: {
           model: { tableName: 'Bands' },
           key: 'id',
-          allowNull: false,
-        }
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
       },
       createdAt: {
         allowNull: false,
