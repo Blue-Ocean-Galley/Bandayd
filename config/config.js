@@ -2,8 +2,8 @@ const logger = require('./winston');
 
 module.exports = {
   development: {
-    username: 'root',
-    password: 'root',
+    username: 'student',
+    password: 'student',
     database: 'bandayd_dev',
     host: 'localhost',
     dialect: 'mariadb',

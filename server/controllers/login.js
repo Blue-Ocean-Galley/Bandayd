@@ -12,18 +12,18 @@ exports.login = (req, res, next) => Band.findOne({
   // else create the new user
     res.status(201).send(`Successfully created new band ${req.body.name}`);
     next();
-})
-  .catch((err) => {
-    logger.error(err);
-    res.status(500).send('Unable to login');
-    next(err);
   })
   .then((data) => {
-    // console.log(data);
+  // console.log(data);
     if (!data) {
       res.status(401).send('Error with email/password');
     } else {
       res.status(200).send(data);
     }
     next();
+  })
+  .catch((err) => {
+    logger.error(err);
+    res.status(500).send('Unable to login');
+    next(err);
   });
