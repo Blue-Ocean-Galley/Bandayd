@@ -8,9 +8,9 @@ import Login from '../modals/login';
 export default function CallToAction() {
   return (
     <Container>
-      <p>
+      <h3>
         Ready to get  started?
-      </p>
+      </h3>
       <div>
         <Button> Sign Up </Button>
         <Login />
@@ -35,7 +35,7 @@ const Container = styled(Tile)`
     flex-direction: row;
     justify-content: space-between;
   }
-  > p {
+  > h3 {
     width: max-content;
     font-size: 3rem;
   }
