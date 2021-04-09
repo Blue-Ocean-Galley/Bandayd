@@ -57,7 +57,7 @@ exports.getOneSong = (req, res, next) => {
 exports.addOneSong = (req, res, next) => {
   const { title, album, track, url } = req.body;
   const { bandId } = req.params;
-
+  res.status(200).send('worked')
   return Song.create({
     title,
     album,

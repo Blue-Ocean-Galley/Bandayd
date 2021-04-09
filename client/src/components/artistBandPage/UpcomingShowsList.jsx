@@ -11,19 +11,14 @@ import {
   Input,
 } from '../../styles/globalStyles';
 
-<<<<<<< HEAD
-export default function UpcomingShowsList({ shows }) {
-  let bandId = 1
-=======
 export default function UpcomingShowsList() {
   const bandId = 1;
->>>>>>> ec89f8334a8735d246916a7a79993bc3c015d7e0
   const [shows, setShows] = useState([]);
   useEffect(() => {
     axios.get(`http://localhost:3010/api/shows/${bandId}`).then((res) => {
       const showsObj = {};
       res.data.forEach((show) => {
-        showsObj[show.id] = shows;
+        showsObj[show.id] = show;
       });
       setShows(showsObj);
     });
