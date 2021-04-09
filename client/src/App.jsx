@@ -10,6 +10,7 @@ import darkTheme from './styles/theme';
 import Navigation from './navigation/NavBar';
 import SplashPageContainer from './splashPage/SplashPageContainer';
 import EditBlogPageContainer from './editBlogPage/EditBlogPageContainer';
+import TourList from './tours/TourList';
 import BandPage from './components/artistBandPage/BandPage';
 
 export default function App() {
@@ -39,7 +40,7 @@ export default function App() {
           <Route path="/shows">
             <main>
               <Navigation />
-              <div>New shows coming soon!</div>
+              <TourList />
             </main>
           </Route>
           <Route path="/login">
