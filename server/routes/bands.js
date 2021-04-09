@@ -9,6 +9,6 @@ router.get('/', getBands);
 // return bandId as req.params
 router.get('/:id', getOneBand);
 // update profile picture
-router.put('/photo', updateProfilePicture);
+router.put('/photo/:id', updateProfilePicture);
 
 module.exports = router;
