@@ -7,7 +7,7 @@ exports.getBands = (req, res, next) => {
   const count = req.query.count || 5;
 
   return Band.findAll({
-    attributes: { exclude: ['createdAt', 'updatedAt', 'GenreId'] },
+    attributes: { exclude: ['createdAt', 'updatedAt', 'GenreId', 'password'] },
     limit: Number(count),
     where: {
       id: {
@@ -29,7 +29,7 @@ exports.getOneBand = (req, res, next) => {
   const bandId = req.params.id;
 
   return Band.findOne({
-    attributes: { exclude: ['createdAt', 'updatedAt', 'GenreId'] },
+    attributes: { exclude: ['createdAt', 'updatedAt', 'GenreId', 'password'] },
     where: {
       id: bandId,
     },
