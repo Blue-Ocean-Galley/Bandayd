@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Show.init({
     name: DataTypes.STRING,
+    // bandName: DataTypes.TEXT,
     showDate: DataTypes.DATE,
     city: DataTypes.STRING,
     state: DataTypes.STRING,
