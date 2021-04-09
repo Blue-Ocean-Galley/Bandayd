@@ -65,7 +65,7 @@ export default function BandPage() {
     <div className="band-page-container">
       <BandPageHeader bandInfo={bandInfo} />
       <FirstSection>
-        <MediaList songs={tempSongs} />
+        <MediaList/>
         <Column>
           <BandBio bandBio={bandInfo.description} />
           <UpcomingShowsList shows={tempShows} />
