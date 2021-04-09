@@ -3,6 +3,8 @@ module.exports = {
     return queryInterface.bulkInsert('Shows', [
       {
         "id": 1,
+        "bandName": "The Plastic Macs",
+        "displayName": "House of Blues, Boston, MA",
         "name": "Aerified",
         "showDate": "2020-04-11 05:33:29",
         "city": "Penamacor",
@@ -16,6 +18,8 @@ module.exports = {
       },
       {
         "id": 2,
+        "bandName": "The Plastic Macs",
+        "displayName": "House of Blues, Boston, MA",
         "name": "Subin",
         "showDate": "2020-07-19 09:08:35",
         "city": "Vila Velha de Ródão",
@@ -30,6 +34,8 @@ module.exports = {
       {
         "id": 3,
         "name": "Sonair",
+        "bandName": "The Plastic Macs",
+        "displayName": "House of Blues, Boston, MA",
         "showDate": "2021-01-04 02:53:24",
         "city": "Orvalho",
         "state": "Castelo Branco",
@@ -42,6 +48,8 @@ module.exports = {
       },
       {
         "id": 4,
+        "bandName": "The Plastic Macs",
+        "displayName": "House of Blues, Boston, MA",
         "name": "Lotlux",
         "showDate": "2020-10-19 12:26:50",
         "city": "Aranhas",
@@ -55,6 +63,8 @@ module.exports = {
       },
       {
         "id": 5,
+        "bandName": "The Plastic Macs",
+        "displayName": "House of Blues, Boston, MA",
         "name": "Wrapsafe",
         "showDate": "2020-06-10 11:11:08",
         "city": "Vila Velha de Ródão",
@@ -68,6 +78,8 @@ module.exports = {
       },
       {
         "id": 6,
+        "bandName": "The Plastic Macs",
+        "displayName": "House of Blues, Boston, MA",
         "name": "Lotstring",
         "showDate": "2020-11-18 04:56:00",
         "city": "Proença-a-Nova",
@@ -81,6 +93,8 @@ module.exports = {
       },
       {
         "id": 7,
+        "bandName": "The Plastic Macs",
+        "displayName": "House of Blues, Boston, MA",
         "name": "Bitchip",
         "showDate": "2020-10-17 21:10:02",
         "city": "Rosmaninhal",
@@ -94,6 +108,8 @@ module.exports = {
       },
       {
         "id": 8,
+        "bandName": "The Plastic Macs",
+        "displayName": "House of Blues, Boston, MA",
         "name": "Ventosanzap",
         "showDate": "2020-04-08 12:17:56",
         "city": "Salvador",
@@ -107,6 +123,8 @@ module.exports = {
       },
       {
         "id": 9,
+        "bandName": "The Electric Kitty-Cats",
+        "displayName": "House of Blues, Boston, MA",
         "name": "Alphazap",
         "showDate": "2020-05-14 01:50:36",
         "city": "Idanha-a-Nova",
@@ -120,6 +138,8 @@ module.exports = {
       },
       {
         "id": 10,
+        "bandName": "The Plastic Macs",
+        "displayName": "House of Blues, Boston, MA",
         "name": "Asoka",
         "showDate": "2020-10-10 11:42:22",
         "city": "Águas",

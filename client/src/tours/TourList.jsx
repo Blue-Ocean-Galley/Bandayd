@@ -1,10 +1,9 @@
 /* eslint-disable arrow-body-style */
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import TourEntry from './TourEntry.jsx';
-import { latLngBounds } from 'leaflet';
+import TourEntry from './TourEntry';
 
 import { Button, Tile, Card, Form } from '../styles/globalStyles';
 
@@ -18,6 +17,7 @@ export default function TourList() {
   const [address, setAddress] = useState('');
   const [showInfo, setShowInfo] = useState({});
   const [newDate, setNewDate] = useState();
+  const [newTime, setNewTime] = useState();
   const [shows, setShows] = useState([
     {
       id: 1,
@@ -28,8 +28,9 @@ export default function TourList() {
       state: 'Massachusetts',
       country: 'USA',
       bandId: 2,
+      bandName: 'The Electric Kitty-Cats',
       latitude: 34.5632,
-      longitude: -14.357788,
+      longitude: 4.357788,
       createdAt: new Date(),
       updatedAt: new Date(),
     },
@@ -42,8 +43,9 @@ export default function TourList() {
       state: 'California',
       country: 'USA',
       bandId: 2,
+      bandName: 'The Electric Kitty-Cats',
       latitude: 35.4234,
-      longitude: -16.3423,
+      longitude: -1.3423,
       createdAt: new Date(),
       updatedAt: new Date(),
     },
@@ -63,6 +65,11 @@ export default function TourList() {
   const updateNewDate = (e) => {
     e.preventDefault();
     setNewDate(e.target.value);
+  };
+
+  const updateNewTime = (e) => {
+    e.preventDefault();
+    setNewTime(e.target.value);
   };
 
   const searchAddress = (e) => {
@@ -152,9 +159,15 @@ export default function TourList() {
             <div>
               Date:
             </div>
-            <input type="date" name="show-date"
+            <input type="time" name="show-time" value={newTime} onChange={updateNewTime} />
+            <input
+              type="date"
+              name="show-date"
               value={newDate}
-              min="2021-01-01" max="2031-12-31" />
+              onChange={updateNewDate}
+              min="2021-01-01"
+              max="2031-12-31"
+            />
             <div>
               Address:
             </div>
