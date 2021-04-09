@@ -1,50 +1,81 @@
 import React, { useState } from 'react';
-import UpcomingShowsListItem from './UpcomingShowsListItem.jsx'
-import Modal from 'react-modal'
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Modal from 'react-modal';
+import UpcomingShowsListItem from './UpcomingShowsListItem';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-} from 'react-router-dom';
+  VerticalCard,
+  Button,
+  CircleButton,
+  Input,
+} from '../../styles/globalStyles';
 
-function addShow() {
+export default function UpcomingShowsList({ shows }) {
+  const [showModal, toggleModal] = useState(false);
 
-}
-function UpcomingShowsList ({shows}){
-  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const customModalStyle = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      backgroundColor: '#333',
+      border: 'none',
+    },
+  };
+
+  const addShow = () => {
+  };
+
   return (
-    <div id="show-list-container">
+    <VerticalCard>
       <h3>Upcoming Shows</h3>
-      <button onClick={() => { setModalIsOpen(true) }}>+</button>
-      <Modal isOpen={modalIsOpen}>
+      <CircleButton onClick={() => { toggleModal(true); }}>+</CircleButton>
+      <Modal
+        isOpen={showModal}
+        style={customModalStyle}
+        onRequestClose={() => toggleModal(!showModal)}
+        shouldCloseOnOverlayClick
+      >
         <h3>Add a Show</h3>
-        <form onSubmit={addShow()}>
-          <label for="show-name-input">Show Name</label>
-          <input id="show-name-input" type="text" placeholder=""></input>
+        <Form onSubmit={addShow()}>
+          <Label htmlFor="show-name-Input">Show Name</Label>
+          <Input id="show-name-Input" type="text" placeholder="" />
 
-          <label for="show-location-input">Show Location</label>
-          <input id="show-location-input" stype="text"></input>
+          <Label htmlFor="show-location-Input">Show Location</Label>
+          <Input id="show-location-Input" stype="text" />
 
-          <label for="show-description-input">Show Description</label>
-          <input id="show-description-input" stype="text"></input>
+          <Label htmlFor="show-description-Input">Show Description</Label>
+          <Input id="show-description-Input" stype="text" />
 
-          <label for="show-date-input">Show Date</label>
-          <input id="show-date-input" stype="text"></input>
-        </form>
-        <button onClick={() => setModalIsOpen(false)}>Add Song</button>
+          <Label htmlFor="show-date-Input">Show Date</Label>
+          <Input id="show-date-Input" stype="text" />
+        </Form>
+        <Button onClick={() => toggleModal(false)}>Add Song</Button>
       </Modal>
-      {shows.map((show) => {
-        return (
-          <UpcomingShowsListItem
-            date={show.date}
-            location={show.location}
-            key={show.id}
-          />
-        )
-      })}
-    </div>
-  )
+      {shows.map((show) => (
+        <UpcomingShowsListItem
+          date={show.date}
+          location={show.location}
+          key={show.id}
+        />
+      ))}
+    </VerticalCard>
+  );
 }
-
-export default UpcomingShowsList;
+UpcomingShowsList.propTypes = {
+  shows: PropTypes.instanceOf(Array),
+};
+UpcomingShowsList.defaultProps = {
+  shows: [],
+};
+const Label = styled.label`
+  color: ${({ theme }) => theme.darkText};
+`;
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;

@@ -1,53 +1,58 @@
-import React, {useState} from 'react';
-import Modal from 'react-modal'
-import BandBlogPostItem from './BandBlogPostItem.jsx'
+import React, { useState, useEffect } from 'react';
+// import PropTypes from 'prop-types';
+import axios from 'axios';
+import styled from 'styled-components';
+import BandBlogPostItem from './BandBlogPostItem';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-} from 'react-router-dom';
+  ListTile,
+  StickyHeaderContainer,
+  Button,
+  StyledLink,
+} from '../../styles/globalStyles';
 
-function addBlog () {
+export default function BlogPostList() {
+  const bandId = 1; // change this to read current user
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    // Initial get request
+    axios.get(`http://localhost:3010/api/blogs/${bandId}`).then((res) => {
+      const postObj = {};
+      res.data.forEach((post) => {
+        postObj[post.id] = post;
+      });
+      setPosts(postObj);
+    });
+  }, []);
 
-}
-
-function BandBlogPostList ({blogPosts}) {
-  const [modalIsOpen, setModalIsOpen] = useState(false)
   return (
-    <div id="blog-list-container">
-      <h3>Past Blog Posts</h3>
-      <button onClick={() => { setModalIsOpen(true) }}>+</button>
-      <Modal isOpen={modalIsOpen}>
-        <h3>Add a Blog Post</h3>
-        <form onSubmit={addBlog()}>
-          <label htmlFor="blog-name-input">Blog Name</label>
-          <input id="blog-name-input" type="text" placeholder=""></input>
-
-          <label htmlFor="blog-description-input">Description</label>
-          <input id="blog-description-input" type="text" placeholder=""></input>
-
-          <label htmlFor="blog-post-input">Post</label>
-          <textarea id="blog-post-input"></textarea>
-        </form>
-        <button onClick={() => setModalIsOpen(false)}>Add Blog Post</button>
-      </Modal>
-      {blogPosts.map((blogPost) => {
-        return (
+    <StyledList>
+      <StickyHeaderContainer>
+        <h3>Past Blog Posts</h3>
+        <Button>
+          <StyledLink to="/editblog">
+            Create New
+          </StyledLink>
+        </Button>
+      </StickyHeaderContainer>
+      { Object.values(posts).map((blogPost) => (
+        <StyledLink to="/editblog">
           <BandBlogPostItem
-            title={blogPost.title}
-            body={blogPost.body}
+            post={blogPost.post}
+            name={blogPost.name}
+            id={blogPost.id}
             key={blogPost.id}
           />
-        )
-      })}
-    </div>
-  )
-
+        </StyledLink>
+      ))}
+    </StyledList>
+  );
 }
-// BlogPostList.propTypes = {
-//   posts: PropTypes.instanceOf(Array),
-// };
-// BlogPostList.defaultProps = {
-//   posts: [],
-// };
+const StyledList = styled(ListTile)`
+  width: 50%;
+  height: 40rem;
+  overflow: auto;
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+  display: none;
+  }
+`;

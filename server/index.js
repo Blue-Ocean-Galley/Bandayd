@@ -16,8 +16,14 @@ app.listen(PORT, HOSTNAME, () => {
 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', '/client/dist', 'index.html'));
 });
 >>>>>>> 8ccc3aeb44b556574b48cc93dc30ff39d17596d6
+=======
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', '/client/dist', 'index.html'));
+});
+>>>>>>> 7d30e3e353826adf7ac9b3cc73e734619f8754e8

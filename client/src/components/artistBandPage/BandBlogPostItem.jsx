@@ -1,34 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-} from 'react-router-dom';
+  Card,
+} from '../../styles/globalStyles';
 
-
-class BandBlogPostItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    };
-  }
-
-  componentDidMount() {
-  }
-
-  render() {
-    return (
-      <Router>
-        <div>
-          <span id="blog-list-title">{this.props.title}</span>
-          <span id="blog-list-body">{this.props.body}</span>
-        </div>
-      </Router>
-    )
-  }
+export default function BandBlogPostItem({ name }) {
+  return (
+    <Post>
+      <PostName>{name}</PostName>
+    </Post>
+  );
 }
-
-export default BandBlogPostItem;
-
+BandBlogPostItem.propTypes = {
+  name: PropTypes.string.isRequired,
+};
+const Post = styled(Card)`
+  justify-content: flex-start;
+  align-items: left;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  flex-direction: column;
+`;
+const PostName = styled.p`
+  font-weight: 600;
+  margin-left: 0.5rem;
+  margin-right: 2rem;
+`;

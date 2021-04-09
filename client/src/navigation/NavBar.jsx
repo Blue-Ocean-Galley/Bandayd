@@ -69,13 +69,14 @@ export const NavItem = styled.li`
 export const StyledNavLink = styled(NavLink)`
   display: block;
   text-decoration: none;
-  padding: 14px 14px;
+  padding: 1rem;
+  margin: 0.5rem;
   color: ${({ theme }) => theme.primary_text};
-  background-color: ${({ theme }) => theme.background};
+  background ${({ theme }) => theme.background};
 
   &:hover {
     color: ${({ theme }) => theme.background};
-    background-color: ${({ theme }) => theme.primary_text};
+    background: ${({ theme }) => theme.secondary_light};
   }
 `;
 
