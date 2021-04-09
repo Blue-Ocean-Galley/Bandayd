@@ -48,3 +48,24 @@ exports.getOneBand = (req, res, next) => {
       next(err);
     });
 };
+
+exports.updateProfilePicture = (req, res, next) => {
+  const { photoUrl, bandId } = req.params;
+  // const updatePost = req.body.post;
+  return Band.update({
+    profilePhotoUrl: photoUrl,
+  }, {
+    where: {
+      id: bandId,
+    },
+  })
+    .then(() => {
+      res.status(201).send('Successfully Updated');
+      next();
+    })
+    .catch((err) => {
+      logger.error(err);
+      res.send(400);
+      next(err);
+    });
+};

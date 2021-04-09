@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import Modal from 'react-modal';
+import cookies from '../cookies';
+
 // import PropTypes from 'prop-types';
 import {
   Button,
@@ -14,6 +17,7 @@ Modal.setAppElement(document.getElementById('app'));
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.6)';
 
 export default function AddProfilePicture() {
+  const bandId = cookies.get('userId') || 1;
   const [showModal, toggleModal] = useState(false);
   const [photoUrl, setPhotoUrl] = useState('');
 
@@ -30,10 +34,14 @@ export default function AddProfilePicture() {
       border: 'none',
     },
   };
-
+  // http://placeimg.com/640/480/cats
   const onSave = () => {
     toggleModal(!showModal);
-    console.log(photoUrl);
+    axios.put('http://localhost:3010/api/bands/photo',
+      {
+        photoUrl,
+        bandId,
+      });
   };
 
   return (

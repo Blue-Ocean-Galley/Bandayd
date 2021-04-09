@@ -26,7 +26,7 @@ export default function MediaList() {
           songObj[song.id] = song;
         });
         setSongs(songObj);
-      }).catch((err) => {
+      }).catch(() => {
         const tempSongs = [
           {
             id: 1,
@@ -107,13 +107,13 @@ export default function MediaList() {
       >
         <h3>Add a Song</h3>
         <Form onSubmit={() => {}}>
-          <Label for="song-title-Input">Title</Label>
+          <Label htmlFor="song-title-Input">Title</Label>
           <Input id="song-title-Input" type="text" placeholder="" />
-          <Label for="song-album-Input">Album</Label>
+          <Label htmlFor="song-album-Input">Album</Label>
           <Input id="song-album-Input" type="text" />
-          <Label for="song-Genre-Input">Genre</Label>
+          <Label htmlFor="song-Genre-Input">Genre</Label>
           <Input id="song-genre-Input" type="text" />
-          <Label for="song-link">Spotify Link</Label>
+          <Label htmlFor="song-link">Spotify Link</Label>
           <Input id="song-link" type="url" />
         </Form>
         <Button onClick={() => { toggleModal(false); }}> Add Song </Button>

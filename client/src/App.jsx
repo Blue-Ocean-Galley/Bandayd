@@ -8,9 +8,9 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './styles/globalStyles';
 import darkTheme from './styles/theme';
 import Navigation from './navigation/NavBar';
-import SplashPageContainer from './splashPage/SplashPageContainer';
+// import SplashPageContainer from './splashPage/SplashPageContainer';
 // import EditBlogPageContainer from './editBlogPage/EditBlogPageContainer';
-//import BandPage from './components/artistBandPage/BandPage';
+// import BandPage from './components/artistBandPage/BandPage';
 const SplashPage = lazy(() => import('./splashPage/SplashPageContainer'));
 const EditBlogPage = lazy(() => import('./editBlogPage/EditBlogPageContainer'));
 const BandPage = lazy(() => import('./components/artistBandPage/BandPage'));
@@ -25,7 +25,7 @@ export default function App() {
         <Switch>
           <Route exact path="/">
             <Suspense fallback={renderLoader()}>
-                <SplashPage toPath="/login" />
+              <SplashPage toPath="/login" />
             </Suspense>
           </Route>
           <Route exact path="/editblog">
