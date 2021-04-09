@@ -83,6 +83,7 @@ export default function MediaList() {
   const SongList = Object.values(songs).map((song) => (
     <BandSongListItem
       trackId={song.trackId}
+      key={song.trackId}
     />
   ));
 
