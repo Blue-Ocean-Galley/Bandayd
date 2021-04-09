@@ -15,3 +15,9 @@ app.listen(PORT, HOSTNAME, () => {
   logger.info(`Serving static files on ${HOSTNAME}:${PORT}!`);
 });
 
+<<<<<<< HEAD
+=======
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', '/client/dist', 'index.html'));
+});
+>>>>>>> 8ccc3aeb44b556574b48cc93dc30ff39d17596d6
