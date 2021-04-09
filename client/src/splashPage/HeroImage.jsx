@@ -9,7 +9,7 @@ export default function Hero() { // { toPath } not currently in use.
   return (
     <HeroImage>
       <ImageOverlay>
-        <h1>Band-Ayd</h1>
+        <h1>BandAyd</h1>
         <p>
           Nisi maiores nemo et quae repellat quibusdam quia.
           Deserunt dolor id amet soluta maiores tenetur accusantium fugiat.
