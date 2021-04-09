@@ -41,5 +41,4 @@ EditArea.propTypes = {
 };
 const EditCard = styled(VerticalCard)`
   flex: 2;
-  margin-top: 6rem;
 `;
