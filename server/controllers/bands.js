@@ -29,7 +29,7 @@ exports.getOneBand = (req, res, next) => {
   const bandId = req.params.id;
 
   return Band.findOne({
-    attributes: { exclude: ['createdAt', 'updatedAt', 'GenreId'] },
+    attributes: { exclude: ['createdAt', 'updatedAt'] },
     where: {
       id: bandId,
     },
@@ -45,6 +45,28 @@ exports.getOneBand = (req, res, next) => {
     .catch((err) => {
       logger.error(err);
       res.status(500).send(`There was an error getting information on band ${bandId}: ${err}`);
+      next(err);
+    });
+};
+
+exports.editBandBio = (req, res, next) => {
+  const { bio } = req.body;
+  const { id } = req.params;
+  return Band.update({
+    description: bio,
+  }, {
+    where: {
+      id,
+    },
+    returning: true,
+  }).then(function(result) {
+    logger.info(result);
+    res.status(201).send(result);
+    next();
+  })
+    .catch((err) => {
+      logger.error(err);
+      res.status(500).send(`Error updating bio for ${req.params.id}`);
       next(err);
     });
 };
