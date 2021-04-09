@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import Modal from 'react-modal'
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,43 +9,30 @@ import {
 } from 'react-router-dom';
 import { Tile } from '../../styles/globalStyles';
 
-class BandPageHeader extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      image: []
-    };
-  }
+function addPic() {
 
-  handleUpload(e){
-    // const file = e.target.files[0];
-    // const newImages = [...this.state.image];
-    // newImages.push(file);
-    // this.setState({
-    //   image: newImages
-    // });
-  }
+}
 
-  handleShareButton(event) {
-
-  }
-
-  componentDidMount() {
-  }
-
-  render() {
-    return (
-      <Router>
-        <HeaderContainer>
-          <div id="proflie-pic-uploader">
-            {/* <input type="file" value="+" onChange={this.handleUpload.bind(this)} /> */}
-            <img src={!!this.state.image[0] ? this.state.image[0] : ''} alt="band-profile-pic" alt="Band Proflie Picture"></img>
-            <button type="button" onClick={this.handleShareButton.bind(this)}>Share</button>
-          </div>
-        </HeaderContainer>
-      </Router>
-    )
-  }
+function BandPageHeader ({picture}) {
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+  return (
+    <Router>
+      <HeaderContainer>
+        <div id="proflie-pic-uploader">
+          <button onClick={() => { setModalIsOpen(true) }}>+</button>
+          <Modal isOpen={modalIsOpen}>
+            <h3>Add a Profile Picture</h3>
+            <form onSubmit={addPic()}>
+              <label hmtlFor="song-title-input">Song Title</label>
+              <input id="song-title-input" type="text" placeholder=""></input>
+            </form>
+            <button onClick={() => setModalIsOpen(false)}>Add Picture</button>
+          </Modal>
+          <img src={picture} alt="band-profile-pic" ></img>
+        </div>
+      </HeaderContainer>
+    </Router>
+  )
 }
 
 const HeaderContainer = styled(Tile)`

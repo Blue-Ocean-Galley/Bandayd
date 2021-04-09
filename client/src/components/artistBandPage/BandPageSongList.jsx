@@ -11,17 +11,14 @@ import {
 function addSong() {
 
 }
+
 function BandSongList ({songs}) {
   const [modalIsOpen, setModalIsOpen] = useState(false)
     return (
 
       <div id="outer-song-list-container">
-        <div>
-          <span>Songs</span>
-          <span>Videos</span>
-        </div>
+        <h3>Featured Songs</h3>
         <div id="song-list-container">
-          <h3>Featured Songs</h3>
           <button onClick={() => {setModalIsOpen(true)}}>+</button>
           <Modal isOpen={modalIsOpen}>
             <h3>Add a Song</h3>
@@ -45,7 +42,6 @@ function BandSongList ({songs}) {
                 key={song.id}
               />
             )
-
           })}
         </div>
       </div>
