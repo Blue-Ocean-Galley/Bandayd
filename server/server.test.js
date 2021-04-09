@@ -15,9 +15,8 @@ describe('Test the root', () => {
 
 describe('Route testing for Bands', () => {
   test('testing GET one band', (done) => {
-    console.log('check');
     res(app)
-      .get('/api/bands')
+      .get('/api/bands/2')
       .then((response) => {
         expect(response.statusCode).toBe(200);
         done();
@@ -32,6 +31,15 @@ describe('Route testing for Bands', () => {
         done();
       });
   });
+
+//   test('testing GET on one band if the id is not a number', (done) => {
+//     res(app)
+//       .get('/api/bands/-----')
+//       .then((response) => {
+//         expect(response.statusCode).toBe(404);
+//         done();
+//       });
+//   });
 });
 
 describe('Route testing for Blogs', () => {
@@ -94,8 +102,8 @@ describe('Route testing for Genre', () => {
 describe('Route testing for Login', () => {
   test('testing route for login', (done) => {
     const data = {
-      name: 'Hello'
-    }
+      name: 'Hello',
+    };
     res(app)
       .post('/api/login')
       .send(data)
