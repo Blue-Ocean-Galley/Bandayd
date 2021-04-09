@@ -22,6 +22,5 @@ router.use('/genres', genres);
 // all show routes
 router.use('/shows', shows);
 router.use('/blogs', blogs);
-// all song routes
 
 module.exports = router;
