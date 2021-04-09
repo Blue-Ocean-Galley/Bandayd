@@ -44,6 +44,7 @@ export default function Login({ cb = () => {} }) {
         style={customStyles}
         onRequestClose={() => toggleModal(!showModal)}
         shouldCloseOnOverlayClick
+        ariaHideApp={false}
       >
         <LoginTile>
           <FeatureForm>
