@@ -26,30 +26,28 @@ export default function App() {
           </Route>
           <Route exact path="/editblog">
             <main>
-              <Navigation />
               <EditBlogPageContainer />
             </main>
           </Route>
           <Route path="/bands">
             <main>
-              <Navigation />
               <div>Bands coming soon!</div>
             </main>
           </Route>
           <Route path="/shows">
             <main>
-              <Navigation />
               <div>New shows coming soon!</div>
             </main>
           </Route>
           <Route path="/login">
             <main>
-              <Navigation />
               <div>Signup coming soon!</div>
             </main>
           </Route>
           <Route path="/band">
-            <BandPage />
+            <main>
+              <BandPage />
+            </main>
           </Route>
         </Switch>
       </ThemeProvider>
