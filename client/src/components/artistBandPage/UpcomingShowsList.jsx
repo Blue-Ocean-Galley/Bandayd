@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+// import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 import UpcomingShowsListItem from './UpcomingShowsListItem';
@@ -10,16 +11,16 @@ import {
   Input,
 } from '../../styles/globalStyles';
 
-export default function UpcomingShowsList({ shows }) {
-  let bandId = 1
-  const [posts, setShows] = useState([]);
+export default function UpcomingShowsList() {
+  const bandId = 1;
+  const [shows, setShows] = useState([]);
   useEffect(() => {
     axios.get(`http://localhost:3010/api/shows/${bandId}`).then((res) => {
       const showsObj = {};
       res.data.forEach((show) => {
         showsObj[show.id] = shows;
       });
-      setShows(postObj);
+      setShows(showsObj);
     });
   }, []);
 
@@ -37,6 +38,9 @@ export default function UpcomingShowsList({ shows }) {
       border: 'none',
     },
   };
+  const handleAddShow = () => {
+    toggleModal(false);
+  };
 
   return (
     <VerticalCard>
@@ -49,7 +53,7 @@ export default function UpcomingShowsList({ shows }) {
         shouldCloseOnOverlayClick
       >
         <h3>Add a Show</h3>
-        <Form onSubmit={() => {return ''}}>
+        <Form onSubmit={() => handleAddShow()}>
           <Label htmlFor="show-name-Input">Show Name</Label>
           <Input id="show-name-Input" type="text" placeholder="" />
 
@@ -74,12 +78,12 @@ export default function UpcomingShowsList({ shows }) {
     </VerticalCard>
   );
 }
-UpcomingShowsList.propTypes = {
-  shows: PropTypes.instanceOf(Array),
-};
-UpcomingShowsList.defaultProps = {
-  shows: [],
-};
+// UpcomingShowsList.propTypes = {
+//   shows: PropTypes.instanceOf(Array),
+// };
+// UpcomingShowsList.defaultProps = {
+//   shows: [],
+// };
 const Label = styled.label`
   color: ${({ theme }) => theme.darkText};
 `;
