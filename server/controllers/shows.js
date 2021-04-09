@@ -14,6 +14,25 @@ exports.getShows = (req, res, next) => Show.findAll({
     next(err);
   });
 
+exports.getBandShows = (req, res, next) => {
+  const bandID = req.params.bandID;
+  return Show.findAll({
+    attributes: { exclude: ['BandId', 'createdAt', 'updatedAt'] },
+    where: {
+      bandId: bandID,
+    },
+  })
+    .then((result) => {
+      res.send(result);
+      next();
+    })
+    .catch((err) => {
+      logger.error(err);
+      res.send(500);
+      next(err);
+    });
+};
+
 // //  getting all the blog post
 
 // exports.getAllBlog = (req, res, next) => {

@@ -7,6 +7,6 @@ const router = express.Router();
 // takes page and count as query parameters
 router.get('/', getShows);
 // takes bandID as parameter and returns a list of shows for that band
-// router.get('/:bandID', getBandShows);
+router.get('/:bandID', getBandShows);
 
 module.exports = router;
