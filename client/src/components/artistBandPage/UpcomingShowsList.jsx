@@ -48,10 +48,10 @@ export default function UpcomingShowsList() {
         date: show.date,
         bandId,
       }).then((res) => {
-        // Adds new show by id to show list
-        setShows((prevState) => ({ ...prevState, [res.data.id]: res.data }));
-      });
-  }
+      // Adds new show by id to show list
+      setShows((prevState) => ({ ...prevState, [res.data.id]: res.data }));
+    });
+  };
 
   const [currentName, setName] = useState('');
   const [currentLocation, setLocation] = useState('');
@@ -69,7 +69,13 @@ export default function UpcomingShowsList() {
         shouldCloseOnOverlayClick
       >
         <h3>Add a Show</h3>
-        <Form onSubmit={handleSave({ name: currentName, location: currentLocation, description: currentDescription, date: currentDate })}>
+        <Form onSubmit={handleSave({
+          name: currentName,
+          location: currentLocation,
+          description: currentDescription,
+          date: currentDate,
+        })}
+        >
           <Label htmlfor="show-name-Input">Show Name</Label>
           <Input onChange={(e) => setName(e.target.value)} id="show-name-Input" type="text" defaultValue={currentName} />
 
