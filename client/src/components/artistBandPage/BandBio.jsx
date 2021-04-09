@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import EditBio from '../../modals/editBio';
 import {
@@ -8,7 +8,9 @@ import {
 
 export default function BandBio({ bandBio }) {
   const [bio, setBio] = useState(bandBio);
-
+  useEffect(() => {
+    setBio(bandBio);
+  }, [bandBio]);
   const editBio = (post) => {
     setBio(post.post);
   };
