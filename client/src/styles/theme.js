@@ -10,7 +10,7 @@ const darkTheme = {
   primary_text: '#F3F6F7', // white
   dark_text: '#111618',
   secondary: '#bf360c', // orange
-  secondary_light: '#f9683a', // light orange
+  secondary_light: '#df9b86', // light orange
   secondary_dark: '#870000', // dark orange
   warning_500: '#E1D151',
   warning_200: '#F3ECBA',
