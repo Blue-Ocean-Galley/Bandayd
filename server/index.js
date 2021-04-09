@@ -20,4 +20,3 @@ app.get('/*', (req, res) => {
 app.listen(PORT, HOSTNAME, () => {
   logger.info(`Serving static files on ${HOSTNAME}:${PORT}!`);
 });
-

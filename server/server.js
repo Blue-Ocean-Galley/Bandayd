@@ -16,9 +16,13 @@ const corsOptions = {
 app.use(compression());
 app.use(cors(corsOptions));
 app.use(express.json());
+app.get('/', (req, res) => {
+  res.send('hello');
+});
 app.use('/api', router);
 
 app.listen(PORT, HOSTNAME, () => {
   logger.info(`Server listening on ${HOSTNAME}:${PORT}`);
 });
 
+module.exports = app;
