@@ -21,4 +21,3 @@ app.use('/api', router);
 app.listen(PORT, HOSTNAME, () => {
   logger.info(`Server listening on ${HOSTNAME}:${PORT}`);
 });
-
