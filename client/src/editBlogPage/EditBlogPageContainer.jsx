@@ -27,7 +27,8 @@ export default function EditBlogPageContainer({ bandId }) {
         postObj[post.id] = post;
       });
       setPosts(postObj);
-    });
+    })
+      .catch((err) => console.error(err));
   }, []);
 
   const handleSave = (post) => {
@@ -42,7 +43,8 @@ export default function EditBlogPageContainer({ bandId }) {
         }).then((res) => {
         // Adds new post by id to post list
         setPosts((prevState) => ({ ...prevState, [res.data.id]: res.data }));
-      });
+      })
+        .catch((err) => console.error(err));
     } else if (post.post !== currentPost.post
       || post.name !== currentPost.name) { // only send put request if text or title was changed
       setPosts((prevState) => ({ ...prevState, [post.id]: post }));
@@ -53,7 +55,8 @@ export default function EditBlogPageContainer({ bandId }) {
           name: post.name,
           post: post.post,
           bandId,
-        });
+        })
+          .catch((err) => console.error(err));
     }
   };
 

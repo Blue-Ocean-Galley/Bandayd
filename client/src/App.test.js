@@ -76,9 +76,14 @@ describe('Navigation bar', () => {
     expect(bandPage).toBeInTheDocument();
   });
 
-  it('Renders the Shows page after clicking the Shows button', () => {
-    fireEvent.click(screen.getByText('Shows'));
-    const showPage = screen.getByText(/^Upcoming/i);
-    expect(showPage).toBeInTheDocument();
+  it('Renders the Shows page', () => {
+    const showList = screen.getAllByText('Shows')
+    const position = ['first', 'second']
+    //fireEvent.click(screen.getByText('Shows'));
+    showList.map((data) => {
+
+    })
+    const showPage = screen.getByText(/^New shows/i);
+    expect(showPage).toHaveTextContent('New shows coming soon!');
   });
 });
