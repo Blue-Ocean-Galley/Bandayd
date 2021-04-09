@@ -56,7 +56,7 @@ export default function UpcomingShowsList() {
   const [currentName, setName] = useState('');
   const [currentLocation, setLocation] = useState('');
   const [currentDescription, setDescription] = useState('');
-  const [currentDate setDate] = useState('');
+  const [currentDate, setDate] = useState('');
 
   return (
     <VerticalCard>
