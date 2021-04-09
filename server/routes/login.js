@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.route('/')
   .post(login)
-  .get((res) => {
+  .get((req, res) => {
     res.status(403).send('Why are you trying to get something back from login? You weirdo!');
   });
 
