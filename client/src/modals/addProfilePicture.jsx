@@ -41,8 +41,6 @@ export default function AddProfilePicture() {
       {
         photoUrl,
         bandId,
-      }).then((res) => {
-        console.log(res);
       });
   };
 
