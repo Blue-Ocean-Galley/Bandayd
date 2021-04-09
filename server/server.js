@@ -6,7 +6,7 @@ const router = require('./routes');
 const app = express();
 
 const corsOptions = {
-  origin: 'http://localhost',
+  origin: '*',
   optionsSuccessStatus: 200,
 };
 
@@ -17,8 +17,14 @@ const HOSTNAME = process.env.HOSTNAME || 'localhost';
 
 app.use(express.json());
 
+app.use('/api', router);
+
+app.get('/', (req, res) => {
+  res.send('hello')
+})
+
 app.listen(PORT, HOSTNAME, () => {
   logger.info(`Server listening on ${HOSTNAME}:${PORT}`);
 });
 
-app.use('/api', router);
+module.exports = app;

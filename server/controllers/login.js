@@ -7,6 +7,11 @@ exports.addUser = (req, res, next) => Band.create({
   description: req.body.description,
   genreId: req.body.genreId,
 })
+.then(() => {
+  // else create the new user
+  res.status(201).send(`Successfully created new band ${req.body.name}`);
+  next();
+})
   .catch((err) => {
     logger.error(err);
     // if a particular error type is thrown - send a message to the client
@@ -16,9 +21,5 @@ exports.addUser = (req, res, next) => Band.create({
       res.status(500).send('The server encountered an error');
     }
     next(err);
-  })
-  .then(() => {
-    // else create the new user
-    res.status(201).send(`Successfully created new band ${req.body.name}`);
-    next();
   });
+
