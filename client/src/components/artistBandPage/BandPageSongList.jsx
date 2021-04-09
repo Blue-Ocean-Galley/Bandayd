@@ -13,9 +13,20 @@ function addSong() {
 }
 
 function BandSongList ({songs}) {
+  let bandId = 1
+  const [posts, setSongs] = useState([]);
+  useEffect(() => {
+    axios.get(`http://localhost:3010/api/songs/${bandId}`).then((res) => {
+      const songObj = {};
+      res.data.forEach((song) => {
+        songObj[song.id] = song;
+      });
+      setSongs(postObj);
+    });
+  }, []);
+
   const [modalIsOpen, setModalIsOpen] = useState(false)
     return (
-
       <div id="outer-song-list-container">
         <h3>Featured Songs</h3>
         <div id="song-list-container">

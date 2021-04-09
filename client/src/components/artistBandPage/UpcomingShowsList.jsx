@@ -11,6 +11,18 @@ import {
 } from '../../styles/globalStyles';
 
 export default function UpcomingShowsList({ shows }) {
+  let bandId = 1
+  const [posts, setShows] = useState([]);
+  useEffect(() => {
+    axios.get(`http://localhost:3010/api/shows/${bandId}`).then((res) => {
+      const showsObj = {};
+      res.data.forEach((show) => {
+        showsObj[show.id] = shows;
+      });
+      setShows(postObj);
+    });
+  }, []);
+
   const [showModal, toggleModal] = useState(false);
 
   const customModalStyle = {
@@ -26,9 +38,6 @@ export default function UpcomingShowsList({ shows }) {
     },
   };
 
-  const addShow = () => {
-  };
-
   return (
     <VerticalCard>
       <h3>Upcoming Shows</h3>
@@ -40,7 +49,7 @@ export default function UpcomingShowsList({ shows }) {
         shouldCloseOnOverlayClick
       >
         <h3>Add a Show</h3>
-        <Form onSubmit={addShow()}>
+        <Form onSubmit={() => {return ''}}>
           <Label htmlFor="show-name-Input">Show Name</Label>
           <Input id="show-name-Input" type="text" placeholder="" />
 
