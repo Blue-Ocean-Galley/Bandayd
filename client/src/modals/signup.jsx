@@ -31,7 +31,7 @@ export default function Signup() {
         console.log(response);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
     // console.log(genres);
     email.value = '';

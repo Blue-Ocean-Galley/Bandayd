@@ -12,7 +12,7 @@ import Signup from './signup';
 Modal.setAppElement(document.getElementById('app'));
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.6)';
 
-export default function Login({ cb = () => {} }) {
+export default function Login() {
   const [showModal, toggleModal] = useState(false);
   const history = useHistory();
 
@@ -35,11 +35,10 @@ export default function Login({ cb = () => {} }) {
         history.push('/bands');
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
     // email.value = '';
     // password.value = '';
-    cb();
   }
 
   const customStyles = {
