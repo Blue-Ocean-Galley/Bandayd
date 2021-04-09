@@ -80,7 +80,7 @@ export default function UpcomingShowsList() {
           <Input onChange={(e) => setName(e.target.value)} id="show-name-Input" type="text" defaultValue={currentName} />
 
           <Label htmlfor="show-location-Input">Show Location</Label>
-          <Input onChange={(e) => setLocation(e.target.value)} id="show-location-Input" type="text" defaultValue={currentLocation}/>
+          <Input onChange={(e) => setLocation(e.target.value)} id="show-location-Input" type="text" defaultValue={currentLocation} />
 
           <Label htmlfor="show-description-Input">Show Description</Label>
           <Input onChange={(e) => setDescription(e.target.value)} id="show-description-Input" type="text" defaultValue={currentDescription} />

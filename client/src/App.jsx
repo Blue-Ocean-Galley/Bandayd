@@ -19,7 +19,6 @@ const EditBlogPage = lazy(() => import('./editBlogPage/EditBlogPageContainer'));
 const BandPage = lazy(() => import('./components/artistBandPage/BandPage'));
 const renderLoader = () => <p>Loading...</p>;
 
-
 export default function App() {
   return (
     <Router>

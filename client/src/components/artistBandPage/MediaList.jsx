@@ -132,7 +132,7 @@ export default function MediaList() {
           <Input onChange={(e) => setTitle(e.target.value)} id="song-title-Input" type="text" defaultValue={currentTitle} />
 
           <Label for="song-album-Input">Album</Label>
-          <Input onChange={(e) => setAlbum(e.target.value)}id="song-album-Input" type="text" defaultValue={currentAlbum} />
+          <Input onChange={(e) => setAlbum(e.target.value)} id="song-album-Input" type="text" defaultValue={currentAlbum} />
 
           <Label for="song-Genre-Input">Genre</Label>
           <Input onChange={(e) => setGenre(e.target.value)} id="song-genre-Input" type="text" defaultValue={currentGenre} />

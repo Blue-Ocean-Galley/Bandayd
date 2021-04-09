@@ -52,7 +52,7 @@ exports.getOneBand = (req, res, next) => {
 exports.updateProfilePicture = (req, res, next) => {
   const { photoUrl, bandId } = req.body;
   // const updatePost = req.body.post;
-  console.log(photoUrl, bandId)
+  console.log(photoUrl, bandId);
   return Band.update({
     profilePhotoUrl: photoUrl,
   }, {
@@ -60,7 +60,7 @@ exports.updateProfilePicture = (req, res, next) => {
       id: bandId,
     },
   })
-    .then((result) => {
+    .then(() => {
       res.status(201).send('Successfully Updated');
       next();
     })
