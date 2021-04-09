@@ -11,11 +11,28 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
+      },
+      password: {
+        type: Sequelize.STRING
+      },
       description: {
         type: Sequelize.TEXT
       },
-      email: {
-        type: Sequelize.STRING
+      profilePhotoUrl: {
+        type: Sequelize.TEXT,
+      },
+      GenreId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: { tableName: 'Genres' },
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
       },
       createdAt: {
         allowNull: false,

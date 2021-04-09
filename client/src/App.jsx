@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,8 +9,12 @@ import GlobalStyles from './styles/globalStyles';
 import darkTheme from './styles/theme';
 import Navigation from './navigation/NavBar';
 import SplashPageContainer from './splashPage/SplashPageContainer';
-import EditBlogPageContainer from './editBlogPage/EditBlogPageContainer';
-import BandPage from './components/artistBandPage/BandPage';
+// import EditBlogPageContainer from './editBlogPage/EditBlogPageContainer';
+//import BandPage from './components/artistBandPage/BandPage';
+const SplashPage = lazy(() => import('./splashPage/SplashPageContainer'));
+const EditBlogPage = lazy(() => import('./editBlogPage/EditBlogPageContainer'));
+const BandPage = lazy(() => import('./components/artistBandPage/BandPage'));
+const renderLoader = () => <p>Loading...</p>;
 
 export default function App() {
   return (
@@ -20,34 +24,34 @@ export default function App() {
         <Navigation />
         <Switch>
           <Route exact path="/">
-            <main>
-              <SplashPageContainer toPath="/login" />
-            </main>
+            <Suspense fallback={renderLoader()}>
+                <SplashPage toPath="/login" />
+            </Suspense>
           </Route>
           <Route exact path="/editblog">
-            <main>
-              <EditBlogPageContainer />
-            </main>
+            <Suspense fallback={renderLoader()}>
+              <EditBlogPage />
+            </Suspense>
           </Route>
           <Route path="/bands">
-            <main>
-              <div>Bands coming soon!</div>
-            </main>
+            <Suspense fallback={renderLoader()}>
+              <div>Bands page coming soon!</div>
+            </Suspense>
           </Route>
           <Route path="/shows">
-            <main>
+            <Suspense fallback={renderLoader()}>
               <div>New shows coming soon!</div>
-            </main>
+            </Suspense>
           </Route>
           <Route path="/login">
-            <main>
+            <Suspense fallback={renderLoader()}>
               <div>Signup coming soon!</div>
-            </main>
+            </Suspense>
           </Route>
           <Route path="/band">
-            <main>
+            <Suspense fallback={renderLoader()}>
               <BandPage />
-            </main>
+            </Suspense>
           </Route>
         </Switch>
       </ThemeProvider>
