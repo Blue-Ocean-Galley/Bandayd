@@ -17,7 +17,7 @@ exports.getAllBlog = (req, res, next) => {
     })
     .catch((err) => {
       logger.error(err);
-      res.send(500);
+      res.status(500).send(`There was an error ${err}`);
       next(err);
     });
 };
@@ -37,7 +37,7 @@ exports.getABlog = (req, res, next) => {
     })
     .catch((err) => {
       logger.error(err);
-      res.send(500);
+      res.status(500).end();
       next(err);
     });
 };
@@ -63,7 +63,7 @@ exports.updateBlog = (req, res, next) => {
     })
     .catch((err) => {
       logger.error(err);
-      res.send(400);
+      res.status(400).end();
       next(err);
     });
 };
@@ -82,6 +82,6 @@ exports.addNewBlog = (req, res, next) => Blog.create({
   })
   .catch((err) => {
     logger.error(err);
-    res.send(400);
+    res.status(400).end();
     next(err);
   });

@@ -21,4 +21,14 @@ module.exports = {
     seederStorage: 'sequelize',
     logging: (msg) => logger.debug(msg),
   },
+  test: {
+    username: 'root',
+    password: 'root',
+    database: 'bandayd_dev',
+    host: 'localhost',
+    dialect: 'mariadb',
+    migrationStorage: 'sequelize',
+    seederStorage: 'sequelize',
+    logging: (msg) => logger.debug(msg),
+  },
 };

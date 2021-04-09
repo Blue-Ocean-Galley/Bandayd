@@ -10,11 +10,15 @@ import darkTheme from './styles/theme';
 import Navigation from './navigation/NavBar';
 // import SplashPageContainer from './splashPage/SplashPageContainer';
 // import EditBlogPageContainer from './editBlogPage/EditBlogPageContainer';
+import TourList from './tours/TourList';
+// import BandPage from './components/artistBandPage/BandPage';
+// import EditBlogPageContainer from './editBlogPage/EditBlogPageContainer';
 // import BandPage from './components/artistBandPage/BandPage';
 const SplashPage = lazy(() => import('./splashPage/SplashPageContainer'));
 const EditBlogPage = lazy(() => import('./editBlogPage/EditBlogPageContainer'));
 const BandPage = lazy(() => import('./components/artistBandPage/BandPage'));
 const renderLoader = () => <p>Loading...</p>;
+
 
 export default function App() {
   return (
@@ -39,9 +43,11 @@ export default function App() {
             </Suspense>
           </Route>
           <Route path="/shows">
+
             <Suspense fallback={renderLoader()}>
-              <div>New shows coming soon!</div>
+              <TourList />
             </Suspense>
+
           </Route>
           <Route path="/login">
             <Suspense fallback={renderLoader()}>
