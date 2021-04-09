@@ -11,16 +11,17 @@ import Navigation from './navigation/NavBar';
 import SplashPageContainer from './splashPage/SplashPageContainer';
 import EditBlogPageContainer from './editBlogPage/EditBlogPageContainer';
 import TourList from './tours/TourList';
+import BandPage from './components/artistBandPage/BandPage';
 
 export default function App() {
   return (
     <Router>
       <ThemeProvider theme={darkTheme}>
         <GlobalStyles />
+        <Navigation />
         <Switch>
           <Route exact path="/">
             <main>
-              <Navigation />
               <SplashPageContainer toPath="/login" />
             </main>
           </Route>
@@ -47,6 +48,9 @@ export default function App() {
               <Navigation />
               <div>Signup coming soon!</div>
             </main>
+          </Route>
+          <Route path="/band">
+            <BandPage />
           </Route>
         </Switch>
       </ThemeProvider>

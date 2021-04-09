@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
+import PropTypes from 'prop-types';
 
 import { Button, Tile, Form } from '../styles/globalStyles';
 
 Modal.setAppElement(document.getElementById('app'));
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.6)';
 
-export default function Login() {
+export default function Login({ cb = () => {} }) {
   const [showModal, toggleModal] = useState(false);
 
   function submitLogin(e) {
@@ -19,6 +20,7 @@ export default function Login() {
     // };
     username.value = '';
     password.value = '';
+    cb();
   }
 
   const customStyles = {
@@ -36,12 +38,13 @@ export default function Login() {
 
   return (
     <>
-      <Button onClick={() => toggleModal(!showModal)}>Login</Button>
+      <NavButton onClick={() => toggleModal(!showModal)}> Login </NavButton>
       <Modal
         isOpen={showModal}
         style={customStyles}
         onRequestClose={() => toggleModal(!showModal)}
         shouldCloseOnOverlayClick
+        ariaHideApp={false}
       >
         <LoginTile>
           <FeatureForm>
@@ -68,6 +71,12 @@ export default function Login() {
     </>
   );
 }
+Login.propTypes = {
+  cb: PropTypes.func,
+};
+Login.defaultProps = {
+  cb: () => {},
+};
 
 const LoginTile = styled(Tile)`
   display: flex;
@@ -78,4 +87,15 @@ const LoginTile = styled(Tile)`
 
 const FeatureForm = styled(Form)`
 
+`;
+const NavButton = styled(Button)`
+  padding: 1rem;
+    margin: 0.5rem;
+    color: ${({ theme }) => theme.primary_text};
+    background ${({ theme }) => theme.background};
+
+    &:hover {
+      color: ${({ theme }) => theme.background};
+      background: ${({ theme }) => theme.secondary_light};
+    }
 `;

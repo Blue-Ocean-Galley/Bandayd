@@ -19,5 +19,6 @@ module.exports = {
     dialect: 'mariadb',
     migrationStorage: 'sequelize',
     seederStorage: 'sequelize',
+    logging: (msg) => logger.debug(msg),
   },
 };
