@@ -1,26 +1,44 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
+import axios from 'axios';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 
 import { Button, Tile, Form } from '../styles/globalStyles';
+import cookies from '../cookies';
+import Signup from './signup';
 
 Modal.setAppElement(document.getElementById('app'));
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.6)';
 
-export default function Login({ cb = () => {} }) {
+export default function Login() {
   const [showModal, toggleModal] = useState(false);
+  const history = useHistory();
 
   function submitLogin(e) {
     e.preventDefault();
-    const { username, password } = e.target.form;
-    // const data = {
-    //   username: username.value,
-    //   password: password.value,
-    // };
-    username.value = '';
-    password.value = '';
-    cb();
+    const { email, password } = e.target.form;
+    const data = {
+      email: email.value,
+      password: password.value,
+    };
+    axios.post('http://localhost:3010/api/login', data)
+      .then((response) => {
+        console.log(response);
+        const expires = new Date();
+        expires.setMinutes(expires.getMinutes() + 1);
+        cookies.set({
+          userId: response.data.id,
+          expires: expires.toGMTString(),
+        });
+        history.push('/bands');
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    // email.value = '';
+    // password.value = '';
   }
 
   const customStyles = {
@@ -48,10 +66,10 @@ export default function Login({ cb = () => {} }) {
       >
         <LoginTile>
           <FeatureForm>
-            <label htmlFor="username">
+            <label htmlFor="email">
               Username:
               <br />
-              <input type="text" name="username" id="username" required />
+              <input type="email" name="email" id="email" required />
             </label>
             <br />
 
@@ -63,9 +81,10 @@ export default function Login({ cb = () => {} }) {
 
             <Button type="submit" onClick={submitLogin}>Login</Button>
           </FeatureForm>
-          <p>Don&apos;t have an account yet?</p>
-          <p>Sign-up here</p>
-          <Button onClick={() => toggleModal(!showModal)}>Close Modal</Button>
+          <div>
+            <p>Don&apos;t have an account yet?</p>
+            <Signup />
+          </div>
         </LoginTile>
       </Modal>
     </>
