@@ -76,10 +76,10 @@ export default function MediaList() {
         link: song.link,
         bandId,
       }).then((res) => {
-        // Adds new song by id to song list
-        setSongs((prevState) => ({ ...prevState, [res.data.id]: res.data }));
-      });
-  }
+      // Adds new song by id to song list
+      setSongs((prevState) => ({ ...prevState, [res.data.id]: res.data }));
+    });
+  };
   const [currentTitle, setTitle] = useState('');
   const [currentAlbum, setAlbum] = useState('');
   const [currentGenre, setGenre] = useState('');
