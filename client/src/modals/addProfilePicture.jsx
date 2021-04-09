@@ -37,10 +37,12 @@ export default function AddProfilePicture() {
   // http://placeimg.com/640/480/cats
   const onSave = () => {
     toggleModal(!showModal);
-    axios.put('http://localhost:3010/api/bands/photo',
+    axios.put(`http://localhost:3010/api/bands/photo/${bandId}`,
       {
         photoUrl,
         bandId,
+      }).then((res) => {
+        console.log(res);
       });
   };
 
