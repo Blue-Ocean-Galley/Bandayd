@@ -1,29 +1,42 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Songs', {
+    await queryInterface.createTable('Shows', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
+      name: {
         type: Sequelize.STRING
       },
-      album: {
-        type: Sequelize.STRING
+      showDate: {
+        type: Sequelize.DATE
       },
-      track: {
-        type: Sequelize.INTEGER(3)
+      latitude: {
+        type: Sequelize.FLOAT
       },
-      bandId: {
+      longitude: {
+        type: Sequelize.FLOAT
+      },
+      city: {
+        type: Sequelize.STRING(64)
+      },
+      state: {
+        type: Sequelize.STRING(64)
+      },
+      country: {
+        type: Sequelize.STRING(64)
+      },
+      BandId: {
         type: Sequelize.INTEGER,
         references: {
           model: { tableName: 'Bands' },
           key: 'id',
-          allowNull: false,
-        }
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
       },
       createdAt: {
         allowNull: false,
@@ -36,6 +49,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Songs');
+    await queryInterface.dropTable('Shows');
   }
 };

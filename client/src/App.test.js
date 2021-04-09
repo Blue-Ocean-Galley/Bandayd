@@ -75,7 +75,12 @@ describe('Navigation bar', () => {
   });
 
   it('Renders the Shows page', () => {
-    fireEvent.click(screen.getByText('Shows'));
+    const showList = screen.getAllByText('Shows')
+    const position = ['first', 'second']
+    //fireEvent.click(screen.getByText('Shows'));
+    showList.map((data) => {
+      
+    })
     const showPage = screen.getByText(/^New shows/i);
     expect(showPage).toHaveTextContent('New shows coming soon!');
   });
