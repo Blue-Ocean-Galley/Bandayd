@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import BandBio from './BandBio';
 import BandPageHeader from './BandPageHeader';
 import UpcomingShowsList from './UpcomingShowsList';
 import MediaList from './MediaList';
 import BandBlogPostList from './BandBlogPostList';
 import { Tile, ListTile, Card } from '../../styles/globalStyles';
+import cookies from '../../cookies';
 
 export default function BandPage() {
+  const bandId = cookies.get('userId') || 1;
+  const [bandInfo, setBandInfo] = useState({});
+  useEffect(() => {
+    axios.get(`http://localhost:3010/api/bands/${bandId}`,
+      { id: bandId })
+      .then((res) => {
+        setBandInfo(res.data);
+      });
+  }, []);
+
   const tempSongs = [
     {
       id: 1,
@@ -40,7 +52,7 @@ export default function BandPage() {
       trackId: '73mlvsfJM2qwlDUJxeaatI',
     },
   ];
-  const tempBio = 'Hello and welcome to our band page. We are a group of dedicated musicians who pride themselves on putting out some ripping tunes. Enjoy :)';
+  // const tempBio = 'Hello and welcome to our band page. We are a group of dedicated musicians who pride themselves on putting out some ripping tunes. Enjoy :)';
   const tempShows = [
     { id: 1, location: 'Denver', Date: '08-01-2021' },
     { id: 2, location: 'New York City', Date: '12-24-2021' },
@@ -51,11 +63,11 @@ export default function BandPage() {
 
   return (
     <div className="band-page-container">
-      <BandPageHeader />
+      <BandPageHeader bandInfo={bandInfo} />
       <FirstSection>
         <MediaList songs={tempSongs} />
         <Column>
-          <BandBio bandBio={tempBio} />
+          <BandBio bandBio={bandInfo.description} />
           <UpcomingShowsList shows={tempShows} />
         </Column>
       </FirstSection>
