@@ -71,7 +71,7 @@ export default function UpcomingShowsList() {
         <h3>Add a Show</h3>
         <Form onSubmit={handleSave({ name: currentName, location: currentLocation, description: currentDescription, date: currentDate })}>
           <Label htmlfor="show-name-Input">Show Name</Label>
-          <Input onChange={(e) => setName(e.target.value)} id="show-name-Input" type="text" defaultValue={currentTitle} />
+          <Input onChange={(e) => setName(e.target.value)} id="show-name-Input" type="text" defaultValue={currentName} />
 
           <Label htmlfor="show-location-Input">Show Location</Label>
           <Input onChange={(e) => setLocation(e.target.value)} id="show-location-Input" type="text" defaultValue={currentLocation}/>
