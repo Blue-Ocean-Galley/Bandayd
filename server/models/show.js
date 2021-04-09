@@ -18,14 +18,15 @@ module.exports = (sequelize, DataTypes) => {
   };
   Show.init({
     name: DataTypes.STRING,
-    // bandName: DataTypes.TEXT,
+    bandName: DataTypes.TEXT,
+    displayName: DataTypes.TEXT,
     showDate: DataTypes.DATE,
     latitude: DataTypes.FLOAT,
     longitude: DataTypes.FLOAT,
     city: DataTypes.STRING(64),
     state: DataTypes.STRING(64),
     country: DataTypes.STRING(64),
-    BandId: {
+    bandId: {
       type: DataTypes.INTEGER,
       references: {
         model: { tableName: 'Bands' },

@@ -1,20 +1,18 @@
 const { Show } = require('../models');
 const logger = require('../../config/winston');
 
-exports.getShows = (req, res, next) => {
-  return Show.findAll({
-    attributes: { exclude: ['createdAt', 'updatedAt'] },
+exports.getShows = (req, res, next) => Show.findAll({
+  attributes: { exclude: ['BandId', 'createdAt', 'updatedAt'] },
+})
+  .then((result) => {
+    res.send(result);
+    next();
   })
-    .then((result) => {
-      res.send(result);
-      next();
-    })
-    .catch((err) => {
-      logger.error(err);
-      res.send(500);
-      next(err);
-    });
-};
+  .catch((err) => {
+    logger.error(err);
+    res.send(500);
+    next(err);
+  });
 
 // //  getting all the blog post
 
