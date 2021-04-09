@@ -67,6 +67,24 @@ export default function MediaList() {
       });
   }, []);
 
+  const handleSave = (song) => {
+    axios.post(`http://localhost:3010/api/songs/${bandId}`,
+      {
+        title: song.title,
+        album: song.album,
+        genre: song.genre,
+        link: song.link,
+        bandId,
+      }).then((res) => {
+        // Adds new song by id to song list
+        setSongs((prevState) => ({ ...prevState, [res.data.id]: res.data }));
+      });
+  }
+  const [currentTitle, setTitle] = useState('');
+  const [currentAlbum, setAlbum] = useState('');
+  const [currentGenre, setGenre] = useState('');
+  const [currentLink, setLink] = useState('');
+
   const customModalStyle = {
     content: {
       top: '50%',
@@ -106,17 +124,23 @@ export default function MediaList() {
         shouldCloseOnOverlayClick
       >
         <h3>Add a Song</h3>
-        <Form onSubmit={() => {}}>
-          <Label htmlFor="song-title-Input">Title</Label>
-          <Input id="song-title-Input" type="text" placeholder="" />
-          <Label htmlFor="song-album-Input">Album</Label>
-          <Input id="song-album-Input" type="text" />
-          <Label htmlFor="song-Genre-Input">Genre</Label>
-          <Input id="song-genre-Input" type="text" />
-          <Label htmlFor="song-link">Spotify Link</Label>
-          <Input id="song-link" type="url" />
+        <Form onSubmit={handleSave({
+          title: currentTitle, album: currentAlbum, genre: currentAlbum, link: currentLink,
+        })}
+        >
+          <Label for="song-title-Input">Title</Label>
+          <Input onChange={(e) => setTitle(e.target.value)} id="song-title-Input" type="text" defaultValue={currentTitle} />
+
+          <Label for="song-album-Input">Album</Label>
+          <Input onChange={(e) => setAlbum(e.target.value)}id="song-album-Input" type="text" defaultValue={currentAlbum} />
+
+          <Label for="song-Genre-Input">Genre</Label>
+          <Input onChange={(e) => setGenre(e.target.value)} id="song-genre-Input" type="text" defaultValue={currentGenre} />
+
+          <Label for="song-link">Spotify Link</Label>
+          <Input onChange={(e) => setLink(e.target.value)} id="song-link" type="url" defaultValue={currentLink} />
+          <Button type="submit" onClick={() => { toggleModal(false); }}> Add Song </Button>
         </Form>
-        <Button onClick={() => { toggleModal(false); }}> Add Song </Button>
       </Modal>
     </Container>
   );
