@@ -14,15 +14,16 @@ import {
 export default function UpcomingShowsList() {
   const bandId = 1;
   const [shows, setShows] = useState([]);
-  useEffect(() => {
-    axios.get(`http://localhost:3010/api/shows/${bandId}`).then((res) => {
-      const showsObj = {};
-      res.data.forEach((show) => {
-        showsObj[show.id] = shows;
-      });
-      setShows(showsObj);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get(`http://localhost:3010/api/shows/${bandId}`).then((res) => {
+  //     const showsObj = {};
+  //     res.data.forEach((show) => {
+  //       showsObj[show.id] = shows;
+  //     });
+  //     setShows(showsObj);
+  //   }).catch(() => {
+  //   });
+  // }, []);
 
   const [showModal, toggleModal] = useState(false);
 
