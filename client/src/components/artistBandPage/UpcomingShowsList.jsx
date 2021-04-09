@@ -49,7 +49,7 @@ export default function UpcomingShowsList() {
         bandId,
       }).then((res) => {
         // Adds new show by id to show list
-        setSongs((prevState) => ({ ...prevState, [res.data.id]: res.data }));
+        setShows((prevState) => ({ ...prevState, [res.data.id]: res.data }));
       });
   }
 
