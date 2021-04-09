@@ -12,22 +12,20 @@ import { Tile } from '../../styles/globalStyles';
 function BandPageHeader ({picture}) {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   return (
-    <Router>
-      <HeaderContainer>
-        <div id="proflie-pic-uploader">
-          <button onClick={() => { setModalIsOpen(true) }}>+</button>
-          <Modal isOpen={modalIsOpen}>
-            <h3>Add a Profile Picture</h3>
-            <form onSubmit={() => {}}>
-              <label hmtlFor="song-title-input">Song Title</label>
-              <input id="song-title-input" type="text" placeholder=""></input>
-            </form>
-            <button onClick={() => setModalIsOpen(false)}>Add Picture</button>
-          </Modal>
-          <img src={picture} alt="band-profile-pic" ></img>
-        </div>
-      </HeaderContainer>
-    </Router>
+    <HeaderContainer>
+      <div id="proflie-pic-uploader">
+        <button onClick={() => { setModalIsOpen(true) }}>+</button>
+        <Modal isOpen={modalIsOpen}>
+          <h3>Add a Profile Picture</h3>
+          <form onSubmit={() => {}}>
+            <label hmtlFor="song-title-input">Song Title</label>
+            <input id="song-title-input" type="text" placeholder=""></input>
+          </form>
+          <button onClick={() => setModalIsOpen(false)}>Add Picture</button>
+        </Modal>
+        <img src={picture} alt="band-profile-pic" ></img>
+      </div>
+    </HeaderContainer>
   )
 }
 

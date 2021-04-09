@@ -12,7 +12,7 @@ import {
 
 export default function UpcomingShowsList({ shows }) {
   let bandId = 1
-  const [posts, setShows] = useState([]);
+  const [shows, setShows] = useState([]);
   useEffect(() => {
     axios.get(`http://localhost:3010/api/shows/${bandId}`).then((res) => {
       const showsObj = {};

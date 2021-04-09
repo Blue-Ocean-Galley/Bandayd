@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import BandSongListItem from './BandPageSongListItem.jsx'
 import Modal from 'react-modal'
 import {
@@ -14,7 +14,7 @@ function addSong() {
 
 function BandSongList ({songs}) {
   let bandId = 1
-  const [posts, setSongs] = useState([]);
+  const [songs, setSongs] = useState([]);
   useEffect(() => {
     axios.get(`http://localhost:3010/api/songs/${bandId}`).then((res) => {
       const songObj = {};
