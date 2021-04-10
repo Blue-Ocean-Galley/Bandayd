@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+// import PropTypes from 'prop-types';
+import axios from 'axios';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import BandSongListItem from './BandPageSongListItem';
@@ -12,8 +13,77 @@ import {
 } from '../../styles/globalStyles';
 import Tabs from '../../styles/tabs';
 
-export default function MediaList({ songs }) {
+export default function MediaList() {
   const [showModal, toggleModal] = useState(false);
+  const bandId = 1;
+
+  const [songs, setSongs] = useState({});
+  useEffect(() => {
+    axios.get(`http://localhost:3010/api/songs/${bandId}`)
+      .then((res) => {
+        const songObj = {};
+        res.data.forEach((song) => {
+          songObj[song.id] = song;
+        });
+        setSongs(songObj);
+      }).catch(() => {
+        const tempSongs = [
+          {
+            id: 1,
+            song: 'LAX',
+            artist: 'Vulfpeck',
+            trackId: '4I0s9c8rjPVm4QoFtnW2lb',
+          },
+          {
+            id: 2,
+            song: 'Nightcall',
+            artist: 'Kavinsky',
+            trackId: '199fvGLqoH23blptlIIz86',
+          },
+          {
+            id: 3,
+            song: 'Kiss Off',
+            artist: 'Violent Femmes',
+            trackId: '2KCzAlkQRc4ZzexoSkQALv',
+          },
+          {
+            id: 4,
+            song: 'Chambre A Coucher',
+            artist: 'the OBGMs',
+            trackId: '3IvEWu21iCpRCY5FPa7mlB',
+          },
+          {
+            id: 5,
+            song: 'Daft Punk is Playing at My House',
+            artist: 'LCD Soundsystem',
+            trackId: '73mlvsfJM2qwlDUJxeaatI',
+          },
+        ];
+        const songObj = {};
+        tempSongs.forEach((song) => {
+          songObj[song.id] = song;
+        });
+        setSongs(songObj);
+      });
+  }, []);
+
+  const handleSave = (song) => {
+    axios.post(`http://localhost:3010/api/songs/${bandId}`,
+      {
+        title: song.title,
+        album: song.album,
+        genre: song.genre,
+        link: song.link,
+        bandId,
+      }).then((res) => {
+      // Adds new song by id to song list
+      setSongs((prevState) => ({ ...prevState, [res.data.id]: res.data }));
+    });
+  };
+  const [currentTitle, setTitle] = useState('');
+  const [currentAlbum, setAlbum] = useState('');
+  const [currentGenre, setGenre] = useState('');
+  const [currentLink, setLink] = useState('');
 
   const customModalStyle = {
     content: {
@@ -28,9 +98,10 @@ export default function MediaList({ songs }) {
     },
   };
 
-  const SongList = songs.map((song) => (
+  const SongList = Object.values(songs).map((song) => (
     <BandSongListItem
       trackId={song.trackId}
+      key={song.trackId}
     />
   ));
 
@@ -53,17 +124,23 @@ export default function MediaList({ songs }) {
         shouldCloseOnOverlayClick
       >
         <h3>Add a Song</h3>
-        <Form onSubmit={() => {}}>
+        <Form onSubmit={handleSave({
+          title: currentTitle, album: currentAlbum, genre: currentAlbum, link: currentLink,
+        })}
+        >
           <Label for="song-title-Input">Title</Label>
-          <Input id="song-title-Input" type="text" placeholder="" />
+          <Input onChange={(e) => setTitle(e.target.value)} id="song-title-Input" type="text" defaultValue={currentTitle} />
+
           <Label for="song-album-Input">Album</Label>
-          <Input id="song-album-Input" type="text" />
+          <Input onChange={(e) => setAlbum(e.target.value)} id="song-album-Input" type="text" defaultValue={currentAlbum} />
+
           <Label for="song-Genre-Input">Genre</Label>
-          <Input id="song-genre-Input" type="text" />
+          <Input onChange={(e) => setGenre(e.target.value)} id="song-genre-Input" type="text" defaultValue={currentGenre} />
+
           <Label for="song-link">Spotify Link</Label>
-          <Input id="song-link" type="url" />
+          <Input onChange={(e) => setLink(e.target.value)} id="song-link" type="url" defaultValue={currentLink} />
+          <Button type="submit" onClick={() => { toggleModal(false); }}> Add Song </Button>
         </Form>
-        <Button onClick={() => { toggleModal(false); }}> Add Song </Button>
       </Modal>
     </Container>
   );
@@ -90,9 +167,9 @@ const Form = styled.form`
 const Header = styled(StickyHeaderContainer)`
   padding-bottom: 0.5rem;
 `;
-MediaList.propTypes = {
-  songs: PropTypes.instanceOf(Array),
-};
-MediaList.defaultProps = {
-  songs: [],
-};
+// MediaList.propTypes = {
+//   songs: PropTypes.instanceOf(Array),
+// };
+// MediaList.defaultProps = {
+//   songs: [],
+// };

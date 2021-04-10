@@ -42,6 +42,7 @@ export default function EditBio({ text, handleSave }) {
         <EditModal
           text={text}
           title="Bio"
+          id={0}
           handleSave={onSave}
           handleCancel={() => {
             toggleModal(!showModal);

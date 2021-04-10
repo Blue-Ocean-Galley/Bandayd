@@ -56,3 +56,43 @@ exports.getOneBand = (req, res, next) => {
       next(err);
     });
 };
+
+exports.updateProfilePicture = (req, res, next) => {
+  const { photoUrl, bandId } = req.body;
+  return Band.update({
+    profilePhotoUrl: photoUrl,
+  }, {
+    where: {
+      id: bandId,
+    },
+  })
+    .then(() => {
+      res.status(201).send('Successfully Updated');
+      next();
+    })
+    .catch((err) => {
+      logger.error(err);
+      res.send(400);
+      next(err);
+    });
+};
+
+exports.updateBio = (req, res, next) => {
+  const { bio, bandId } = req.body;
+  return Band.update({
+    description: bio,
+  }, {
+    where: {
+      id: bandId,
+    },
+  })
+    .then(() => {
+      res.status(201).send('Successfully Updated');
+      next();
+    })
+    .catch((err) => {
+      logger.error(err);
+      res.send(400);
+      next(err);
+    });
+};
