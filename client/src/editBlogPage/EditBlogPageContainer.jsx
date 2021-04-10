@@ -9,7 +9,7 @@ import {
 import PastBlogPosts from './PastBlogPosts';
 import EditArea from './EditArea';
 
-export default function EditBlogPageContainer({ bandId = 1 }) {
+export default function EditBlogPageContainer({ bandId }) {
   const [isEditing, setIsEditing] = useState(false);
   useEffect(() => {
   }, [isEditing]);
@@ -98,4 +98,8 @@ const Container = styled(Tile)`
 
 EditBlogPageContainer.propTypes = {
   bandId: PropTypes.number.isRequired,
+};
+// fix for undefined prop
+EditBlogPageContainer.defaultProps = {
+  bandId: 1,
 };
