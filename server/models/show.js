@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     city: DataTypes.STRING(64),
     state: DataTypes.STRING(64),
     country: DataTypes.STRING(64),
-    bandId: {
+    BandId: {
       type: DataTypes.INTEGER,
       references: {
         model: { tableName: 'Bands' },

@@ -6,7 +6,11 @@ exports.getShows = (req, res, next) => Show.findAll({
   attributes: { exclude: ['BandId', 'createdAt', 'updatedAt'] },
 })
   .then((result) => {
-    res.send(result);
+    if (result) {
+      res.send(result);
+    } else {
+      res.status(404).send('Shows Not Found');
+    }
     next();
   })
   .catch((err) => {
@@ -20,11 +24,15 @@ exports.getBandShows = (req, res, next) => {
   return Show.findAll({
     attributes: { exclude: ['BandId', 'createdAt', 'updatedAt'] },
     where: {
-      bandId: bandID,
+      BandId: bandID,
     },
   })
     .then((result) => {
-      res.send(result);
+      if (result) {
+        res.send(result);
+      } else {
+        res.status(404).send('Shows Not Found');
+      }
       next();
     })
     .catch((err) => {
@@ -45,7 +53,7 @@ exports.addShow = (req, res, next) => Show.create({
   city: req.body.city,
   state: req.body.state,
   country: req.body.country,
-  bandId: req.body.bandID,
+  BandId: req.body.bandID,
 })
   .then((result) => {
     res.status(201).send(result);
