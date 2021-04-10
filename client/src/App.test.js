@@ -15,9 +15,10 @@ beforeEach(() => {
   // eslint-disable-next-line react/jsx-filename-extension
   render(<App />);
 });
+
 afterEach(cleanup);
 
-describe('Modal SignUp/Login testing', () => {
+xdescribe('Modal SignUp/Login testing', () => {
   it('Tests if the modal pops up when Login is clicked on the top right, middle, bottom', () => {
     const buttonList = screen.getAllByText('Login');
     const position = ['top', 'middle', 'bottom'];
@@ -38,7 +39,7 @@ describe('Modal SignUp/Login testing', () => {
     let i = 0;
     buttonList.map((data) => {
       fireEvent.click(data);
-      fireEvent.click(screen.getByText('Close Modal'));
+      fireEvent.keyDown(screen.getByRole('button', { name: /email/i }), {key: 'Escape'});
       const username = screen.queryByText('Username:');
       expect(username).toBeNull();
       console.log(`Login exits at position ${position[i]}`);
@@ -47,7 +48,8 @@ describe('Modal SignUp/Login testing', () => {
   });
 });
 
-describe('Blog post', () => {
+xdescribe('Blog post', () => {
+  // not implemented
   it('is able to go into the blog section when clicked', () => {
     fireEvent.click(screen.getByText('Band blogs'));
     const message = screen.queryByText('Create New');
@@ -65,13 +67,13 @@ describe('Blog post', () => {
 describe('Navigation bar', () => {
   it('Renders the correct content', () => {
     const homeLink = screen.getByText(/^Home/i);
-    expect(homeLink).toBeDefined();
+    expect(homeLink).toBeInTheDocument();
   });
 
   it('Renders the Bands page', () => {
     fireEvent.click(screen.getByText('Bands'));
-    const bandPage = screen.getByText(/^Bands coming/i);
-    expect(bandPage).toHaveTextContent('Bands coming soon!');
+    const bandPage = screen.getByText(/^Bands page/i);
+    expect(bandPage).toBeInTheDocument();
   });
 
   it('Renders the Shows page', () => {
@@ -79,7 +81,7 @@ describe('Navigation bar', () => {
     const position = ['first', 'second']
     //fireEvent.click(screen.getByText('Shows'));
     showList.map((data) => {
-      
+
     })
     const showPage = screen.getByText(/^New shows/i);
     expect(showPage).toHaveTextContent('New shows coming soon!');

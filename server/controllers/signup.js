@@ -18,8 +18,12 @@ exports.addUser = (req, res, next) => Band.create({
     }
     next(err);
   })
-  .then(() => {
+  .then((results) => {
     // else create the new user
-    res.status(201).send(`Successfully created new band ${req.body.name}`);
+    if (!results.length) {
+      res.status(400).send(`Something went wrong when adding user ${req.body.email}`);
+    } else {
+      res.status(201).send(`Successfully created new band ${req.body.name}`);
+    }
     next();
   });
