@@ -56,7 +56,7 @@ export default function EditBlogPageContainer({ bandId }) {
           post: post.post,
           bandId,
         })
-          .catch((err) => console.error(err));
+        .catch((err) => console.error(err));
     }
   };
 
@@ -100,6 +100,6 @@ EditBlogPageContainer.propTypes = {
   bandId: PropTypes.number.isRequired,
 };
 // fix for undefined prop
-EditBlogPageContainer.defaultProps = {
-  bandId: 1,
-};
+// EditBlogPageContainer.defaultProps = {
+//   bandId: 1,
+// };

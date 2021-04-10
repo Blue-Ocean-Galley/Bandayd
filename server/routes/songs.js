@@ -13,5 +13,3 @@ router.get('/:bandId/:songId', getOneSong);
 // We don't have an album ID field right now so it's not possible to get all songs for a given album
 
 module.exports = router;
-
-

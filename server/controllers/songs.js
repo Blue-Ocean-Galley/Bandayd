@@ -16,11 +16,9 @@ exports.getSongs = (req, res, next) => {
       attributes: { exclude: ['createdAt', 'updatedAt', 'id'] },
     },
   }).then((results) => {
-    if (!results.length) {
-      res.status(404).send(`Could not find any songs for bandId ${bandId}`);
-    } else {
-      res.send(results);
-    }
+    logger.info(`Get songs:, ${typeof results}`);
+    logger.info(`Get songs - is it an array?:, ${Array.isArray(results)}`); // is an array
+    res.send(results);
     next();
   })
     .catch((err) => {
@@ -48,11 +46,14 @@ exports.getOneSong = (req, res, next) => {
       },
     },
   }).then((results) => {
-    if (!results.length) {
-      res.status(404).send(`Could not find songId ${songId}`);
-    } else {
-      res.send(results);
-    }
+    // if (!results.length) {
+    //   res.status(404).send(`Could not find songId ${songId}`);
+    // } else {
+    //   res.send(results);
+    // }
+    logger.info(`Get One Songs:, ${typeof results}`);
+    logger.info(`Get One songs - is it an array?: ${Array.isArray(results)}`);
+    res.send(results);
     next();
   })
     .catch((err) => {
@@ -65,7 +66,6 @@ exports.getOneSong = (req, res, next) => {
 exports.addOneSong = (req, res, next) => {
   const { title, album, track, url } = req.body;
   const { bandId } = req.params;
-  res.status(200).send('worked')
   return Song.create({
     title,
     album,
@@ -73,10 +73,12 @@ exports.addOneSong = (req, res, next) => {
     bandId,
     url,
   }).then((results) => {
-    if (!results.length) {
-      res.status(400).send(`Bad request adding song ${title} to library`);
-    } else {
+    logger.info(`Add one song:, ${typeof results}`);
+    logger.info(`Add one song - is it an array?:, ${Array.isArray(results)}`);
+    if (Object.keys(results)) {
       res.status(201).send(`Successfully added song ${title} to library`);
+    } else {
+      res.status(400).send(`Error adding song ${title} to library`);
     }
     next();
   })

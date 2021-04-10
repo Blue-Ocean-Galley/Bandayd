@@ -16,6 +16,7 @@ export default function BandPage() {
     axios.get(`http://localhost:3010/api/bands/${bandId}`,
       { id: bandId })
       .then((res) => {
+        console.log(res);
         setBandInfo(res.data);
       });
   }, []);
@@ -32,9 +33,9 @@ export default function BandPage() {
       </FirstSection>
       <SecondSection>
         <BandBlogPostList />
-        <Map>
+        {/* <Map>
           Map Goes Here
-        </Map>
+        </Map> */}
       </SecondSection>
     </div>
   );

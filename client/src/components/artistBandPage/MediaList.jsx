@@ -21,8 +21,9 @@ export default function MediaList() {
   useEffect(() => {
     axios.get(`http://localhost:3010/api/songs/${bandId}`)
       .then((res) => {
+        console.log('get songs', res.data[0].Songs);
         const songObj = {};
-        res.data.forEach((song) => {
+        res.data[0].SongsforEach((song) => {
           songObj[song.id] = song;
         });
         setSongs(songObj);
@@ -67,18 +68,22 @@ export default function MediaList() {
       });
   }, []);
 
-  const handleSave = (song) => {
+  const handleSave = (e, song) => {
+    console.log('handle save');
+    e.preventDefault();
     axios.post(`http://localhost:3010/api/songs/${bandId}`,
       {
         title: song.title,
         album: song.album,
         genre: song.genre,
-        link: song.link,
+        url: song.link,
         bandId,
       }).then((res) => {
       // Adds new song by id to song list
+        console.log('handle save res', res.data);
       setSongs((prevState) => ({ ...prevState, [res.data.id]: res.data }));
     });
+    toggleModal(false);
   };
   const [currentTitle, setTitle] = useState('');
   const [currentAlbum, setAlbum] = useState('');
@@ -100,8 +105,8 @@ export default function MediaList() {
 
   const SongList = Object.values(songs).map((song) => (
     <BandSongListItem
-      trackId={song.trackId}
-      key={song.trackId}
+      trackId={song.url}
+      key={song.url}
     />
   ));
 
@@ -124,22 +129,24 @@ export default function MediaList() {
         shouldCloseOnOverlayClick
       >
         <h3>Add a Song</h3>
-        <Form onSubmit={handleSave({
-          title: currentTitle, album: currentAlbum, genre: currentAlbum, link: currentLink,
-        })}
+        <Form onSubmit={(e) => {
+          handleSave(e, {
+            title: currentTitle, album: currentAlbum, genre: currentAlbum, link: currentLink,
+          });
+        }}
         >
-          <Label for="song-title-Input">Title</Label>
+          <Label htmlFor="song-title-Input">Title</Label>
           <Input onChange={(e) => setTitle(e.target.value)} id="song-title-Input" type="text" defaultValue={currentTitle} />
 
-          <Label for="song-album-Input">Album</Label>
+          <Label htmlFor="song-album-Input">Album</Label>
           <Input onChange={(e) => setAlbum(e.target.value)} id="song-album-Input" type="text" defaultValue={currentAlbum} />
 
-          <Label for="song-Genre-Input">Genre</Label>
+          <Label htmlFor="song-Genre-Input">Genre</Label>
           <Input onChange={(e) => setGenre(e.target.value)} id="song-genre-Input" type="text" defaultValue={currentGenre} />
 
-          <Label for="song-link">Spotify Link</Label>
+          <Label htmlFor="song-link">Spotify Link</Label>
           <Input onChange={(e) => setLink(e.target.value)} id="song-link" type="url" defaultValue={currentLink} />
-          <Button type="submit" onClick={() => { toggleModal(false); }}> Add Song </Button>
+          <Button type="submit"> Add Song </Button>
         </Form>
       </Modal>
     </Container>
@@ -173,3 +180,4 @@ const Header = styled(StickyHeaderContainer)`
 // MediaList.defaultProps = {
 //   songs: [],
 // };
+// 7i28aaEucsoEeEfZLHZHb1
