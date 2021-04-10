@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import BandBlogPostItem from './BandBlogPostItem';
+import cookies from '../../cookies.js'
 import {
   ListTile,
   StickyHeaderContainer,

@@ -4,6 +4,7 @@ import axios from 'axios';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import BandSongListItem from './BandPageSongListItem';
+import cookies from '../../cookies.js'
 import {
   Button,
   Tile,

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 // import PropTypes from 'prop-types';
+import cookies from '../../cookies.js'
 import styled from 'styled-components';
 import Modal from 'react-modal';
 import UpcomingShowsListItem from './UpcomingShowsListItem';
