@@ -3,7 +3,7 @@ node_modules
 webpack*
 jest*
 babel*
-main.js
+*main.js
 server/migrations
 server/seeders
 server/models/*
