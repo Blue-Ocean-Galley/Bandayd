@@ -1,5 +1,5 @@
 /* eslint-disable arrow-body-style */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
@@ -51,6 +51,16 @@ export default function TourList() {
     },
 
   ]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3010/api/shows/')
+      .then((res) => {
+        // console.log(res)
+        setShows(res.data);
+        console.log(shows)
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   const updateName = (e) => {
     e.preventDefault();
@@ -115,18 +125,33 @@ export default function TourList() {
     }
   };
 
-  const renderShows = () => shows.map((show) => <TourEntry key={show.id} show={show} />);
-  const renderMarkers = () => shows.map((show) => {
-    return (
-      <Marker position={[show.latitude, show.longitude]} key={show.id}>
-        <Popup>
-          {show.name}
-          {show.showDate}
-          {show.displayName}
-        </Popup>
-      </Marker>
-    );
-  });
+  const renderShows = () => {
+    if (shows) {
+      return shows.map((show) => {
+        if (show.name && show.bandName) {
+          return <TourEntry key={show.id} show={show} />;
+        }
+      });
+    }
+  };
+  const renderMarkers = () => {
+    if (shows) {
+      // console.log(shows)
+      return shows.map((show) => {
+        if (show.latitude && show.longitude) {
+          return (
+            <Marker position={[show.latitude, show.longitude]} key={show.id}>
+              <Popup>
+                {show.name}
+                {show.showDate}
+                {show.displayName}
+              </Popup>
+            </Marker>
+          );
+        }
+      });
+    }
+  };
 
   return (
     <div>
