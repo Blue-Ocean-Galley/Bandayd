@@ -18,6 +18,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   Show.init({
     name: DataTypes.STRING,
+    bandName: DataTypes.TEXT,
+    displayName: DataTypes.TEXT,
     showDate: DataTypes.DATE,
     latitude: DataTypes.FLOAT,
     longitude: DataTypes.FLOAT,
