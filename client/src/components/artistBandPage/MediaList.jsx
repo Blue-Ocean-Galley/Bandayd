@@ -145,7 +145,7 @@ export default function MediaList() {
           <Input onChange={(e) => setGenre(e.target.value)} id="song-genre-Input" type="text" defaultValue={currentGenre} />
 
           <Label htmlFor="song-link">Spotify Link</Label>
-          <Input onChange={(e) => setLink(e.target.value)} id="song-link" type="url" defaultValue={currentLink} />
+          <Input onChange={(e) => setLink(e.target.value)} id="song-link" type="text" defaultValue={currentLink} />
           <Button type="submit"> Add Song </Button>
         </Form>
       </Modal>
