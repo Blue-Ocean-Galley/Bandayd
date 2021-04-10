@@ -15,7 +15,7 @@ import Tabs from '../../styles/tabs';
 
 export default function MediaList() {
   const [showModal, toggleModal] = useState(false);
-  const bandId = 1;
+  const bandId = cookies.get('userId') || 1;
 
   const [songs, setSongs] = useState({});
   useEffect(() => {

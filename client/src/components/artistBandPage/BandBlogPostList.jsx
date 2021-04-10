@@ -11,7 +11,7 @@ import {
 } from '../../styles/globalStyles';
 
 export default function BlogPostList() {
-  const bandId = 1; // change this to read current user
+  const bandId = cookies.get('userId') || 1;
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     // Initial get request
