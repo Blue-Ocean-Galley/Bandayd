@@ -1,13 +1,10 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
 } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-
-function  UpcomingShowsListItem  ({date, location}) {
+function UpcomingShowsListItem({ date, location }) {
   return (
     <Router>
       <div>
@@ -15,8 +12,12 @@ function  UpcomingShowsListItem  ({date, location}) {
         <span id="show-list-location">{location}</span>
       </div>
     </Router>
-  )
-
+  );
 }
+
+UpcomingShowsListItem.propTypes = {
+  date: PropTypes.any.isRequired,
+  location: PropTypes.any.isRequired,
+};
 
 export default UpcomingShowsListItem;

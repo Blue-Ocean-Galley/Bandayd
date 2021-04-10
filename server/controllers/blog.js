@@ -93,7 +93,7 @@ exports.addNewBlog = (req, res, next) => Blog.create({
       res.status(400).send(`Bad request to add post for bandId ${req.params.bandId}`);
     } else {
       res.status(201).send('Successfully added new blog post');
-    };
+    }
     next();
   })
   .catch((err) => {

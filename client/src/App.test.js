@@ -1,7 +1,7 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import {
-  render, screen, fireEvent, cleanup, act,
+  render, screen, fireEvent, cleanup,
 } from '@testing-library/react';
 import App from './App';
 
@@ -28,7 +28,7 @@ xdescribe('Modal SignUp/Login testing', () => {
       const username = screen.getByText('Username:');
       expect(username).toHaveTextContent('Username:');
       fireEvent.click(screen.getByText('Close Modal'));
-      console.log(`Login works at position ${position[i]}`);
+      //console.log(`Login works at position ${position[i]}`);
       i += 1;
     });
   });
@@ -39,7 +39,7 @@ xdescribe('Modal SignUp/Login testing', () => {
     let i = 0;
     buttonList.map((data) => {
       fireEvent.click(data);
-      fireEvent.keyDown(screen.getByRole('button', { name: /email/i }), {key: 'Escape'});
+      fireEvent.keyDown(screen.getByRole('button', { name: /email/i }), { key: 'Escape' });
       const username = screen.queryByText('Username:');
       expect(username).toBeNull();
       console.log(`Login exits at position ${position[i]}`);
@@ -78,11 +78,11 @@ describe('Navigation bar', () => {
 
   it('Renders the Shows page', () => {
     const showList = screen.getAllByText('Shows')
-    const position = ['first', 'second']
-    //fireEvent.click(screen.getByText('Shows'));
+    // const position = ['first', 'second'];
+    // fireEvent.click(screen.getByText('Shows'));
     showList.map((data) => {
-
-    })
+      console.table(data);
+    });
     const showPage = screen.getByText(/^New shows/i);
     expect(showPage).toHaveTextContent('New shows coming soon!');
   });
