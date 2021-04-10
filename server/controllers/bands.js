@@ -16,7 +16,7 @@ exports.getBands = (req, res, next) => {
     },
   }).then((results) => {
     if (!results.length) {
-      res.status(404).send(`No results bands after page ${page} and count ${count}`)
+      res.status(404).send(`No results bands after page ${page} and count ${count}`);
     } else {
       res.send(results);
     }
@@ -44,7 +44,7 @@ exports.getOneBand = (req, res, next) => {
     },
   }).then((results) => {
     if (!results.length) {
-      res.status(404).send(`No results for bandId ${bandId}`)
+      res.status(404).send(`No results for bandId ${bandId}`);
     } else {
       res.send(results);
     }

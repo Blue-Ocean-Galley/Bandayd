@@ -8,6 +8,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './styles/globalStyles';
 import darkTheme from './styles/theme';
 import Navigation from './navigation/NavBar';
+
 const TourList = lazy(() => import('./tours/TourList'));
 const SplashPage = lazy(() => import('./splashPage/SplashPageContainer'));
 const EditBlogPage = lazy(() => import('./editBlogPage/EditBlogPageContainer'));

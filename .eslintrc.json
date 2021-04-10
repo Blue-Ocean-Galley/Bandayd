@@ -7,6 +7,7 @@
     },
     "extends": [
         "plugin:react/recommended",
+        "plugin:security/recommended",
         "plugin:jest/recommended",
         "plugin:jest-extended/recommended",
         "plugin:testing-library/react",
@@ -23,7 +24,8 @@
         "react",
         "testing-library",
         "jest",
-        "jest-extended"
+        "jest-extended",
+        "security"
     ],
     "rules": {
     }

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Card } from '../styles/globalStyles';
 
 export default function TourEntry({ show }) {
@@ -11,3 +12,14 @@ export default function TourEntry({ show }) {
     </Card>
   );
 }
+
+// Shape lets you specify the keys inside the object and the props for each
+// Please correct this if it's not right
+TourEntry.propTypes = {
+  show: PropTypes.shape({
+    name: PropTypes.string,
+    bandName: PropTypes.string,
+    showDate: PropTypes.string,
+    displayName: PropTypes.string,
+  }).isRequired,
+};
