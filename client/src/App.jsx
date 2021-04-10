@@ -14,7 +14,6 @@ const EditBlogPage = lazy(() => import('./editBlogPage/EditBlogPageContainer'));
 const BandPage = lazy(() => import('./components/artistBandPage/BandPage'));
 const renderLoader = () => <p>Loading...</p>;
 
-
 export default function App() {
   return (
     <Router>
@@ -24,7 +23,7 @@ export default function App() {
         <Switch>
           <Route exact path="/">
             <Suspense fallback={renderLoader()}>
-                <SplashPage toPath="/login" />
+              <SplashPage toPath="/login" />
             </Suspense>
           </Route>
           <Route exact path="/editblog">

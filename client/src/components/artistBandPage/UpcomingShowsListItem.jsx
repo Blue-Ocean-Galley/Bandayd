@@ -7,31 +7,16 @@ import {
 } from 'react-router-dom';
 
 
-class UpcomingShowsListItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+function  UpcomingShowsListItem  ({date, location}) {
+  return (
+    <Router>
+      <div>
+        <span id="show-list-date">{date}</span>
+        <span id="show-list-location">{location}</span>
+      </div>
+    </Router>
+  )
 
-    };
-  }
-
-  componentDidMount() {
-  }
-
-  handleChange(event) {
-
-  }
-
-  render() {
-    return (
-      <Router>
-        <div>
-          <span id="show-list-date">{this.props.date}</span>
-          <span id="show-list-location">{this.props.location}</span>
-        </div>
-      </Router>
-    )
-  }
 }
 
 export default UpcomingShowsListItem;

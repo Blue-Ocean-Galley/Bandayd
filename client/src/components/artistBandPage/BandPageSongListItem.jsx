@@ -6,7 +6,7 @@ export default function BandSongListItem({ trackId }) {
   return (
     // eslint-disable-next-line jsx-a11y/media-has-caption
     // eslint-disable-next-line jsx-a11y/iframe-has-title
-    <Frame src={`https://open.spotify.com/embed/track/${trackId}`} width="100%" height="80" frameBorder="0" allowtransparency="true" allow="encrypted-media" />
+    <Frame key={trackId} src={`https://open.spotify.com/embed/track/${trackId}`} width="100%" height="80" frameBorder="0" allowtransparency="true" allow="encrypted-media" />
   );
 }
 BandSongListItem.propTypes = {

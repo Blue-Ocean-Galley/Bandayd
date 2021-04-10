@@ -1,6 +1,11 @@
 const express = require('express');
 // const logger = require('../../config/winston');
-const { getBands, getOneBand } = require('../controllers/bands');
+const {
+  getBands,
+  getOneBand,
+  updateProfilePicture,
+  updateBio,
+} = require('../controllers/bands');
 
 const router = express.Router();
 
@@ -8,5 +13,9 @@ const router = express.Router();
 router.get('/', getBands);
 // return bandId as req.params
 router.get('/:id', getOneBand);
+// update profile picture
+router.put('/photo/:id', updateProfilePicture);
+
+router.put('/bio/:id', updateBio);
 
 module.exports = router;
