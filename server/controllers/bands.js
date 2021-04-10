@@ -15,7 +15,11 @@ exports.getBands = (req, res, next) => {
       },
     },
   }).then((results) => {
-    res.send(results);
+    if (!results.length) {
+      res.status(404).send(`No results bands after page ${page} and count ${count}`)
+    } else {
+      res.send(results);
+    }
     next();
   })
     .catch((err) => {
@@ -39,7 +43,11 @@ exports.getOneBand = (req, res, next) => {
       attributes: { exclude: ['createdAt', 'updatedAt', 'id'] },
     },
   }).then((results) => {
-    res.send(results);
+    if (!results.length) {
+      res.status(404).send(`No results for bandId ${bandId}`)
+    } else {
+      res.send(results);
+    }
     next();
   })
     .catch((err) => {

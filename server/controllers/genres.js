@@ -14,7 +14,11 @@ exports.getGenres = (req, res, next) => {
       },
     },
   }).then((results) => {
-    res.send(results);
+    if (!results.length) {
+      res.status(404).send('No such genre');
+    } else {
+      res.send(results);
+    }
     next();
   })
     .catch((err) => {
@@ -33,7 +37,11 @@ exports.getOneGenre = (req, res, next) => {
       id: genreId,
     },
   }).then((results) => {
-    res.send(results);
+    if (!results.length) {
+      res.status(404).send('No such genre');
+    } else {
+      res.send(results);
+    }
     next();
   })
     .catch((err) => {

@@ -16,7 +16,11 @@ exports.getSongs = (req, res, next) => {
       attributes: { exclude: ['createdAt', 'updatedAt', 'id'] },
     },
   }).then((results) => {
-    res.send(results);
+    if (!results.length) {
+      res.status(404).send(`Could not find any songs for bandId ${bandId}`);
+    } else {
+      res.send(results);
+    }
     next();
   })
     .catch((err) => {
@@ -44,7 +48,11 @@ exports.getOneSong = (req, res, next) => {
       },
     },
   }).then((results) => {
-    res.send(results);
+    if (!results.length) {
+      res.status(404).send(`Could not find songId ${songId}`);
+    } else {
+      res.send(results);
+    }
     next();
   })
     .catch((err) => {
@@ -64,8 +72,12 @@ exports.addOneSong = (req, res, next) => {
     track,
     bandId,
     url,
-  }).then(() => {
-    res.status(201).send(`Successfully added song ${title} to library`);
+  }).then((results) => {
+    if (!results.length) {
+      res.status(400).send(`Bad request adding song ${title} to library`);
+    } else {
+      res.status(201).send(`Successfully added song ${title} to library`);
+    }
     next();
   })
     .catch((err) => {

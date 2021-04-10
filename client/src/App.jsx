@@ -8,12 +8,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './styles/globalStyles';
 import darkTheme from './styles/theme';
 import Navigation from './navigation/NavBar';
-// import SplashPageContainer from './splashPage/SplashPageContainer';
-// import EditBlogPageContainer from './editBlogPage/EditBlogPageContainer';
-import TourList from './tours/TourList';
-// import BandPage from './components/artistBandPage/BandPage';
-// import EditBlogPageContainer from './editBlogPage/EditBlogPageContainer';
-// import BandPage from './components/artistBandPage/BandPage';
+const TourList = lazy(() => import('./tours/TourList'));
 const SplashPage = lazy(() => import('./splashPage/SplashPageContainer'));
 const EditBlogPage = lazy(() => import('./editBlogPage/EditBlogPageContainer'));
 const BandPage = lazy(() => import('./components/artistBandPage/BandPage'));
@@ -42,11 +37,9 @@ export default function App() {
             </Suspense>
           </Route>
           <Route path="/shows">
-
             <Suspense fallback={renderLoader()}>
               <TourList />
             </Suspense>
-
           </Route>
           <Route path="/login">
             <Suspense fallback={renderLoader()}>
