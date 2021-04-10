@@ -6,7 +6,7 @@ export default function Dropdown() {
   return (
     <DropDownList>
       <li>
-        <DropdownLink to="/bands">Profile</DropdownLink>
+        <DropdownLink to="/band">Profile</DropdownLink>
       </li>
       <li>
         <DropdownLink to="/editblog">Blog</DropdownLink>

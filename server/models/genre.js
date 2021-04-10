@@ -1,6 +1,7 @@
-const { Model } = require('sequelize');
-const Band = require('./band');
-
+'use strict';
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Genre extends Model {
     /**
@@ -8,14 +9,15 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) { // eslint-disable-line no-eval
+    static associate(models) {
       // define association here
-      Genre.hasMany(models.Band);
-      models.Band.belongsTo(Genre);
+      Genre.hasMany(models.Band, {
+        foreignKey: 'GenreId'
+      });
     }
-  }
+  };
   Genre.init({
-    name: DataTypes.STRING,
+    name: DataTypes.STRING(24),
   }, {
     sequelize,
     modelName: 'Genre',

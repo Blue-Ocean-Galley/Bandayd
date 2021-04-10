@@ -1,5 +1,7 @@
-const { Model } = require('sequelize');
-
+'use strict';
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Band extends Model {
     /**
@@ -7,29 +9,37 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    /* eslint-disable no-eval */
-    static associate(models) { // eslint-disable-line no-eval
+    static associate(models) {
       // define association here
-     models.Genre.hasMany(Band);
-      Band.belongsTo(models.Genre);
+      Band.belongsTo(models.Genre, {
+        foreignKey: 'GenreId',
+      });
+      Band.hasMany(models.Blog, {
+        foreignKey: 'BandId',
+      });
+      Band.hasMany(models.Show, {
+        foreignKey: 'BandId',
+      });
+      Band.hasMany(models.Song, {
+        foreignKey: 'BandId',
+      });
     }
-  }
+  };
   Band.init({
     name: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
     description: DataTypes.TEXT,
-    email: {
-      type:DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
-    genreId: {
-      type: DataTypes.STRING,
+    profilePhotoUrl: DataTypes.TEXT,
+    GenreId: {
+      type: DataTypes.INTEGER,
       references: {
         model: { tableName: 'Genres' },
         key: 'id',
-        allowNull: false,
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
       }
-    },
+    }
   }, {
     sequelize,
     modelName: 'Band',

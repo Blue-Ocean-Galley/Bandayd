@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const ImageTile = ({ imgUrl, overlay }) => (
+const ImageTile = ({ ImgUrl, overlay }) => (
   <>
-    <ImgWrapper to="/band" imgUrl={imgUrl} overlay={overlay} />
+    <ImgWrapper to="/band" ImgUrl={ImgUrl} overlay={overlay} />
   </>
 );
 
@@ -15,7 +15,7 @@ const ImgWrapper = styled(Link)`
   margin: 1px;
   max-width: 48rem;
   height: 30rem;
-  background: linear-gradient(to right, ${(props) => props.overlay}, ${(props) => props.overlay}), url("${(props) => props.imgUrl}") no-repeat top center;
+  background: linear-gradient(to right, ${(props) => props.overlay}, ${(props) => props.overlay}), url("${(props) => props.ImgUrl}") no-repeat top center;
 
   &:hover {
     box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 12px 20px rgba(0,0,0,0.23);
@@ -24,7 +24,7 @@ const ImgWrapper = styled(Link)`
 `;
 
 ImageTile.propTypes = {
-  imgUrl: PropTypes.string.isRequired,
+  ImgUrl: PropTypes.string.isRequired,
   overlay: PropTypes.string.isRequired,
 };
 

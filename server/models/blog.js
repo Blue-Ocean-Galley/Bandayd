@@ -1,5 +1,7 @@
-const { Model } = require('sequelize');
-
+'use strict';
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Blog extends Model {
     /**
@@ -7,25 +9,26 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) { // eslint-disable-line no-eval
+    static associate(models) {
       // define association here
-      Blog.belongsTo(models.Band);
-      models.Band.hasMany(Blog);
+      Blog.belongsTo(models.Band, {
+        foreignKey: 'BandId',
+      });
     }
-  }
-
+  };
   Blog.init({
     name: DataTypes.STRING,
     description: DataTypes.STRING,
     post: DataTypes.TEXT,
-    bandId: {
+    BandId: {
       type: DataTypes.INTEGER,
       references: {
-        model: { tableName: 'Bands' },
+        modelName: { tableName: 'Bands' },
         key: 'id',
-        allowNull: false,
       },
-    },
+      onUpdate: 'CASCADE',
+      onDelete: 'SET NULL',
+    }
   }, {
     sequelize,
     modelName: 'Blog',

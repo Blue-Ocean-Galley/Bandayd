@@ -11,13 +11,17 @@ exports.getAllBlog = (req, res, next) => {
       bandId: bandID,
     },
   })
-    .then((result) => {
-      res.send(result);
+    .then((results) => {
+      if (!results.length) {
+        res.status(404).send(`No blog posts for bandId ${bandID}`);
+      } else {
+        res.send(results);
+      }
       next();
     })
     .catch((err) => {
       logger.error(err);
-      res.send(500);
+      res.status(500).send(`There was an error ${err}`);
       next(err);
     });
 };
@@ -26,18 +30,22 @@ exports.getAllBlog = (req, res, next) => {
 exports.getABlog = (req, res, next) => {
   const blogID = req.params.id;
   return Blog.findAll({
-    attributes: { exclude: ['BandId', 'createdAt', 'updatedAt'] },
+    attributes: { exclude: ['createdAt', 'updatedAt'] },
     where: {
       id: blogID,
     },
   })
-    .then((result) => {
-      res.send(result);
+    .then((results) => {
+      if (!results.length) {
+        res.status(404).send(`No posts with id ${blogID}`);
+      } else {
+        res.send(results);
+      }
       next();
     })
     .catch((err) => {
       logger.error(err);
-      res.send(500);
+      res.status(500).end();
       next(err);
     });
 };
@@ -57,13 +65,17 @@ exports.updateBlog = (req, res, next) => {
       id: postID,
     },
   })
-    .then(() => {
-      res.status(201).send('Successfully Updated');
+    .then((results) => {
+      if (!results.length) {
+        res.status(400).send(`Bad request to update post ${postID}`);
+      } else {
+        res.status(201).send('Successfully Updated');
+      }
       next();
     })
     .catch((err) => {
       logger.error(err);
-      res.send(400);
+      res.status(400).end();
       next(err);
     });
 };
@@ -74,14 +86,18 @@ exports.addNewBlog = (req, res, next) => Blog.create({
   name: req.body.name,
   description: req.body.description,
   post: req.body.post,
-  bandId: req.body.bandId,
+  bandId: req.params.bandId,
 })
-  .then((result) => {
-    res.status(201).send(result);
+  .then((results) => {
+    if (!results.length) {
+      res.status(400).send(`Bad request to add post for bandId ${req.params.bandId}`);
+    } else {
+      res.status(201).send('Successfully added new blog post');
+    };
     next();
   })
   .catch((err) => {
     logger.error(err);
-    res.send(400);
+    res.status(400).end();
     next(err);
   });

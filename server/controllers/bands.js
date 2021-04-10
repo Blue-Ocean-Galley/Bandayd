@@ -7,7 +7,7 @@ exports.getBands = (req, res, next) => {
   const count = req.query.count || 5;
 
   return Band.findAll({
-    attributes: { exclude: ['createdAt', 'updatedAt', 'GenreId'] },
+    attributes: { exclude: ['createdAt', 'updatedAt', 'GenreId', 'password'] },
     limit: Number(count),
     where: {
       id: {
@@ -15,7 +15,11 @@ exports.getBands = (req, res, next) => {
       },
     },
   }).then((results) => {
-    res.send(results);
+    if (!results.length) {
+      res.status(404).send(`No results bands after page ${page} and count ${count}`)
+    } else {
+      res.send(results);
+    }
     next();
   })
     .catch((err) => {
@@ -29,7 +33,7 @@ exports.getOneBand = (req, res, next) => {
   const bandId = req.params.id;
 
   return Band.findOne({
-    attributes: { exclude: ['createdAt', 'updatedAt', 'GenreId'] },
+    attributes: { exclude: ['createdAt', 'updatedAt', 'GenreId', 'password'] },
     where: {
       id: bandId,
     },
@@ -39,7 +43,11 @@ exports.getOneBand = (req, res, next) => {
       attributes: { exclude: ['createdAt', 'updatedAt', 'id'] },
     },
   }).then((results) => {
-    res.send(results);
+    if (!results.length) {
+      res.status(404).send(`No results for bandId ${bandId}`)
+    } else {
+      res.send(results);
+    }
     next();
   })
     .catch((err) => {
