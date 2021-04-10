@@ -160,7 +160,7 @@ export default function TourList() {
         <Button onClick={() => setTourModal(!showTourModal)}>Add New Show</Button>
       </span>
       {renderShows()}
-      <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '300px' }}>
+      <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '300px', zIndex: 0}}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
