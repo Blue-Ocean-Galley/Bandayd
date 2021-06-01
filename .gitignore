@@ -1,3 +1,6 @@
+# Nonessential system files
+.DS_Store
+
 # Logs
 logs
 *.log
@@ -85,7 +88,7 @@ typings/
 
 # Nuxt.js build / generate output
 .nuxt
-client/dist/*main.js
+client/dist/*main.js*
 
 # Gatsby files
 .cache/
