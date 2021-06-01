@@ -6,6 +6,7 @@ const bands = require('./bands');
 const songs = require('./songs');
 const genres = require('./genres');
 const blogs = require('./blogs');
+const shows = require('./shows');
 
 const router = express.Router();
 
@@ -19,6 +20,7 @@ router.use('/songs', songs);
 // all genre routes
 router.use('/genres', genres);
 // all show routes
+router.use('/shows', shows);
 router.use('/blogs', blogs);
 
 module.exports = router;

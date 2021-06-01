@@ -97,9 +97,9 @@ const Container = styled(Tile)`
 `;
 
 EditBlogPageContainer.propTypes = {
-  bandId: PropTypes.number.isRequired,
+  bandId: PropTypes.number,
 };
-// fix for undefined prop
-// EditBlogPageContainer.defaultProps = {
-//   bandId: 1,
-// };
+//fix for undefined prop
+EditBlogPageContainer.defaultProps = {
+  bandId: 1,
+};
