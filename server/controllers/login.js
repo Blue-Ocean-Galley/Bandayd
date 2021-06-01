@@ -15,11 +15,7 @@ exports.login = (req, res, next) => Band.findOne({
   })
   .then((data) => {
   // console.log(data);
-    if (!data) {
-      res.status(401).send('Error with email/password');
-    } else {
-      res.status(200).send(data);
-    }
+    res.status(200).send(data);
     next();
   })
   .catch((err) => {

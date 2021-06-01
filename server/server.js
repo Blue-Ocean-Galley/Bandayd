@@ -9,11 +9,14 @@ const app = express();
 const PORT = process.env.SERVER_PORT || 3010;
 const HOSTNAME = process.env.HOSTNAME || 'localhost';
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: '*',
   optionsSuccessStatus: 200,
 };
 
-app.use(compression());
+app.use(compression({
+  level: 6,
+  memLevel: 6,
+}));
 app.use(cors(corsOptions));
 app.use(express.json());
 app.get('/', (req, res) => {

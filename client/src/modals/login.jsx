@@ -32,7 +32,7 @@ export default function Login() {
           userId: response.data.id,
           expires: expires.toGMTString(),
         });
-        history.push('/bands');
+        history.push('/band');
       })
       .catch((error) => {
         console.error(error);

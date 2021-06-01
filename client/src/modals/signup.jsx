@@ -26,7 +26,7 @@ export default function Signup() {
       description: '',
       genre: genres[0],
     };
-    axios.post('/login', data)
+    axios.post('http://localhost:3010/api/login', data)
       .then((response) => {
         console.log(response);
       })

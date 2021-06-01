@@ -10,6 +10,12 @@ module.exports = {
     migrationStorage: 'sequelize',
     seederStorage: 'sequelize',
     logging: (msg) => logger.debug(msg),
+    pool: {
+      max: 200,
+      min: 0,
+      acquire: 30000,
+      idle: 5000,
+    }
   },
   production: {
     username: process.env.DB_USER,
@@ -20,6 +26,12 @@ module.exports = {
     migrationStorage: 'sequelize',
     seederStorage: 'sequelize',
     logging: (msg) => logger.debug(msg),
+    pool: {
+      max: 200,
+      min: 0,
+      acquire: 30000,
+      idle: 5000,
+    }
   },
   test: {
     username: 'root',
